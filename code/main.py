@@ -15,16 +15,21 @@ Plattegrond(wijk)
 total_houses = int(input("Voer de gewenste huizenvariant in: "))
 while total_houses not in ["20", "40", "60"] : 
     print("Kies tussen: 20, 40, 60")
-    total_houses = input("Voer de gewenste huizenvariant in: ")
+    total_houses = int(input("Voer de gewenste huizenvariant in: "))
 
 # Determine the total number of houses for every variation
-total_singlehouses = 0.6 * total_houses
-total_bungalows = 0.25 * total_houses
-total_mansions = 0.15 * total_houses
+total_singlehouses = 2 * total_houses
+total_bungalows = 3 * total_houses
+total_maisons = 4 * total_houses
+
+print(total_bungalows)
+print(total_singlehouses)
+print(total_bungalows)
+print(total_maisons)
 
 for singlehouse in total_singlehouses:
-    singlehouse = singlehouse()
-print(singlehouse.width())
+    singlehouse = Singlehouse()
+    print(singlehouse.price)
 
 
 

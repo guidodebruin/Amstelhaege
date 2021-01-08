@@ -1,4 +1,4 @@
-class singlehouse():
+class Singlehouse():
    def __init__(self, length, width, type, id, free, price, latitude, longitude):
        self.length = 8
        self.width = 8
