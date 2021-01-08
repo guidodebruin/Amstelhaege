@@ -1,5 +1,4 @@
 from classes import Plattegrond
-import matplotlib.pyplot as plt
 
 wijk = input("Voer wijk_nummer in: ")
 while wijk not in ["wijk_1", "wijk_2", "wijk_3"] : 
