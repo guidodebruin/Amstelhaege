@@ -12,24 +12,27 @@ while wijk not in ["wijk_1", "wijk_2", "wijk_3"] :
 Plattegrond(wijk)
 
 
-total_houses = int(input("Voer de gewenste huizenvariant in: "))
+total_houses = input("Voer de gewenste huizenvariant in: ")
 while total_houses not in ["20", "40", "60"] : 
     print("Kies tussen: 20, 40, 60")
-    total_houses = int(input("Voer de gewenste huizenvariant in: "))
+    total_houses = input("Voer de gewenste huizenvariant in: ")
 
 # Determine the total number of houses for every variation
-total_singlehouses = 2 * total_houses
-total_bungalows = 3 * total_houses
-total_maisons = 4 * total_houses
+total_singlehouses = 0.6 * int(total_houses)
+total_bungalows = 0.25 * int(total_houses)
+total_maisons = 0.15 * int(total_houses)
 
-print(total_bungalows)
-print(total_singlehouses)
-print(total_bungalows)
-print(total_maisons)
-
-for singlehouse in total_singlehouses:
+for singlehouse in range(int(total_singlehouses)):
     singlehouse = Singlehouse()
     print(singlehouse.price)
+
+for bungalow in range(int(total_bungalows)):
+    bungalow = Bungalow()
+    print(bungalow.price)
+
+for maison in range(int(total_maisons)):
+    maison = Maison()
+    print(maison.price)
 
 
 

@@ -1,13 +1,13 @@
 class Bungalow():
 
-   def __init__(self, length, width, type, id, free, price, latitude, longitude):
+   def __init__(self):
        self.length = 7
        self.width = 11
        self.id = id
        self.free = 3
        self.price = 399000
-       self.lat = latitude
-       self.long = longitude
+       self.latitude = 80
+       self.longite = 120
  
    def __str__(self):
        return self.id

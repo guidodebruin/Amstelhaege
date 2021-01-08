@@ -11,6 +11,8 @@ class Plattegrond():
         self.water = []
         self.breedte = 180
         self.diepte = 160
+        self.houses = []
+
 
         # laad water in
         self.load_water(f"../wijken/{wijk}.csv")
@@ -59,3 +61,5 @@ class Plattegrond():
 
         plt.savefig('../plots/init_plattegrond.png')
         
+        def load_houses(self):
+            

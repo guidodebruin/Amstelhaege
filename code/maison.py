@@ -1,13 +1,13 @@
 class Maison():
  
-   def __init__(self, length, width, type, id, free, price, latitude, longitude):
+   def __init__(self):
        self.length = 10
        self.width = 12
        self.id = id
        self.free = 6
        self.price = 610000
-       self.lat = latitude
-       self.long = longitude
+       self.latitude = 50
+       self.longite = 40
  
    def __str__(self):
        return self.id
