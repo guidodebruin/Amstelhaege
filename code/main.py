@@ -1,9 +1,9 @@
-from graph import Plattegrond
+from Graph import Plattegrond
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
 import matplotlib.pyplot as plt
-
+import csv
 
 wijk = input("Voer wijk_nummer in: ")
 while wijk not in ["wijk_1", "wijk_2", "wijk_3"] : 
@@ -23,6 +23,8 @@ total_singlehouses = 0.6 * int(total_houses)
 total_bungalows = 0.25 * int(total_houses)
 total_maisons = 0.15 * int(total_houses)
 
+maison_list = []
+
 for singlehouse in range(int(total_singlehouses)):
     singlehouse = Singlehouse()
     print(singlehouse.price)
@@ -33,8 +35,15 @@ for bungalow in range(int(total_bungalows)):
 
 for maison in range(int(total_maisons)):
     maison = Maison()
+    maison_list.append(maison)
     print(maison.price)
 
 
+# writing output file
+with open('output.csv', 'w') as file:
+    writer = csv.writer(file)
+    writer.writerow(["name", "width", "id", "free", "price", "latitude", "longtitude"])
+    for single_maison in maison_list:
+        writer.writerow([maison.price])
 
 
