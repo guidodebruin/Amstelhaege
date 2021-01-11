@@ -3,18 +3,18 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 
-class Plattegrond():
-    def __init__(self, wijk):
+class Graph():
+    def __init__(self, area):
         """
             Maakt de plattegrond
         """
         self.water = []
-        self.breedte = 180
-        self.diepte = 160
+        self.width = 180
+        self.depth = 160
         self.houses = []
 
         # laad water in
-        self.load_water(f"../wijken/{wijk}.csv")
+        self.load_water(f"../wijken/{area}.csv")
         print(self.water)
 
         # roep plattegrond aan
@@ -46,7 +46,7 @@ class Plattegrond():
         """
         plt.xlabel("breedte")
         plt.ylabel("diepte")
-        plt.axis([0, self.breedte, 0, self.diepte])
+        plt.axis([0, self.width, 0, self.depth])
         
         # maak wijk groen
         ax = plt.gca()
@@ -58,7 +58,7 @@ class Plattegrond():
             # Add the patch to the Axes
             ax.add_patch(rect)
 
-        plt.savefig('../plots/init_plattegrond.png')
+        plt.savefig('../plots/init_graph.png')
         
         def load_houses(self):
             pass

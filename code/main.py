@@ -1,22 +1,22 @@
-from Graph import Plattegrond
+from graph import Graph
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
 import matplotlib.pyplot as plt
 import csv
 
-wijk = input("Voer wijk_nummer in: ")
-while wijk not in ["wijk_1", "wijk_2", "wijk_3"] : 
-    print("Kies tussen: wijk_1, wijk_2, wijk_3")
-    wijk = input("Voer wijk_nummer in: ")
+area = input("Enter the area number: ")
+while area not in ["area_1", "area_2", "area_3"] : 
+    print("Choose between: area_1, area_2, area_3")
+    area = input("Enter the area number: ")
 
-Plattegrond(wijk)
+Graph(area)
 
 
-total_houses = input("Voer de gewenste huizenvariant in: ")
+total_houses = input("Enter the number of houses: ")
 while total_houses not in ["20", "40", "60"] : 
-    print("Kies tussen: 20, 40, 60")
-    total_houses = input("Voer de gewenste huizenvariant in: ")
+    print("Choose between: 20, 40, 60")
+    total_houses = input("Enter the number of houses: ")
 
 # Determine the total number of houses for every variation
 total_singlehouses = 0.6 * int(total_houses)
@@ -43,7 +43,7 @@ for maison in range(int(total_maisons)):
     print(maison.price)
 
 
-# writing output file
+# Writing output file
 with open('output.csv', 'w') as file:
     writer = csv.writer(file)
     writer.writerow(["id", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
