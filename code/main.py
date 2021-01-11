@@ -5,6 +5,7 @@ from maison import Maison
 import matplotlib.pyplot as plt
 import csv
 
+# Request user for area number
 area = input("Enter the area number: ")
 while area not in ["area_1", "area_2", "area_3"] : 
     print("Choose between: area_1, area_2, area_3")
@@ -12,7 +13,7 @@ while area not in ["area_1", "area_2", "area_3"] :
 
 Graph(area)
 
-
+# Request user for the number of houses
 total_houses = input("Enter the number of houses: ")
 while total_houses not in ["20", "40", "60"] : 
     print("Choose between: 20, 40, 60")
@@ -27,6 +28,7 @@ singlehouse_list = []
 bungalow_list = []
 maison_list = []
 
+# Add the house objects to a list
 for singlehouse in range(int(total_singlehouses)):
     singlehouse = Singlehouse()
     singlehouse_list.append(singlehouse)
@@ -41,7 +43,6 @@ for maison in range(int(total_maisons)):
     maison = Maison()
     maison_list.append(maison)
     print(maison.price)
-
 
 # Writing output file
 with open('output.csv', 'w') as file:

@@ -6,25 +6,25 @@ import numpy as np
 class Graph():
     def __init__(self, area):
         """
-            Maakt de plattegrond
+            Necessities for the visual representation
         """
         self.water = []
         self.width = 180
         self.depth = 160
         self.houses = []
 
-        # laad water in
-        self.load_water(f"../wijken/{area}.csv")
-        print(self.water)
+        # Load the water data
+        self.load_water(f"../areas/{area}.csv")
 
-        # roep plattegrond aan
-        self.load_plattegrond()
-
+        # Create area graph
+        self.load_graph()
 
     def load_water(self, filename):
         """
-            Laadt het water dat bij een specifieke wijk hoort
+            Load the water that belongs to a specific neighborhood
         """
+
+        # Read the file that contains the water data
         with open(filename, "r") as csv_file:
             next(csv_file)
             reader = csv.reader(csv_file)
@@ -38,26 +38,26 @@ class Graph():
                     else:
                         self.water[counter].append(elem)
 
-            csv_file.close()
-
-    def load_plattegrond(self):
+    def load_graph(self):
         """
-            Roept de plattegrond voor een wijk aan
+            Call up the map for the specific area
         """
-        plt.xlabel("breedte")
-        plt.ylabel("diepte")
+        plt.xlabel("width")
+        plt.ylabel("depth")
         plt.axis([0, self.width, 0, self.depth])
         
-        # maak wijk groen
+        # Display the neighborhood as green
         ax = plt.gca()
         ax.set_facecolor("green")
         
         for data in self.water:
-            # Create a Rectangle patch
+            # Create a Rectangle patch in which water is displayed as blue
             rect = patches.Rectangle((data[1][0], data[1][1]),data[2][1],data[2][0],facecolor='b')
+            
             # Add the patch to the Axes
             ax.add_patch(rect)
 
+        # Save the graph
         plt.savefig('../plots/init_graph.png')
         
         def load_houses(self):
