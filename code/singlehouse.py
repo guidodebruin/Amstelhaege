@@ -6,8 +6,11 @@ class Singlehouse():
        self.id = id
        self.free = 2
        self.price = 285000
-       self.latitude = 10
-       self.longitude = 12
+       self.corner_1 = 40.121
+       self.corner_2 = 32.121
+       self.corner_3 = 32.129
+       self.corner_4 = 40.129
+       self.type =  "SINGLEHOUSE"
  
    def __str__(self):
        return self.id

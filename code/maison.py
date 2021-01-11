@@ -6,8 +6,11 @@ class Maison():
        self.id = id
        self.free = 6
        self.price = 610000
-       self.latitude = 50
-       self.longite = 40
+       self.corner_1 = 75.107
+       self.corner_2 = 75.97
+       self.corner_3 = 87.97
+       self.corner_4 = 87.107
+       self.type =  "MAISON"
  
    def __str__(self):
        return self.id

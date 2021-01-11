@@ -1,4 +1,21 @@
-name,width,id,free,price,latitude,longtitude
-610000
-610000
-610000
+id,corner_1,corner_2,corner_3,corner_4,type
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,40.121,32.121,32.129,40.129,SINGLEHOUSE
+<built-in function id>,10.32,3.32,3.43,10.43,BUNGALOW
+<built-in function id>,10.32,3.32,3.43,10.43,BUNGALOW
+<built-in function id>,10.32,3.32,3.43,10.43,BUNGALOW
+<built-in function id>,10.32,3.32,3.43,10.43,BUNGALOW
+<built-in function id>,10.32,3.32,3.43,10.43,BUNGALOW
+<built-in function id>,75.107,75.97,87.97,87.107,MAISON
+<built-in function id>,75.107,75.97,87.97,87.107,MAISON
+<built-in function id>,75.107,75.97,87.97,87.107,MAISON
