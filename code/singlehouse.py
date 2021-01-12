@@ -11,6 +11,7 @@ class Singlehouse():
        self.corner_3 = 32.129
        self.corner_4 = 40.129
        
+       
  
    def __str__(self):
        return self.id
