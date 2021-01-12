@@ -4,14 +4,21 @@ from bungalow import Bungalow
 from maison import Maison
 import matplotlib.pyplot as plt
 import csv
+import sys
 
 # Request user for area number
-area = input("Enter the area number: ")
-while area not in ["area_1", "area_2", "area_3"] : 
-    print("Choose between: area_1, area_2, area_3")
-    area = input("Enter the area number: ")
+# area = input("Enter the area number: ")
+# while area not in ["area_1", "area_2", "area_3"] : 
+#     print("Choose between: area_1, area_2, area_3")
+#     area = input("Enter the area number: ")
 
-Graph(area)
+
+if len(sys.argv) < 2:
+    print("Choose a specific area_no.")
+    sys.exit(1)
+elif sys.argv[1] not in ["area_1", "area_2", "area_3"]:
+    print("Choose between: area_1, area_2, area_3")
+    sys.exit(1)   
 
 # Request user for the number of houses
 total_houses = input("Enter the number of houses: ")
