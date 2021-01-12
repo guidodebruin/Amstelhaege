@@ -60,10 +60,19 @@ class Graph():
         # Save the graph
         plt.savefig('../plots/init_graph.png')
         
-        def load_houses(self, houses):
+    def load_houses(self, houses):
             """
                 Locate houses on the map
             """
-        pass
+            ax = plt.gca()
+
+            for house in houses:
+                rect = patches.Rectangle((house.corner_2[0], house.corner_2[1]),house.width, house.length,facecolor='r')
+                
+                # Add the patch to the Axes
+                ax.add_patch(rect)
+
+            # Save the graph
+            plt.savefig('../plots/init_graph.png')
 
 

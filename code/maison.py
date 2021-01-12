@@ -6,10 +6,10 @@ class Maison():
        self.id = id
        self.free = 6
        self.price = 610000
-       self.corner_1 = 75.107
-       self.corner_2 = 75.97
-       self.corner_3 = 87.97
-       self.corner_4 = 87.107
+       self.corner_1 = [75,105]
+       self.corner_2 = [75,97]
+       self.corner_3 = [83,97]
+       self.corner_4 = [83,105]
        
    def __str__(self):
        return self.id
