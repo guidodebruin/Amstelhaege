@@ -7,30 +7,22 @@ import csv
 import sys
 
 # Request user for area number
-# area = input("Enter the area number: ")
-# while area not in ["area_1", "area_2", "area_3"] : 
-#     print("Choose between: area_1, area_2, area_3")
-#     area = input("Enter the area number: ")
-
-
-if len(sys.argv) < 2:
-    print("Choose a specific area_no.")
+if len(sys.argv) < 3:
+    print("Choose a specific area_number and number of houses")
     sys.exit(1)
 elif sys.argv[1] not in ["area_1", "area_2", "area_3"]:
     print("Choose between: area_1, area_2, area_3")
     sys.exit(1) 
+elif sys.argv[2] not in ["20", "40", "60"]:
+    print("Choose between: 20, 40, and 60")
+    sys.exit(1)   
 else:
     area = sys.argv[1]
 
-Graph(area) 
-
-# Request user for the number of houses
-total_houses = input("Enter the number of houses: ")
-while total_houses not in ["20", "40", "60"] : 
-    print("Choose between: 20, 40, 60")
-    total_houses = input("Enter the number of houses: ")
+Graph(area)   
 
 # Determine the total number of houses for every variation
+total_houses = int(sys.argv[2])
 total_singlehouses = 0.6 * int(total_houses)
 total_bungalows = 0.25 * int(total_houses)
 total_maisons = 0.15 * int(total_houses)
