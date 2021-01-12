@@ -14,7 +14,7 @@ class Graph():
         self.houses = []
 
         # Load the water data
-        self.load_water(f"../areas/{area}.csv")
+        self.load_water(f"../Areas/{area}.csv")
 
         # Create area graph
         self.load_graph()
@@ -60,6 +60,10 @@ class Graph():
         # Save the graph
         plt.savefig('../plots/init_graph.png')
         
-        def load_houses(self):
-            pass
+        def load_houses(self, houses):
+            """
+                Locate houses on the map
+            """
+        pass
+
 

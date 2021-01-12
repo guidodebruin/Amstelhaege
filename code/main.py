@@ -38,22 +38,29 @@ total_maisons = 0.15 * int(total_houses)
 singlehouse_list = []
 bungalow_list = []
 maison_list = []
+all_houses = []
 
 # Add the house objects to a list
 for singlehouse in range(int(total_singlehouses)):
     singlehouse = Singlehouse()
     singlehouse_list.append(singlehouse)
+    all_houses.append(singlehouse)
     print(singlehouse.price)
 
 for bungalow in range(int(total_bungalows)):
     bungalow = Bungalow()
     bungalow_list.append(bungalow)
+    all_houses.append(bungalow)
     print(bungalow.price)
 
 for maison in range(int(total_maisons)):
     maison = Maison()
     maison_list.append(maison)
+    all_houses.append(maison)
     print(maison.price)
+
+# sent house info to graph
+print(all_houses)
 
 # Writing output file
 with open('output.csv', 'w') as file:
