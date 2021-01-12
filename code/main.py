@@ -18,7 +18,11 @@ if len(sys.argv) < 2:
     sys.exit(1)
 elif sys.argv[1] not in ["area_1", "area_2", "area_3"]:
     print("Choose between: area_1, area_2, area_3")
-    sys.exit(1)   
+    sys.exit(1) 
+else:
+    area = sys.argv[1]
+
+Graph(area) 
 
 # Request user for the number of houses
 total_houses = input("Enter the number of houses: ")
@@ -56,7 +60,8 @@ for maison in range(int(total_maisons)):
     print(maison.price)
 
 # sent house info to graph
-print(all_houses)
+
+
 
 # Writing output file
 with open('output.csv', 'w') as file:
