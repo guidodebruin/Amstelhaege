@@ -10,8 +10,7 @@ class Maison():
        self.corner_2 = 75.97
        self.corner_3 = 87.97
        self.corner_4 = 87.107
-       self.type =  "MAISON"
- 
+      
    def __str__(self):
        return self.id
  

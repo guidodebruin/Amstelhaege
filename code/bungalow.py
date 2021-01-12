@@ -10,7 +10,7 @@ class Bungalow():
        self.corner_2 = 3.32
        self.corner_3 = 3.43
        self.corner_4 = 10.43
-       self.type =  "BUNGALOW"
+       
  
    def __str__(self):
        return self.id

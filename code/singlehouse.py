@@ -10,7 +10,7 @@ class Singlehouse():
        self.corner_2 = 32.121
        self.corner_3 = 32.129
        self.corner_4 = 40.129
-       self.type =  "SINGLEHOUSE"
+       
  
    def __str__(self):
        return self.id
