@@ -66,4 +66,19 @@ class Graph():
             """
         pass
 
+    def all_houses_set(self):
+        pass
+
+    def add_house(self):
+        pass
+
+    def move_house(self):
+        pass
+
+    def delete_house(self):
+        pass
+
+    def swap_house(self):
+        pass
+
 
