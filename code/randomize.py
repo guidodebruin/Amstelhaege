@@ -1,6 +1,5 @@
 import random
 
-
 class Randomize():
     def place_house(self, coordinates):
         pass
@@ -15,7 +14,8 @@ class Randomize():
         print("Random integer: ", y_coordinate)
 
         corner_2 = []
-        corner_2.append(x_coordinate, y_coordinate)
+        corner_2.append(x_coordinate)
+        corner_2.append(y_coordinate)
 
         return corner_2
 

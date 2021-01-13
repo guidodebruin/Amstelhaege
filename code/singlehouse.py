@@ -9,7 +9,7 @@ class Singlehouse():
        self.free = 2
        self.price = 285000
        self.corner_1 = [40,121]
-       self.corner_2 = [32,121]
+       self.corner_2 = self.return_corner2()
        self.corner_3 = [32,129]
        self.corner_4 = [40,129]
        
@@ -36,13 +36,12 @@ class Singlehouse():
     def return_corner2(self): 
         # Get random coordinate for the width       
         x_coordinate = random.randint(0, 180)
-        print("Random integer: ", x_coordinate)
 
         # Get random coordinate for the depth
         y_coordinate = random.randint(0, 160)
-        print("Random integer: ", y_coordinate)
 
         corner_2 = []
-        corner_2.append(x_coordinate, y_coordinate)
+        corner_2.append(x_coordinate)
+        corner_2.append(y_coordinate)
 
         return corner_2

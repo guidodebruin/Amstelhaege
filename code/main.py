@@ -29,28 +29,26 @@ total_maisons = 0.15 * int(total_houses)
 
 all_houses = []
 
-# roep random class aan
 
 # Add the house objects to a list
 for singlehouse in range(int(total_singlehouses)):
     singlehouse = Singlehouse()
-    corner2_coordinates = singlehouse.return_corner2()
-    print(corner2_coordinates)
     all_houses.append(singlehouse)
-    print(singlehouse.price)
 
 for bungalow in range(int(total_bungalows)):
     bungalow = Bungalow()
     all_houses.append(bungalow)
-    print(bungalow.price)
 
 for maison in range(int(total_maisons)):
     maison = Maison()
     all_houses.append(maison)
-    print(maison.price)
 
 # sent house info to graph
 area.load_houses(all_houses) 
+
+for house in all_houses:
+    print(house.corner_2)
+
 
 # Writing output file
 with open('output.csv', 'w') as file:
