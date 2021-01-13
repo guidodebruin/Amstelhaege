@@ -1,5 +1,7 @@
+import random
+
 class Singlehouse():
-   def __init__(self):
+    def __init__(self):
        #   def __init__(self, length, width, type, id, free, price, latitude, longitude):
        self.length = 8
        self.width = 8
@@ -13,20 +15,34 @@ class Singlehouse():
        
        
  
-   def __str__(self):
+    def __str__(self):
        return self.id
  
-   def move_house(self):
+    def move_house(self):
        pass
  
-   def delete_house(self):
+    def delete_house(self):
        pass
  
-   def add_house(self):
+    def add_house(self):
        pass
  
-   def calc_freespace(self):
+    def calc_freespace(self):
        pass
  
-   def calc_price(self):
+    def calc_price(self):
        pass
+
+    def return_corner2(self): 
+        # Get random coordinate for the width       
+        x_coordinate = random.randint(0, 180)
+        print("Random integer: ", x_coordinate)
+
+        # Get random coordinate for the depth
+        y_coordinate = random.randint(0, 160)
+        print("Random integer: ", y_coordinate)
+
+        corner_2 = []
+        corner_2.append(x_coordinate, y_coordinate)
+
+        return corner_2

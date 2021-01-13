@@ -2,7 +2,7 @@ from Graph import Graph
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
-import matplotlib.pyplot as plt
+#from randomize import Randomize
 import csv
 import sys
 
@@ -29,13 +29,13 @@ total_maisons = 0.15 * int(total_houses)
 
 all_houses = []
 
-
 # roep random class aan
-
 
 # Add the house objects to a list
 for singlehouse in range(int(total_singlehouses)):
     singlehouse = Singlehouse()
+    corner2_coordinates = singlehouse.return_corner2()
+    print(corner2_coordinates)
     all_houses.append(singlehouse)
     print(singlehouse.price)
 
