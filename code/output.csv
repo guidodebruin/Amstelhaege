@@ -1,4 +1,5 @@
 structure,corner_1,corner_2,corner_3,corner_4,type
+<<<<<<< HEAD
 <built-in function id>,"[73, 127]","[73, 119]","[81, 127]","[81, 119]",SINGLEHOUSE
 <built-in function id>,"[93, 144]","[93, 136]","[101, 144]","[101, 136]",SINGLEHOUSE
 <built-in function id>,"[69, 128]","[69, 120]","[77, 128]","[77, 120]",SINGLEHOUSE
@@ -19,3 +20,25 @@ structure,corner_1,corner_2,corner_3,corner_4,type
 <built-in function id>,"[168, 45]","[168, 35]","[180, 45]","[180, 35]",MAISON
 <built-in function id>,"[28, 37]","[28, 27]","[40, 37]","[40, 27]",MAISON
 <built-in function id>,"[50, 129]","[50, 119]","[62, 129]","[62, 119]",MAISON
+=======
+<built-in function id>,"[32, 87]"
+<built-in function id>,"[138, 155]"
+<built-in function id>,"[142, 123]"
+<built-in function id>,"[79, 146]"
+<built-in function id>,"[25, 107]"
+<built-in function id>,"[139, 89]"
+<built-in function id>,"[162, 52]"
+<built-in function id>,"[60, 70]"
+<built-in function id>,"[114, 124]"
+<built-in function id>,"[3, 126]"
+<built-in function id>,"[126, 103]"
+<built-in function id>,"[133, 33]"
+<built-in function id>,"[58, 118]"
+<built-in function id>,"[19, 128]"
+<built-in function id>,"[107, 74]"
+<built-in function id>,"[161, 49]"
+<built-in function id>,"[104, 20]"
+<built-in function id>,"[114, 29]"
+<built-in function id>,"[146, 84]"
+<built-in function id>,"[159, 104]"
+>>>>>>> fcad00da74a456f3d42e248b9ee20dc451659857
