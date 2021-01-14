@@ -68,6 +68,8 @@ class Graph():
 
             for house in houses:
                 rect = patches.Rectangle((house.corner_2[0], house.corner_2[1]),house.width, house.length,facecolor='r')
+                self.houses.append(house)
+                self.houses.append(rect)
                 
                 # Add the patch to the Axes
                 ax.add_patch(rect)
@@ -75,10 +77,10 @@ class Graph():
             # Save the graph
             plt.savefig('../plots/init_graph.png')
 
-    def all_houses_set(self):
+    def overlap(self):
         pass
 
-    def add_house(self):
+    def all_houses_set(self):
         pass
 
     def move_house(self):

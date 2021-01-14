@@ -46,10 +46,6 @@ for maison in range(int(total_maisons)):
 # sent house info to graph
 area.load_houses(all_houses) 
 
-for house in all_houses:
-    print(house.corner_2)
-
-
 # Writing output file
 with open('output.csv', 'w') as file:
     writer = csv.writer(file)
