@@ -43,8 +43,15 @@ for maison in range(int(total_maisons)):
     maison = Maison()
     all_houses.append(maison)
 
+# find overlap
+overlap = area.overlap(all_houses)
+print(overlap)
+
+# reassign houses
+
 # sent house info to graph
 area.load_houses(all_houses) 
+
 
 # Writing output file
 with open('output.csv', 'w') as file:
