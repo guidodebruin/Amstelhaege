@@ -1,10 +1,11 @@
+import random
+import csv
+import sys
+
 from Graph import Graph
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
-#from randomize import Randomize
-import csv
-import sys
 
 # Request user for area number
 if len(sys.argv) < 3:
@@ -19,6 +20,7 @@ elif sys.argv[2] not in ["20", "40", "60"]:
 else:
     area = sys.argv[1]
 
+# Make the graph
 area = Graph(area)   
 
 # Determine the total number of houses for every variation
@@ -29,8 +31,7 @@ total_maisons = 0.15 * int(total_houses)
 
 all_houses = []
 
-
-# Add the house objects to a list
+# Make the house objects and add to list
 for singlehouse in range(int(total_singlehouses)):
     singlehouse = Singlehouse()
     all_houses.append(singlehouse)
@@ -43,15 +44,19 @@ for maison in range(int(total_maisons)):
     maison = Maison()
     all_houses.append(maison)
 
-# find overlap
+# Change overlapping coordinates
 overlap = area.overlap(all_houses)
-print(overlap)
+emptylist = []
 
-# reassign houses
+while overlap != emptylist:
+    for house in overlap:
+        house.corner_lowerleft = house.return_corner2()
+    overlap = area.overlap(all_houses)
+
+# print(overlap)
 
 # sent house info to graph
 area.load_houses(all_houses) 
-
 
 # Writing output file
 with open('output.csv', 'w') as file:

@@ -1,44 +1,41 @@
 structure,corner_1,corner_2,corner_3,corner_4,type
-<<<<<<< HEAD
-<built-in function id>,"[73, 127]","[73, 119]","[81, 127]","[81, 119]",SINGLEHOUSE
-<built-in function id>,"[93, 144]","[93, 136]","[101, 144]","[101, 136]",SINGLEHOUSE
-<built-in function id>,"[69, 128]","[69, 120]","[77, 128]","[77, 120]",SINGLEHOUSE
-<built-in function id>,"[8, 17]","[8, 9]","[16, 17]","[16, 9]",SINGLEHOUSE
-<built-in function id>,"[61, 85]","[61, 77]","[69, 85]","[69, 77]",SINGLEHOUSE
-<built-in function id>,"[69, 149]","[69, 141]","[77, 149]","[77, 141]",SINGLEHOUSE
-<built-in function id>,"[124, 28]","[124, 20]","[132, 28]","[132, 20]",SINGLEHOUSE
-<built-in function id>,"[66, 117]","[66, 109]","[74, 117]","[74, 109]",SINGLEHOUSE
-<built-in function id>,"[118, 31]","[118, 23]","[126, 31]","[126, 23]",SINGLEHOUSE
-<built-in function id>,"[122, 19]","[122, 11]","[130, 19]","[130, 11]",SINGLEHOUSE
-<built-in function id>,"[179, 88]","[179, 80]","[187, 88]","[187, 80]",SINGLEHOUSE
-<built-in function id>,"[50, 152]","[50, 144]","[58, 152]","[58, 144]",SINGLEHOUSE
-<built-in function id>,"[71, 165]","[71, 158]","[82, 165]","[82, 158]",BUNGALOW
-<built-in function id>,"[98, 19]","[98, 12]","[109, 19]","[109, 12]",BUNGALOW
-<built-in function id>,"[65, 144]","[65, 137]","[76, 144]","[76, 137]",BUNGALOW
-<built-in function id>,"[40, 23]","[40, 16]","[51, 23]","[51, 16]",BUNGALOW
-<built-in function id>,"[49, 63]","[49, 56]","[60, 63]","[60, 56]",BUNGALOW
-<built-in function id>,"[168, 45]","[168, 35]","[180, 45]","[180, 35]",MAISON
-<built-in function id>,"[28, 37]","[28, 27]","[40, 37]","[40, 27]",MAISON
-<built-in function id>,"[50, 129]","[50, 119]","[62, 129]","[62, 119]",MAISON
-=======
-<built-in function id>,"[32, 87]"
-<built-in function id>,"[138, 155]"
-<built-in function id>,"[142, 123]"
-<built-in function id>,"[79, 146]"
-<built-in function id>,"[25, 107]"
-<built-in function id>,"[139, 89]"
-<built-in function id>,"[162, 52]"
-<built-in function id>,"[60, 70]"
-<built-in function id>,"[114, 124]"
-<built-in function id>,"[3, 126]"
-<built-in function id>,"[126, 103]"
-<built-in function id>,"[133, 33]"
-<built-in function id>,"[58, 118]"
-<built-in function id>,"[19, 128]"
-<built-in function id>,"[107, 74]"
-<built-in function id>,"[161, 49]"
-<built-in function id>,"[104, 20]"
-<built-in function id>,"[114, 29]"
-<built-in function id>,"[146, 84]"
-<built-in function id>,"[159, 104]"
->>>>>>> fcad00da74a456f3d42e248b9ee20dc451659857
+<built-in function id>,"[50, 72]","[50, 64]","[58, 72]","[58, 64]",SINGLEHOUSE
+<built-in function id>,"[19, 109]","[19, 101]","[27, 109]","[27, 101]",SINGLEHOUSE
+<built-in function id>,"[63, 54]","[63, 46]","[71, 54]","[71, 46]",SINGLEHOUSE
+<built-in function id>,"[19, 68]","[19, 60]","[27, 68]","[27, 60]",SINGLEHOUSE
+<built-in function id>,"[11, 88]","[11, 80]","[19, 88]","[19, 80]",SINGLEHOUSE
+<built-in function id>,"[159, 168]","[159, 160]","[167, 168]","[167, 160]",SINGLEHOUSE
+<built-in function id>,"[115, 135]","[115, 127]","[123, 135]","[123, 127]",SINGLEHOUSE
+<built-in function id>,"[145, 173]","[145, 165]","[153, 173]","[153, 165]",SINGLEHOUSE
+<built-in function id>,"[130, 156]","[130, 148]","[138, 156]","[138, 148]",SINGLEHOUSE
+<built-in function id>,"[27, 90]","[27, 82]","[35, 90]","[35, 82]",SINGLEHOUSE
+<built-in function id>,"[116, 125]","[116, 117]","[124, 125]","[124, 117]",SINGLEHOUSE
+<built-in function id>,"[28, 77]","[28, 69]","[36, 77]","[36, 69]",SINGLEHOUSE
+<built-in function id>,"[56, 45]","[56, 37]","[64, 45]","[64, 37]",SINGLEHOUSE
+<built-in function id>,"[3, 108]","[3, 100]","[11, 108]","[11, 100]",SINGLEHOUSE
+<built-in function id>,"[143, 154]","[143, 146]","[151, 154]","[151, 146]",SINGLEHOUSE
+<built-in function id>,"[85, 184]","[85, 176]","[93, 184]","[93, 176]",SINGLEHOUSE
+<built-in function id>,"[158, 117]","[158, 109]","[166, 117]","[166, 109]",SINGLEHOUSE
+<built-in function id>,"[117, 111]","[117, 103]","[125, 111]","[125, 103]",SINGLEHOUSE
+<built-in function id>,"[18, 157]","[18, 149]","[26, 157]","[26, 149]",SINGLEHOUSE
+<built-in function id>,"[39, 45]","[39, 37]","[47, 45]","[47, 37]",SINGLEHOUSE
+<built-in function id>,"[1, 76]","[1, 68]","[9, 76]","[9, 68]",SINGLEHOUSE
+<built-in function id>,"[83, 173]","[83, 165]","[91, 173]","[91, 165]",SINGLEHOUSE
+<built-in function id>,"[40, 151]","[40, 143]","[48, 151]","[48, 143]",SINGLEHOUSE
+<built-in function id>,"[43, 123]","[43, 115]","[51, 123]","[51, 115]",SINGLEHOUSE
+<built-in function id>,"[28, 170]","[28, 163]","[39, 170]","[39, 163]",BUNGALOW
+<built-in function id>,"[106, 57]","[106, 50]","[117, 57]","[117, 50]",BUNGALOW
+<built-in function id>,"[92, 60]","[92, 53]","[103, 60]","[103, 53]",BUNGALOW
+<built-in function id>,"[27, 48]","[27, 41]","[38, 48]","[38, 41]",BUNGALOW
+<built-in function id>,"[53, 184]","[53, 177]","[64, 184]","[64, 177]",BUNGALOW
+<built-in function id>,"[13, 47]","[13, 40]","[24, 47]","[24, 40]",BUNGALOW
+<built-in function id>,"[79, 86]","[79, 79]","[90, 86]","[90, 79]",BUNGALOW
+<built-in function id>,"[1, 127]","[1, 120]","[12, 127]","[12, 120]",BUNGALOW
+<built-in function id>,"[151, 133]","[151, 126]","[162, 133]","[162, 126]",BUNGALOW
+<built-in function id>,"[32, 105]","[32, 98]","[43, 105]","[43, 98]",BUNGALOW
+<built-in function id>,"[104, 148]","[104, 138]","[116, 148]","[116, 138]",MAISON
+<built-in function id>,"[74, 45]","[74, 35]","[86, 45]","[86, 35]",MAISON
+<built-in function id>,"[122, 48]","[122, 38]","[134, 48]","[134, 38]",MAISON
+<built-in function id>,"[67, 106]","[67, 96]","[79, 106]","[79, 96]",MAISON
+<built-in function id>,"[98, 131]","[98, 121]","[110, 131]","[110, 121]",MAISON
+<built-in function id>,"[126, 75]","[126, 65]","[138, 75]","[138, 65]",MAISON

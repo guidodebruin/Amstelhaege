@@ -84,15 +84,21 @@ class Graph():
         for data in self.water:
             water_box = box(data[1][0], data[1][1], data[2][0], data[2][1])
             water_boxes.append(water_box)
+        graph_box = box(0,0,self.width, self.depth)
 
         # UITEINDELIJK DIT MET DE 4 CORNERS IPV LOWERLEFT PLUS WIDTH IS VEEL NETTER EN MOOIER
         for house in houses:
             box1 = box(house.corner_lowerleft[0], house.corner_lowerleft[1], (house.corner_lowerleft[0]+house.width), (house.corner_lowerleft[1]+house.length))
+            
+            if box1.overlaps(graph_box):
+                overlap.append(house)
+
             for house2 in houses:
                 box2 = box(house2.corner_lowerleft[0], house2.corner_lowerleft[1], (house2.corner_lowerleft[0]+house2.width), (house2.corner_lowerleft[1]+house2.length))
-                # IPV .CRONER_LOWERLEFT MET IDS OF STRUCTURE WERKEN OM ZEKER TE WETEN WELK HUIS
+                # IPV .CORNER_LOWERLEFT MET IDS OF STRUCTURE WERKEN OM ZEKER TE WETEN WELK HUIS
                 if house.corner_lowerleft is not house2.corner_lowerleft and box1.intersects(box2) and house not in overlap:
                     overlap.append(house)
+
             for water_box in water_boxes:
                 if box1.intersects(water_box) and house not in overlap:
                     overlap.append(house)
