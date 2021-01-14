@@ -51,5 +51,39 @@ with open('output.csv', 'w') as file:
     writer = csv.writer(file)
     writer.writerow(["structure", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
     for house in all_houses:
-        # writer.writerow([house.id, house.corner_1, house.corner_2, house.corner_3, house.corner_4])
-        writer.writerow([house.id, house.corner_lowerleft])
+        if isinstance(house, Singlehouse):
+            x_coordinate = house.corner_lowerleft[0]
+            y_coordinate = house.corner_lowerleft[1]
+            new_x_coordinate = x_coordinate + 8
+            new_y_coordinate = y_coordinate + 8
+            corner_upperleft = [x_coordinate, new_y_coordinate]
+            corner_upperright = [new_x_coordinate, new_y_coordinate]
+            corner_lowerright = [new_x_coordinate, y_coordinate]
+            housetype = "SINGLEHOUSE"
+
+            writer.writerow([house.id, corner_upperleft, house.corner_lowerleft, corner_upperright, corner_lowerright, housetype])
+
+        elif isinstance(house, Bungalow):
+            x_coordinate = house.corner_lowerleft[0]
+            y_coordinate = house.corner_lowerleft[1]
+            new_x_coordinate = x_coordinate + 11
+            new_y_coordinate = y_coordinate + 7
+            corner_upperleft = [x_coordinate, new_y_coordinate]
+            corner_upperright = [new_x_coordinate, new_y_coordinate]
+            corner_lowerright = [new_x_coordinate, y_coordinate]
+            housetype = "BUNGALOW"
+
+            writer.writerow([house.id, corner_upperleft, house.corner_lowerleft, corner_upperright, corner_lowerright, housetype])
+       
+        elif isinstance(house, Maison):
+            x_coordinate = house.corner_lowerleft[0]
+            y_coordinate = house.corner_lowerleft[1]
+            new_x_coordinate = x_coordinate + 12
+            new_y_coordinate = y_coordinate + 10
+            corner_upperleft = [x_coordinate, new_y_coordinate]
+            corner_upperright = [new_x_coordinate, new_y_coordinate]
+            corner_lowerright = [new_x_coordinate, y_coordinate]
+            housetype = "MAISON"
+            writer.writerow([house.id, corner_upperleft, house.corner_lowerleft, corner_upperright, corner_lowerright, housetype])
+
+        
