@@ -49,6 +49,7 @@ area.load_houses(all_houses)
 # Writing output file
 with open('output.csv', 'w') as file:
     writer = csv.writer(file)
-    writer.writerow(["id", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
+    writer.writerow(["structure", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
     for house in all_houses:
-        writer.writerow([house.id, house.corner_1, house.corner_2, house.corner_3, house.corner_4])
+        # writer.writerow([house.id, house.corner_1, house.corner_2, house.corner_3, house.corner_4])
+        writer.writerow([house.id, house.corner_lowerleft])

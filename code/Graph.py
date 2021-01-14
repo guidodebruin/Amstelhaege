@@ -67,7 +67,7 @@ class Graph():
             ax = plt.gca()
 
             for house in houses:
-                rect = patches.Rectangle((house.corner_2[0], house.corner_2[1]),house.width, house.length,facecolor='r')
+                rect = patches.Rectangle((house.corner_lowerleft[0], house.corner_lowerleft[1]),house.width, house.length,facecolor='r')
                 self.houses.append(house)
                 self.houses.append(rect)
                 
