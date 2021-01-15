@@ -8,6 +8,7 @@ class Maison(House):
         self.id = id
         self.free = 6
         self.price = 610000
+        self.percentage = 0.06
         # self.corner_1 = [75,105]
         self.corner_lowerleft = self.return_corner2()
         # self.corner_3 = [83,97]

@@ -70,6 +70,9 @@ while invalid_houses != emptylist:
 # sent house info to graph
 area.load_houses(all_houses) 
 
+# Calculate final houseprice
+area.houseprices(all_houses)
+
 # Writing output file
 area.write_output(all_houses)
 

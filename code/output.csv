@@ -1,81 +1,22 @@
 structure,corner_1,corner_2,corner_3,corner_4,type
-<built-in function id>,"[39, 52]","[39, 44]","[47, 52]","[47, 44]",SINGLEHOUSE
-networth,285000
-<built-in function id>,"[145, 96]","[145, 88]","[153, 96]","[153, 88]",SINGLEHOUSE
-networth,570000
-<built-in function id>,"[146, 160]","[146, 152]","[154, 160]","[154, 152]",SINGLEHOUSE
-networth,855000
-<built-in function id>,"[78, 188]","[78, 180]","[86, 188]","[86, 180]",SINGLEHOUSE
-networth,1140000
-<built-in function id>,"[27, 77]","[27, 69]","[35, 77]","[35, 69]",SINGLEHOUSE
-networth,1425000
-<built-in function id>,"[131, 105]","[131, 97]","[139, 105]","[139, 97]",SINGLEHOUSE
-networth,1710000
-<built-in function id>,"[150, 106]","[150, 98]","[158, 106]","[158, 98]",SINGLEHOUSE
-networth,1995000
-<built-in function id>,"[159, 91]","[159, 83]","[167, 91]","[167, 83]",SINGLEHOUSE
-networth,2280000
-<built-in function id>,"[33, 155]","[33, 147]","[41, 155]","[41, 147]",SINGLEHOUSE
-networth,2565000
-<built-in function id>,"[2, 81]","[2, 73]","[10, 81]","[10, 73]",SINGLEHOUSE
-networth,2850000
-<built-in function id>,"[46, 134]","[46, 126]","[54, 134]","[54, 126]",SINGLEHOUSE
-networth,3135000
-<built-in function id>,"[65, 144]","[65, 136]","[73, 144]","[73, 136]",SINGLEHOUSE
-networth,3420000
-<built-in function id>,"[80, 147]","[80, 139]","[88, 147]","[88, 139]",SINGLEHOUSE
-networth,3705000
-<built-in function id>,"[62, 66]","[62, 58]","[70, 66]","[70, 58]",SINGLEHOUSE
-networth,3990000
-<built-in function id>,"[56, 42]","[56, 34]","[64, 42]","[64, 34]",SINGLEHOUSE
-networth,4275000
-<built-in function id>,"[120, 91]","[120, 83]","[128, 91]","[128, 83]",SINGLEHOUSE
-networth,4560000
-<built-in function id>,"[35, 137]","[35, 129]","[43, 137]","[43, 129]",SINGLEHOUSE
-networth,4845000
-<built-in function id>,"[79, 171]","[79, 163]","[87, 171]","[87, 163]",SINGLEHOUSE
-networth,5130000
-<built-in function id>,"[4, 146]","[4, 138]","[12, 146]","[12, 138]",SINGLEHOUSE
-networth,5415000
-<built-in function id>,"[122, 179]","[122, 171]","[130, 179]","[130, 171]",SINGLEHOUSE
-networth,5700000
-<built-in function id>,"[150, 81]","[150, 73]","[158, 81]","[158, 73]",SINGLEHOUSE
-networth,5985000
-<built-in function id>,"[34, 180]","[34, 172]","[42, 180]","[42, 172]",SINGLEHOUSE
-networth,6270000
-<built-in function id>,"[99, 110]","[99, 102]","[107, 110]","[107, 102]",SINGLEHOUSE
-networth,6555000
-<built-in function id>,"[60, 180]","[60, 172]","[68, 180]","[68, 172]",SINGLEHOUSE
-networth,6840000
-<built-in function id>,"[22, 171]","[22, 164]","[33, 171]","[33, 164]",BUNGALOW
-networth,7239000
-<built-in function id>,"[2, 133]","[2, 126]","[13, 133]","[13, 126]",BUNGALOW
-networth,7638000
-<built-in function id>,"[82, 133]","[82, 126]","[93, 133]","[93, 126]",BUNGALOW
-networth,8037000
-<built-in function id>,"[58, 119]","[58, 112]","[69, 119]","[69, 112]",BUNGALOW
-networth,8436000
-<built-in function id>,"[9, 156]","[9, 149]","[20, 156]","[20, 149]",BUNGALOW
-networth,8835000
-<built-in function id>,"[115, 67]","[115, 60]","[126, 67]","[126, 60]",BUNGALOW
-networth,9234000
-<built-in function id>,"[118, 118]","[118, 111]","[129, 118]","[129, 111]",BUNGALOW
-networth,9633000
-<built-in function id>,"[87, 87]","[87, 80]","[98, 87]","[98, 80]",BUNGALOW
-networth,10032000
-<built-in function id>,"[73, 49]","[73, 42]","[84, 49]","[84, 42]",BUNGALOW
-networth,10431000
-<built-in function id>,"[123, 40]","[123, 33]","[134, 40]","[134, 33]",BUNGALOW
-networth,10830000
-<built-in function id>,"[153, 181]","[153, 171]","[165, 181]","[165, 171]",MAISON
-networth,11440000
-<built-in function id>,"[66, 97]","[66, 87]","[78, 97]","[78, 87]",MAISON
-networth,12050000
-<built-in function id>,"[90, 61]","[90, 51]","[102, 61]","[102, 51]",MAISON
-networth,12660000
-<built-in function id>,"[12, 58]","[12, 48]","[24, 58]","[24, 48]",MAISON
-networth,13270000
-<built-in function id>,"[158, 58]","[158, 48]","[170, 58]","[170, 48]",MAISON
-networth,13880000
-<built-in function id>,"[7, 175]","[7, 165]","[19, 175]","[19, 165]",MAISON
-networth,14490000
+<built-in function id>,"[104, 45]","[104, 37]","[112, 45]","[112, 37]",SINGLEHOUSE
+<built-in function id>,"[151, 131]","[151, 123]","[159, 131]","[159, 123]",SINGLEHOUSE
+<built-in function id>,"[12, 116]","[12, 108]","[20, 116]","[20, 108]",SINGLEHOUSE
+<built-in function id>,"[11, 101]","[11, 93]","[19, 101]","[19, 93]",SINGLEHOUSE
+<built-in function id>,"[30, 129]","[30, 121]","[38, 129]","[38, 121]",SINGLEHOUSE
+<built-in function id>,"[15, 50]","[15, 42]","[23, 50]","[23, 42]",SINGLEHOUSE
+<built-in function id>,"[13, 139]","[13, 131]","[21, 139]","[21, 131]",SINGLEHOUSE
+<built-in function id>,"[98, 92]","[98, 84]","[106, 92]","[106, 84]",SINGLEHOUSE
+<built-in function id>,"[110, 124]","[110, 116]","[118, 124]","[118, 116]",SINGLEHOUSE
+<built-in function id>,"[44, 169]","[44, 161]","[52, 169]","[52, 161]",SINGLEHOUSE
+<built-in function id>,"[43, 130]","[43, 122]","[51, 130]","[51, 122]",SINGLEHOUSE
+<built-in function id>,"[79, 129]","[79, 121]","[87, 129]","[87, 121]",SINGLEHOUSE
+<built-in function id>,"[55, 120]","[55, 113]","[66, 120]","[66, 113]",BUNGALOW
+<built-in function id>,"[85, 114]","[85, 107]","[96, 114]","[96, 107]",BUNGALOW
+<built-in function id>,"[0, 168]","[0, 161]","[11, 168]","[11, 161]",BUNGALOW
+<built-in function id>,"[142, 47]","[142, 40]","[153, 47]","[153, 40]",BUNGALOW
+<built-in function id>,"[116, 84]","[116, 77]","[127, 84]","[127, 77]",BUNGALOW
+<built-in function id>,"[136, 188]","[136, 178]","[148, 188]","[148, 178]",MAISON
+<built-in function id>,"[42, 187]","[42, 177]","[54, 187]","[54, 177]",MAISON
+<built-in function id>,"[98, 180]","[98, 170]","[110, 180]","[110, 170]",MAISON
+networth,11061158

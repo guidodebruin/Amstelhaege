@@ -1,5 +1,4 @@
 import csv
-# import Singlehouse
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
@@ -10,6 +9,8 @@ from shapely.geometry import box, Point
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
+from House import House
+import math
 
 class Graph():
     def __init__(self, area):
@@ -125,6 +126,7 @@ class Graph():
         # save all the corners of the house
         house_point1 = house.corner_lowerleft
         house_point2 = [house_point1[0], house_point1[1] + house.length]
+        # house_point2 = return_upperleft(house)
         house_point3 = [house_point1[0] + house.width, house_point1[1] + house.length]
         house_point4 = [house_point1[0] + house.width, house_point1[1]]
         house_pointlist = [house_point1, house_point2, house_point3, house_point4]
@@ -175,6 +177,14 @@ class Graph():
                 return house
     
         return
+
+    def houseprices(self, houses):
+        for house in houses:
+            freespace = self.closest_house(house, houses)[1]
+            # Round the freespace to whole meters extra
+            extra_freespace = freespace - house.free
+            price_increase = extra_freespace * house.percentage + 1
+            house.price = round(house.price * price_increase)
 
 
     def all_houses_set(self):
