@@ -66,7 +66,9 @@ area.load_houses(all_houses)
 with open('output.csv', 'w') as file:
     writer = csv.writer(file)
     writer.writerow(["structure", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
+    total_price = []
     for house in all_houses:
+        
         if isinstance(house, Singlehouse):
             x_coordinate = house.corner_lowerleft[0]
             y_coordinate = house.corner_lowerleft[1]
@@ -76,7 +78,7 @@ with open('output.csv', 'w') as file:
             corner_upperright = [new_x_coordinate, new_y_coordinate]
             corner_lowerright = [new_x_coordinate, y_coordinate]
             housetype = "SINGLEHOUSE"
-
+            total_price.append(house.price)
             writer.writerow([house.id, corner_upperleft, house.corner_lowerleft, corner_upperright, corner_lowerright, housetype])
 
         elif isinstance(house, Bungalow):
@@ -88,7 +90,7 @@ with open('output.csv', 'w') as file:
             corner_upperright = [new_x_coordinate, new_y_coordinate]
             corner_lowerright = [new_x_coordinate, y_coordinate]
             housetype = "BUNGALOW"
-
+            total_price.append(house.price)
             writer.writerow([house.id, corner_upperleft, house.corner_lowerleft, corner_upperright, corner_lowerright, housetype])
        
         elif isinstance(house, Maison):
@@ -100,6 +102,11 @@ with open('output.csv', 'w') as file:
             corner_upperright = [new_x_coordinate, new_y_coordinate]
             corner_lowerright = [new_x_coordinate, y_coordinate]
             housetype = "MAISON"
+            total_price.append(house.price)
             writer.writerow([house.id, corner_upperleft, house.corner_lowerleft, corner_upperright, corner_lowerright, housetype])
+
+        writer.writerow(["networth", sum(total_price)])
+
+        
 
         
