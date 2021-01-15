@@ -53,6 +53,10 @@ while overlap != emptylist:
         house.corner_lowerleft = house.return_corner2()
     overlap = area.overlap(all_houses)
 
+# Closest distance tussen huizen vinden
+for house in all_houses:
+    output = area.closest_house(house, all_houses)
+
 # print(overlap)
 
 # sent house info to graph
