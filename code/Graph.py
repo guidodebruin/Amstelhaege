@@ -3,6 +3,9 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
 from shapely.geometry import box, Point
+from singlehouse import Singlehouse
+from bungalow import Bungalow
+from maison import Maison
 
 class Graph():
     def __init__(self, area):
@@ -61,19 +64,18 @@ class Graph():
         plt.savefig('../plots/init_graph.png')
         
     def load_houses(self, houses):
-            """
-                Locate houses on the map
-            """
-            ax = plt.gca()
+        """
+            Locate houses on the map
+        """
+        ax = plt.gca()
 
-            for house in houses:
-                rect = patches.Rectangle((house.corner_lowerleft[0], house.corner_lowerleft[1]),house.width, house.length,facecolor='r')
-                self.houses.append(house)
-                # Add the patch to the Axes
-                ax.add_patch(rect)
+        for house in houses:
+            rect = patches.Rectangle((house.corner_lowerleft[0], house.corner_lowerleft[1]),house.width, house.length,facecolor='r')
+            # Add the patch to the Axes
+            ax.add_patch(rect)
 
-            # Save the graph
-            plt.savefig('../plots/init_graph.png')
+        # Save the graph
+        plt.savefig('../plots/init_graph.png')
 
 
     def overlap(self, houses):
@@ -148,8 +150,27 @@ class Graph():
                             output.append(neigh_house)
                             output.append(distance)
 
-        # format [huisobject, getal die distance aangeeft]
+        # format [huisobject, getal die distance/vrijstand aangeeft]
         return output
+
+
+    def is_valid(self, house, nearest_neighbour):
+        """
+            Checks if the 'vrijstand' between houses is the same of larger than the minimum 'vrijstand'.
+            To see if the distance is valid or not.
+        """
+
+        # Append invalid houses to a list 
+        if isinstance(house, Maison) and nearest_neighbour[1] < house.free:
+            return house
+        elif isinstance(house, Bungalow) and nearest_neighbour[1] < house.free:
+                return house
+        # house is a Singlehouse
+        else:
+            if nearest_neighbour[1] < house.free:
+                return house
+    
+        return
 
 
     def all_houses_set(self):

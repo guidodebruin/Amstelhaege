@@ -44,20 +44,28 @@ for maison in range(int(total_maisons)):
     maison = Maison()
     all_houses.append(maison)
 
-# Change overlapping coordinates
-overlap = area.overlap(all_houses)
+
+# Get all invalid placed houses
+invalid_houses = area.overlap(all_houses)
+
+
 emptylist = []
+# Replace all invalid houses until a valid state is reached
+while invalid_houses != emptylist:
+    for house in all_houses:
+        # get the 'vrijstand' and nearest neighbour
+        nearest_neighbour = area.closest_house(house, all_houses)
+        # return houses that do not have their minimum vrijstand
+        invalid_house = area.is_valid(house, nearest_neighbour)
+        # only append invalid_houses that are not none
+        if invalid_house is not None:
+            invalid_houses.append(invalid_house)
 
-while overlap != emptylist:
-    for house in overlap:
+    # randomly update the corners
+    for house in invalid_houses:
         house.corner_lowerleft = house.return_corner2()
-    overlap = area.overlap(all_houses)
-
-# Closest distance tussen huizen vinden
-for house in all_houses:
-    output = area.closest_house(house, all_houses)
-
-# print(overlap)
+    # repeat until invalid house list in empty
+    invalid_houses = area.overlap(all_houses)
 
 # sent house info to graph
 area.load_houses(all_houses) 
