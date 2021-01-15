@@ -2,7 +2,7 @@ import random
 import csv
 import sys
 
-from Graph import Graph
+from Graph import *
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
@@ -63,7 +63,7 @@ for house in all_houses:
 area.load_houses(all_houses) 
 
 # Writing output file
-write_output(all_houses)
+area.write_output(all_houses)
 
 
 # Writing output file

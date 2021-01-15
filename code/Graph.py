@@ -1,4 +1,8 @@
 import csv
+# import Singlehouse
+from singlehouse import Singlehouse
+from bungalow import Bungalow
+from maison import Maison
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 import numpy as np
@@ -164,7 +168,7 @@ class Graph():
     def swap_house(self):
         pass
 
-    def write_output(self, all_houses)
+    def write_output(self, all_houses):
         with open('output.csv', 'w') as file:
             writer = csv.writer(file)
             writer.writerow(["structure", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
