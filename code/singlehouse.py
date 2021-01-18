@@ -5,7 +5,7 @@ class Singlehouse(House):
       self.length = 8
       self.width = 8
       self.id = id
-      self.free = 2
+      self.freespace = 2
       self.price = 285000
       self.percentage = 0.03
-      self.corner_lowerleft = self.return_corner2()
+      self.corner_lowerleft = self.return_lowerleft()
