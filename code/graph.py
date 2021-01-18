@@ -18,7 +18,6 @@ class Graph():
         self.water = []
         self.width = 180
         self.depth = 160
-        self.houses = []
 
         # Load the water data
         self.load_water(f"../Areas/{area}.csv")
@@ -31,7 +30,6 @@ class Graph():
         """
             Loads the water that belongs to a specific neighborhood
         """
-
         # Read the file that contains the water data
         with open(filename, "r") as csv_file:
             next(csv_file)
@@ -84,40 +82,36 @@ class Graph():
         plt.savefig('../plots/init_graph.png')
 
 
-    def overlap(self, houses):
+    def overlap(self, house, houses):
         """
             Checks for overlapping houses with each other, water or the edges of the graph.
-            The overlapping houses are returned in the overlap list.
+            Returns True if a house overlaps.
         """
-        overlap = []
-
-        # save the points of the structures in boxes to find intersection with houses
+        # save the points of the structures in boxes to find intersection
         graph_box = box(0,0,self.width, self.depth)
+        housebox1 = box(house.corner_lowerleft[0], house.corner_lowerleft[1], (house.return_upperright(house)[0]), (house.return_upperright(house)[1]))
         water_boxes = []
         for data in self.water:
             water_box = box(data[1][0], data[1][1], data[2][0], data[2][1])
             water_boxes.append(water_box)
 
-        for house in houses:
-            box1 = box(house.corner_lowerleft[0], house.corner_lowerleft[1], (house.return_upperright(house)[0]), (house.return_upperright(house)[1]))
+        # check for overlap between edges graph and houses and save in list
+        if housebox1.overlaps(graph_box):
+            return True
 
-            # check for overlap between edges graph and houses and save in list
-            if box1.overlaps(graph_box):
-                overlap.append(house)
+        # check for intersection between water areas and houses and save in list
+        for water_box in water_boxes:
+            if housebox1.intersects(water_box):
+                return True
 
-            for house2 in houses:
-                box2 = box(house2.corner_lowerleft[0], house2.corner_lowerleft[1], (house2.return_upperright(house2)[0]), (house2.return_upperright(house2)[1]))
-                # IPV .CORNER_LOWERLEFT MET IDS OF STRUCTURE WERKEN OM ZEKER TE WETEN WELK HUIS
-                # check for intersections between different houses and save in list
-                if house.corner_lowerleft is not house2.corner_lowerleft and box1.intersects(box2) and house not in overlap:
-                    overlap.append(house)
-
-            for water_box in water_boxes:
-                # check for instersection between water areas and houses and save in list
-                if box1.intersects(water_box) and house not in overlap:
-                    overlap.append(house)
+        # check for intersections between different houses and save in list
+        for house2 in houses:
+            housebox2 = box(house2.corner_lowerleft[0], house2.corner_lowerleft[1], (house2.return_upperright(house2)[0]), (house2.return_upperright(house2)[1]))
+            # IPV .CORNER_LOWERLEFT MET IDS OF STRUCTURE WERKEN OM ZEKER TE WETEN WELK HUIS
+            if house.corner_lowerleft is not house2.corner_lowerleft and housebox1.intersects(housebox2):
+                return True
                 
-        return overlap
+        return False
 
 
     def closest_house(self, house, houses):
@@ -133,10 +127,10 @@ class Graph():
         for neigh_house in houses:
             # UITEINDELIJK MET ID OF STRUCTURE EN NIET LOWERLEFT
             if neigh_house.corner_lowerleft is not house.corner_lowerleft:
-                # Save all the corners of a neighbouring house
+                # save all the corners of a neighbouring house
                 neigh_pointlist = [neigh_house.corner_lowerleft, neigh_house.return_upperleft(neigh_house), neigh_house.return_upperright(neigh_house), neigh_house.return_lowerright(neigh_house)]
             
-                # Compare the points of given house and its neighbours to find shortest distance
+                # compare the points of given house and its neighbours to find shortest distance
                 for housepoint in house_pointlist:
                     for neighpoint in neigh_pointlist:
                         distance = Point(housepoint[0],housepoint[1]).distance(Point(neighpoint[0],neighpoint[1]))
@@ -151,48 +145,33 @@ class Graph():
         return output
 
 
-    def is_valid(self, house, nearest_neighbour):
+    def invalid(self, house, houses):
         """
             Checks if the freespace between houses is the same or larger than the minimum freespace required.
-            To see if the distance is valid or not.
+            Returns True if the freespace is invalid. 
         """
+        nearest_neighbour = self.closest_house(house, houses)
 
         # Return houses with an invalid freespace distance
         if isinstance(house, Maison) and nearest_neighbour[1] < house.freespace:
-            return house
+            return True
         elif isinstance(house, Bungalow) and nearest_neighbour[1] < house.freespace:
-                return house
-        # house is a Singlehouse
-        else:
-            if nearest_neighbour[1] < house.freespace:
-                return house
+            return True
+        elif isinstance(house, Singlehouse) and  nearest_neighbour[1] < house.freespace:
+            return True
     
-        return
+        return False
 
 
-    def randomly_relocate_houses(self, houses):
+    def randomly_assign_houses(self, houses):
         """
-            Randomly relocates houses which are currently placed invalidly until a valid state is reached.
+            Assigns coordinates to a single house. Checks if coordinate placement is valid.
+            If not, new coordinates are assigned.
         """
-        # get overlapping houses
-        invalid_houses = self.overlap(houses) 
-        emptylist = []
-
-        # Replace all invalid houses until a valid state is reached
-        while invalid_houses != emptylist:
-            for house in houses:
-                nearest_neighbour = self.closest_house(house, houses)
-                # return houses that do not have their minimum freespace
-                invalid_house = self.is_valid(house, nearest_neighbour)
-                # only append invalid_houses that are not none
-                if invalid_house is not None:
-                    invalid_houses.append(invalid_house)
-
-            # randomly update the corners
-            for house in invalid_houses:
-                house.corner_lowerleft = house.return_lowerleft()
-            # repeat until invalid house list in empty
-            invalid_houses = self.overlap(houses)
+        for house in houses:
+            house.corner_lowerleft = house.random_lowerleft()
+            while self.invalid(house, houses) or self.overlap(house, houses):
+                house.corner_lowerleft = house.random_lowerleft()
 
 
     def houseprices(self, houses):
@@ -217,6 +196,7 @@ class Graph():
 
     def swap_house(self):
         pass
+
 
     def write_output(self, all_houses):
         """

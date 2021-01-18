@@ -2,7 +2,7 @@ import random
 
 class House():
 
-   def return_lowerleft(self): 
+   def random_lowerleft(self): 
       """
          Returns random coordinates
       """

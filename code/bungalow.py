@@ -9,5 +9,5 @@ class Bungalow(House):
         self.freespace = 3
         self.price = 399000
         self.percentage = 0.04
-        self.corner_lowerleft = self.return_lowerleft()     
+        self.corner_lowerleft = [0,0]   
     

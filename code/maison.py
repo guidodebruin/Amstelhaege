@@ -9,4 +9,4 @@ class Maison(House):
         self.freespace = 6
         self.price = 610000
         self.percentage = 0.06
-        self.corner_lowerleft = self.return_lowerleft()
+        self.corner_lowerleft = [0,0]
