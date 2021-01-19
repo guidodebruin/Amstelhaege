@@ -48,7 +48,7 @@ for maison in range(int(total_maisons)):
 
 # ---------------------- Random State Hillclimber --------------------
 
-# just comment out the below lines when random state hillclimber is not needed 
+# Just comment out the below lines when random state hillclimber is not needed 
 # when using this algorithm comment out everything below the -----
 loop = input("How many random states do you want to generate: ")
 
@@ -59,28 +59,41 @@ randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
 randomstate_hillclimber.looper()
 # -------------------------------------------------------------------
 
+# ---------------------- Moving Hillclimber -------------------------
 
-# # randomly assign the invalid placed houses until a valid state is reached
-# area.randomly_assign_houses(all_houses)
+# Just comment out the below lines when the moving hillclimber is not needed 
+# When using this algorithm comment out the random state hillclimber and everything below the -----
+total_changes = input("How many changes do you want to make? ")
+while not total_changes.isdigit():
+    total_changes = int(input("Insert number of changes: "))
 
-# # sent house info to graph
-# area.load_houses(all_houses)
+current_changes = 0
+while current_changes < total_changes:
 
-# # Calculate final houseprice
-# area.houseprices(all_houses)
+    random_direction = random_direction()
+    area.assign_random_direction(all_houses, random_direction)
 
-# # Writing output file
-# area.write_output(all_houses)
+    # Obtain the total prices of all households
+    total_price = area.get_networth(all_houses)
 
-# current_changes = 0
-# while current_changes < total_changes:
+    if area.compare_price(all_houses, total_price):
+        current_change += 1
+    else:
+        area.undo_housemove(random_direction)
+# -------------------------------------------------------------------------
 
-#     # Obtain the total prices of all households
-#     total_price = area.get_networth(all_houses)
+# randomly assign the invalid placed houses until a valid state is reached
+area.randomly_assign_houses(all_houses)
 
-#     if area.compare_price(all_houses, total_price):
-#         current_change += 1
-#     else:
-#         area.undo_housemove()
+# sent house info to graph
+area.load_houses(all_houses)
+
+# Calculate final houseprice
+area.houseprices(all_houses)
+
+# Writing output file
+area.write_output(all_houses)
+
+
 
 
