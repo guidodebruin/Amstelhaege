@@ -15,47 +15,42 @@ class hillclimber():
          Returns random a random direction
       """
         directions = ["up", "down", "left", "right"]
-        
-        while overlap == True:
-            random_direction = random.choice(direction)
-            if random_direction = "up":
+        random_house = moving_house
+
+        random_direction = random.choice(direction)
+        if random_direction = "up":
                 
-                # The y-coordinate goes up by 1
-                random_house.corner_lowerleft[random_house.corner_lowerleft[0], house.corner_lowerleft[1] + 1]
+            # The y-coordinate goes up by 1
+            random_house.corner_lowerleft = random_house.corner_lowerleft[random_house.corner_lowerleft[0], house.corner_lowerleft[1] + 1]
 
-                # Save the coordinates of the corners in a list
-                random_house_coordinates = [random_house.corner_lowerleft, return_upperleft(random_house), return_upperright(random_house), return_lowerright(random_house)]
-
-            if random_direction = "down":
+        elif random_direction = "down":
                 
-                # The y-coordinate goes down by 1
-                random_house.corner_lowerleft[random_house.corner_lowerleft[0], house.corner_lowerleft[1] - 1]
+            # The y-coordinate goes down by 1
+            random_house.corner_lowerleft = random_house.corner_lowerleft[random_house.corner_lowerleft[0], house.corner_lowerleft[1] - 1]
 
-                # Save the coordinates of the corners in a list
-                random_house_coordinates = [random_house.corner_lowerleft, return_upperleft(random_house), return_upperright(random_house), return_lowerright(random_house)]
-
-            if random_direction = "left":
+        elif random_direction = "left":
                 
-                # The x-coordinate goes down by 1
-                random_house.corner_lowerleft[random_house.corner_lowerleft[0] - 1, house.corner_lowerleft[1]]
+            # The x-coordinate goes down by 1
+            random_house.corner_lowerleft = random_house.corner_lowerleft[random_house.corner_lowerleft[0] - 1, house.corner_lowerleft[1]]
 
-                # Save the coordinates of the corners in a list
-                random_house_coordinates = [random_house.corner_lowerleft, return_upperleft(random_house), return_upperright(random_house), return_lowerright(random_house)]
-
-            if random_direction = "left":
+        else random_direction = "left":
                 
-                # The x-coordinate goes up by 1
-                random_house.corner_lowerleft[random_house.corner_lowerleft[0] + 1, house.corner_lowerleft[1]]
+            # The x-coordinate goes up by 1
+            random_house.corner_lowerleft = random_house.corner_lowerleft[random_house.corner_lowerleft[0] + 1, house.corner_lowerleft[1]]
 
-                # Save the coordinates of the corners in a list
-                random_house_coordinates = [random_house.corner_lowerleft, return_upperleft(random_house), return_upperright(random_house), return_lowerright(random_house)]
+        return random_house
 
 
-        # while self.invalid(house, houses) or self.overlap(house, houses):      
-        # Check if random direction doesn't overlap with other house or water
-        returns new_coordinates
+    def assign_random_direction(self, moving_house, all_houses):
+    """
+         
+    """
+        moving_house.corner_lowerleft = moving_house.random_direction()
+        while self.invalid(moving_house, all_houses) or self.overlap(moving_house, all_houses):
+            moving_house.corner_lowerleft = moving_house.random_direction()
 
-    
+        return moving_house
+
     def price_comparison(self, new_price, old_price):
 
       """
