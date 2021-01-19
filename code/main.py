@@ -4,6 +4,7 @@ from graph import Graph
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
+from randomstate_hillclimber import Randomstate_Hillclimber
 
 
 # Request user for area number and number of houses
@@ -18,6 +19,7 @@ elif sys.argv[2] not in ["20", "40", "60"]:
     sys.exit(1)   
 else:
     area = sys.argv[1]
+
 
 # Make the graph
 area = Graph(area)   
@@ -42,6 +44,21 @@ for bungalow in range(int(total_bungalows)):
 for maison in range(int(total_maisons)):
     maison = Maison()
     all_houses.append(maison)
+
+
+
+# ---------------------- Random State Hillclimber --------------------
+
+# just comment out the below lines when random state hillclimber is not needed
+loop = input("How many random states do you want to generate: ")
+
+while not loop.isdigit():
+   loop = input("Insert number of runs: ")
+loops = int(loop)
+randomstate_hillclimber = Randomstate_Hillclimber(loops)
+randomstate_hillclimber.looper()
+# -------------------------------------------------------------------
+
 
 
 # randomly assign the invalid placed houses until a valid state is reached
