@@ -4,18 +4,18 @@ from graph import Graph
 class Hillclimber():
 
     def random_house(self, houses):
-    """
+        """
         Randomly returns a house object
-    """
+        """
         random_house = random.choice(houses)
-        # moet random hiervoor import worden?
+        
         return random_house
     
     
     def random_direction(self, random_house):
-    """
+        """
          Returns random a random direction
-    """
+        """
         directions = ["up", "down", "left", "right"]
 
         random_direction = random.choice(direction)
@@ -29,7 +29,7 @@ class Hillclimber():
         elif random_direction == "left":
             # The x-coordinate goes down by 1
             random_house_coordinates = random_house.corner_lowerleft[random_house.corner_lowerleft[0] - 1, house.corner_lowerleft[1]]
-        else random_direction == "right": 
+        elif random_direction == "right": 
             # The x-coordinate goes up by 1
             random_house_coordinates = random_house.corner_lowerleft[random_house.corner_lowerleft[0] + 1, house.corner_lowerleft[1]]
 
@@ -53,12 +53,12 @@ class Hillclimber():
         return moving_house
 
 
-    def price_comparison(self, new_price, old_price):
+    def compare_price(self, all_houses, old_price):
 
-    """
+        """
          Returns random a random direction
-    """
-
+        """
+        new_price = get_networth(all_houses)
         if new_price > old_price:
             return True
         

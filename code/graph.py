@@ -7,7 +7,6 @@ from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
 from House import House
-# from hillclimber import Hillclimber
 from shapely.geometry import box, Point
 
 

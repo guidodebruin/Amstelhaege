@@ -4,6 +4,7 @@ from graph import Graph
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
+from hillclimber import Hillclimber
 from randomstate_hillclimber import Randomstate_Hillclimber
 
 
@@ -68,6 +69,19 @@ randomstate_hillclimber.looper()
 # # Calculate final houseprice
 # area.houseprices(all_houses)
 
+
 # # Writing output file
 # area.write_output(all_houses)
+
+# current_changes = 0
+# while current_changes < total_changes:
+
+#     # Obtain the total prices of all households
+#     total_price = area.get_networth(all_houses)
+
+#     if area.compare_price(all_houses, total_price):
+#         current_change += 1
+#     else:
+#         area.undo_housemove()
+
 
