@@ -237,9 +237,18 @@ class Graph():
             net_worth = sum(self.total_price)
         return net_worth   
 
+
     def area_reset(self, houses):
         """
             Resets every house to its starting position
         """
         for house in houses:
             house.corner_lowerleft = [0,0]
+
+            if isinstance(house, Maison):
+                house.price = 610000
+            elif isinstance(house, Bungalow):
+                house.price = 399000
+            elif isinstance(house, Singlehouse):
+                house.price = 285000
+            

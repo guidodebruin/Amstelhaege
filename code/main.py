@@ -94,6 +94,3 @@ area.houseprices(all_houses)
 # Writing output file
 area.write_output(all_houses)
 
-
-
-
