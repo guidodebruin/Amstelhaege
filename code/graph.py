@@ -7,6 +7,7 @@ from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
 from House import House
+from hillclimber import Hillclimber
 from shapely.geometry import box, Point
 
 
@@ -187,7 +188,15 @@ class Graph():
         pass
 
     def move_house(self):
-        pass
+        # Hier moet vervolgens een functie komen die het desbetreffende huis verschuift
+        moving_house = random_house(all_houses)
+         = random_direction(moving_house, all_houses)
+
+
+        
+
+    def undo_housemove(self):
+        
 
     def delete_house(self):
         pass
