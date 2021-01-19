@@ -1,5 +1,5 @@
-# from graph import Graph
 import random
+from graph import Graph
 
 class hillclimber():
 
@@ -12,10 +12,10 @@ class hillclimber():
         return random_house
     
     
-    def random_direction(self, random_house, all_houses):
-        """
-            Returns random a random direction
-        """
+    def random_direction(self, random_house):
+      """
+         Returns random a random direction
+      """
         directions = ["up", "down", "left", "right"]
 
         random_direction = random.choice(direction)
