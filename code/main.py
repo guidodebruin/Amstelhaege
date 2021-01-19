@@ -43,7 +43,8 @@ for maison in range(int(total_maisons)):
     maison = Maison()
     all_houses.append(maison)
 
-# randomly relocate the invalid placed houses until a valid state is reached
+
+# randomly assign the invalid placed houses until a valid state is reached
 area.randomly_assign_houses(all_houses)
 
 # sent house info to graph
@@ -53,4 +54,4 @@ area.load_houses(all_houses)
 area.houseprices(all_houses)
 
 # Writing output file
-area.write_output(all_houses)       
+area.write_output(all_houses) 

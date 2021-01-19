@@ -5,7 +5,7 @@ class Maison(House):
     def __init__(self):
         self.length = 10
         self.width = 12
-        self.id = id
+        self.id = id(self)
         self.freespace = 6
         self.price = 610000
         self.percentage = 0.06

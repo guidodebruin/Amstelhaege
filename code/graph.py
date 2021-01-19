@@ -107,8 +107,7 @@ class Graph():
         # check for intersections between different houses and save in list
         for house2 in houses:
             housebox2 = box(house2.corner_lowerleft[0], house2.corner_lowerleft[1], (house2.return_upperright(house2)[0]), (house2.return_upperright(house2)[1]))
-            # IPV .CORNER_LOWERLEFT MET IDS OF STRUCTURE WERKEN OM ZEKER TE WETEN WELK HUIS
-            if house.corner_lowerleft is not house2.corner_lowerleft and housebox1.intersects(housebox2):
+            if house.id is not house2.id and housebox1.intersects(housebox2):
                 return True
                 
         return False
@@ -125,8 +124,7 @@ class Graph():
         house_pointlist = [house.corner_lowerleft, house.return_upperleft(house), house.return_upperright(house), house.return_lowerright(house)]
 
         for neigh_house in houses:
-            # UITEINDELIJK MET ID OF STRUCTURE EN NIET LOWERLEFT
-            if neigh_house.corner_lowerleft is not house.corner_lowerleft:
+            if neigh_house.id is not house.id:
                 # save all the corners of a neighbouring house
                 neigh_pointlist = [neigh_house.corner_lowerleft, neigh_house.return_upperleft(neigh_house), neigh_house.return_upperright(neigh_house), neigh_house.return_lowerright(neigh_house)]
             
@@ -206,17 +204,26 @@ class Graph():
             writer = csv.writer(file)
             writer.writerow(["structure", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
             total_price = []
+            singlehouse_counter = 0
+            bungalow_counter = 0
+            maison_counter = 0
             for house in all_houses:
 
                 if isinstance(house, Singlehouse):
                     housetype = "SINGLEHOUSE"
-                    writer.writerow([house.id, house.return_upperleft(house), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
+                    singlehouse_counter += 1
+                    structure = "singlehouse_" + str(singlehouse_counter)
+                    writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
                 elif isinstance(house, Bungalow):
                     housetype = "BUNGALOW"
-                    writer.writerow([house.id, house.return_upperleft(house), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
+                    bungalow_counter += 1
+                    structure = "bungalow_" + str(bungalow_counter) 
+                    writer.writerow([structure, house.return_upperleft(house), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
                 elif isinstance(house, Maison):
                     housetype = "MAISON"
-                    writer.writerow([house.id, house.return_upperleft(house), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
+                    maison_counter += 1
+                    structure = "maison_" + str(maison_counter)
+                    writer.writerow([structure, house.return_upperleft(house), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
                 
                 total_price.append(house.price)
 
