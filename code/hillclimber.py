@@ -18,21 +18,21 @@ class hillclimber():
         directions = ["up", "down", "left", "right"]
 
         random_direction = random.choice(direction)
-        
+
         if random_direction = "up":
             # The y-coordinate goes up by 1
-            random_house.corner_lowerleft = random_house.corner_lowerleft[random_house.corner_lowerleft[0], house.corner_lowerleft[1] + 1]
+            random_house_coordinates = random_house.corner_lowerleft[random_house.corner_lowerleft[0], house.corner_lowerleft[1] + 1]
         elif random_direction = "down":
             # The y-coordinate goes down by 1
-            random_house.corner_lowerleft = random_house.corner_lowerleft[random_house.corner_lowerleft[0], house.corner_lowerleft[1] - 1]
+            random_house_coordinates = random_house.corner_lowerleft[random_house.corner_lowerleft[0], house.corner_lowerleft[1] - 1]
         elif random_direction = "left":
             # The x-coordinate goes down by 1
-            random_house.corner_lowerleft = random_house.corner_lowerleft[random_house.corner_lowerleft[0] - 1, house.corner_lowerleft[1]]
+            random_house_coordinates = random_house.corner_lowerleft[random_house.corner_lowerleft[0] - 1, house.corner_lowerleft[1]]
         else random_direction = "left": 
             # The x-coordinate goes up by 1
-            random_house.corner_lowerleft = random_house.corner_lowerleft[random_house.corner_lowerleft[0] + 1, house.corner_lowerleft[1]]
+            random_house_coordinates = random_house.corner_lowerleft[random_house.corner_lowerleft[0] + 1, house.corner_lowerleft[1]]
 
-        return random_house
+        return random_house_coordinates
 
 
     def assign_random_direction(self, all_houses):
