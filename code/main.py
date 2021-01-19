@@ -21,7 +21,6 @@ elif sys.argv[2] not in ["20", "40", "60"]:
 else:
     area = sys.argv[1]
 
-
 # Make the graph
 area = Graph(area)   
 
@@ -47,48 +46,41 @@ for maison in range(int(total_maisons)):
     all_houses.append(maison)
 
 
-
 # ---------------------- Random State Hillclimber --------------------
 
-# Just comment out the below lines when random state hillclimber is not needed
+# just comment out the below lines when random state hillclimber is not needed 
+# when using this algorithm comment out everything below the -----
 loop = input("How many random states do you want to generate: ")
 
 while not loop.isdigit():
    loop = input("Insert number of runs: ")
 loops = int(loop)
-randomstate_hillclimber = Randomstate_Hillclimber(loops)
+randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
 randomstate_hillclimber.looper()
 # -------------------------------------------------------------------
 
 
-# ---------------------- Moving Hillclimber --------------------
+# # randomly assign the invalid placed houses until a valid state is reached
+# area.randomly_assign_houses(all_houses)
 
-# Just comment out the below lines when the Hillclimber is not needed
-total_changes = input("How many changes do you want to make: ")
+# # sent house info to graph
+# area.load_houses(all_houses)
 
-# -------------------------------------------------------------------
+# # Calculate final houseprice
+# area.houseprices(all_houses)
 
-# randomly assign the invalid placed houses until a valid state is reached
-area.randomly_assign_houses(all_houses)
+# # Writing output file
+# area.write_output(all_houses)
 
-# sent house info to graph
-area.load_houses(all_houses)
+# current_changes = 0
+# while current_changes < total_changes:
 
-# Calculate final houseprice
-area.houseprices(all_houses)
+#     # Obtain the total prices of all households
+#     total_price = area.get_networth(all_houses)
 
-# Writing output file
-area.write_output(all_houses)
-
-current_changes = 0
-while current_changes < total_changes:
-
-    # Obtain the total prices of all households
-    total_price = area.get_networth(all_houses)
-
-    if area.compare_price(all_houses, total_price):
-        current_change += 1
-    else:
-        area.undo_housemove()
+#     if area.compare_price(all_houses, total_price):
+#         current_change += 1
+#     else:
+#         area.undo_housemove()
 
 
