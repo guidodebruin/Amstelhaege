@@ -43,7 +43,7 @@ class hillclimber():
         moving_house = self.random_house(all_houses)
 
         # change the coordinates of the randomly selected house
-        moving_house.corner_lowerleft = moving_house.random_direction()
+        moving_house.corner_lowerleft = moving_house.random_direction(moving_house, all_houses)
 
         # check if the newly assigned coordinates are valid, if not assign new coordinates
         while self.invalid(moving_house, all_houses) or self.overlap(moving_house, all_houses):
