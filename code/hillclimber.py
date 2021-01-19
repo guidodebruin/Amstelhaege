@@ -8,7 +8,7 @@ class Hillclimber():
         Randomly returns a house object
     """
         random_house = random.choice(houses)
-        # moet random hiervoor import worden?
+        
         return random_house
     
     
@@ -53,12 +53,12 @@ class Hillclimber():
         return moving_house
 
 
-    def price_comparison(self, new_price, old_price):
+    def compare_price(self, all_houses, old_price):
 
     """
          Returns random a random direction
     """
-
+        new_price = get_networth(all_houses)
         if new_price > old_price:
             return True
         
