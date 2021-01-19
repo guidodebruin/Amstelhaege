@@ -69,4 +69,5 @@ area.load_houses(all_houses)
 area.houseprices(all_houses)
 
 # Writing output file
-area.write_output(all_houses) 
+area.write_output(all_houses)
+
