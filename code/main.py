@@ -59,15 +59,15 @@ randomstate_hillclimber.looper()
 # -------------------------------------------------------------------
 
 
-# randomly assign the invalid placed houses until a valid state is reached
-area.randomly_assign_houses(all_houses)
+# # randomly assign the invalid placed houses until a valid state is reached
+# area.randomly_assign_houses(all_houses)
 
-# sent house info to graph
-area.load_houses(all_houses)
+# # sent house info to graph
+# area.load_houses(all_houses)
 
-# Calculate final houseprice
-area.houseprices(all_houses)
+# # Calculate final houseprice
+# area.houseprices(all_houses)
 
-# Writing output file
-area.write_output(all_houses)
+# # Writing output file
+# area.write_output(all_houses)
 
