@@ -187,13 +187,6 @@ class Graph():
     def all_houses_set(self):
         pass
 
-    def move_house(self):
-        # Hier moet vervolgens een functie komen die het desbetreffende huis verschuift
-        moving_house = random_house(all_houses)
-         = random_direction(moving_house, all_houses)
-         # is deze functie nodig? Zodra een huis nieuwe coordinaten krijgt, "moved" hij ook direct
-        pass
-
     def undo_housemove(self):
         pass
 
