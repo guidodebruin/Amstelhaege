@@ -20,7 +20,6 @@ elif sys.argv[2] not in ["20", "40", "60"]:
 else:
     area = sys.argv[1]
 
-
 # Make the graph
 area = Graph(area)   
 
@@ -46,19 +45,18 @@ for maison in range(int(total_maisons)):
     all_houses.append(maison)
 
 
-
 # ---------------------- Random State Hillclimber --------------------
 
-# just comment out the below lines when random state hillclimber is not needed
+# just comment out the below lines when random state hillclimber is not needed 
+# when using this algorithm comment out everything below the -----
 loop = input("How many random states do you want to generate: ")
 
 while not loop.isdigit():
    loop = input("Insert number of runs: ")
 loops = int(loop)
-randomstate_hillclimber = Randomstate_Hillclimber(loops)
+randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
 randomstate_hillclimber.looper()
 # -------------------------------------------------------------------
-
 
 
 # randomly assign the invalid placed houses until a valid state is reached

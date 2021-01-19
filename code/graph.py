@@ -237,3 +237,10 @@ class Graph():
             self.total_price.append(house.price)
             net_worth = sum(self.total_price)
         return net_worth   
+
+    def area_reset(self, houses):
+        """
+            Resets every house to its starting position
+        """
+        for house in houses:
+            house.corner_lowerleft = [0,0]
