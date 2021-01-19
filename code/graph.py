@@ -7,7 +7,7 @@ from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
 from House import House
-from hillclimber import Hillclimber
+# from hillclimber import Hillclimber
 from shapely.geometry import box, Point
 
 
@@ -189,8 +189,8 @@ class Graph():
 
     def move_house(self):
         # Hier moet vervolgens een functie komen die het desbetreffende huis verschuift
-        moving_house = random_house(all_houses)
-         = random_direction(moving_house, all_houses)
+        # moving_house = random_house(all_houses)
+        #  = random_direction(moving_house, all_houses)
          # is deze functie nodig? Zodra een huis nieuwe coordinaten krijgt, "moved" hij ook direct
         pass
 
@@ -211,7 +211,6 @@ class Graph():
         with open('output.csv', 'w') as file:
             writer = csv.writer(file)
             writer.writerow(["structure", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
-            total_price = []
             singlehouse_counter = 0
             bungalow_counter = 0
             maison_counter = 0
@@ -232,7 +231,16 @@ class Graph():
                     maison_counter += 1
                     structure = "maison_" + str(maison_counter)
                     writer.writerow([structure, house.return_upperleft(house), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
-                
-                total_price.append(house.price)
 
-            writer.writerow(["networth", sum(total_price)])
+            writer.writerow(["networth", self.get_networth(all_houses)])
+    
+
+    def get_networth(self, all_houses):
+        """
+            Returns the total networth
+        """
+        self.total_price = []
+        for house in all_houses:
+            self.total_price.append(house.price)
+            net_worth = sum(self.total_price)
+        return net_worth   
