@@ -4,7 +4,7 @@ from graph import Graph
 from singlehouse import Singlehouse
 from bungalow import Bungalow
 from maison import Maison
-from hillclimber import Hillclimber
+from moving_hillclimber import Moving_Hillclimber
 from randomstate_hillclimber import Randomstate_Hillclimber
 
 
@@ -66,6 +66,10 @@ randomstate_hillclimber.looper()
 total_changes = input("How many changes do you want to make? ")
 while not total_changes.isdigit():
     total_changes = int(input("Insert number of changes: "))
+
+moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
+moving_hillclimber.move_houses()
+
 
 current_changes = 0
 while current_changes < total_changes:

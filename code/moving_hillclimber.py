@@ -1,7 +1,27 @@
 import random
 from graph import Graph
 
-class Hillclimber():
+class Moving_Hillclimber:
+
+    def __init__(self, changes, houses, area):
+        self.changes = changes
+        self.houses = houses
+        self.area = area
+
+    def move_houses(self)
+        current_changes = 0
+        while current_changes < total_changes:
+
+            random_direction = random_direction()
+            area.assign_random_direction(self.houses, random_direction)
+
+            # Obtain the total prices of all households
+            total_price = area.get_networth(self.houses)
+
+            if area.compare_price(all_houses, total_price):
+                current_change += 1
+            else:
+                area.undo_housemove(random_direction)
 
     def random_house(self, houses):
         """
@@ -10,8 +30,7 @@ class Hillclimber():
         random_house = random.choice(houses)
         
         return random_house
-    
-    
+      
     def random_direction(self):
         """
          Returns random coordinates for a random direction
