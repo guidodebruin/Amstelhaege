@@ -6,6 +6,7 @@ from bungalow import Bungalow
 from maison import Maison
 from moving_hillclimber import Moving_Hillclimber
 from randomstate_hillclimber import Randomstate_Hillclimber
+from annealing import Simulated_Annealing
 
 
 # Request user for area number and number of houses
@@ -50,41 +51,67 @@ for maison in range(int(total_maisons)):
 
 # Just comment out the below lines when random state hillclimber is not needed 
 # when using this algorithm comment out everything below the -----
-loop = input("How many random states do you want to generate: ")
 
-while not loop.isdigit():
-   loop = input("Insert number of runs: ")
-loops = int(loop)
-randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
-randomstate_hillclimber.looper()
+# loop = input("How many random states do you want to generate: ")
+
+# while not loop.isdigit():
+#    loop = input("Insert number of runs: ")
+# loops = int(loop)
+# randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
+# randomstate_hillclimber.looper()
+
 # -------------------------------------------------------------------
+
 
 # ---------------------- Moving Hillclimber -------------------------
 
 # Just comment out the below lines when the moving hillclimber is not needed 
 # When using this algorithm comment out the random state hillclimber and everything below the -----
-total_changes = input("How many changes do you want to make? ")
-while not total_changes.isdigit():
-    total_changes = int(input("Insert number of changes: "))
 
-moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
-moving_hillclimber.move_houses()
+# total_changes = input("How many changes do you want to make? ")
+# while not total_changes.isdigit():
+#     total_changes = int(input("Insert number of changes: "))
+
+# moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
+# moving_hillclimber.move_houses()
 
 
-current_changes = 0
-while current_changes < total_changes:
+# current_changes = 0
+# while current_changes < total_changes:
 
-    random_direction = random_direction()
-    area.assign_random_direction(all_houses, random_direction)
+#     random_direction = random_direction()
+#     area.assign_random_direction(all_houses, random_direction)
 
-    # Obtain the total prices of all households
-    total_price = area.get_networth(all_houses)
+#     # Obtain the total prices of all households
+#     total_price = area.get_networth(all_houses)
 
-    if area.compare_price(all_houses, total_price):
-        current_change += 1
-    else:
-        area.undo_housemove(random_direction)
+#     if area.compare_price(all_houses, total_price):
+#         current_change += 1
+#     else:
+#         area.undo_housemove(random_direction)
+
+        
 # -------------------------------------------------------------------------
+
+
+
+# ---------------------- Simulated Annealing --------------------
+
+# Just comment out the below lines when random state hillclimber is not needed 
+# when using this algorithm comment out everything below the -----
+
+# loop = input("How many random states do you want to generate: ")
+# changes = input("how many changes per random state do you want to make: ")
+# while not loop.isdigit() or not changes.isdigit:
+#    loop = input("Insert number of runs: ")
+#    changes = input("Insert number of changes: ")
+
+# loops = int(loop)
+# changes = int(changes)
+# simulated_annealing = Simulated_Annealing(loops, changes, all_houses, area)
+
+# -------------------------------------------------------------------
+
 
 # randomly assign the invalid placed houses until a valid state is reached
 area.randomly_assign_houses(all_houses)
