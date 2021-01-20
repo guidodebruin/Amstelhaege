@@ -9,10 +9,10 @@ class Simulated_Annealing:
         self.area = area
 
     def simulate(self):
-        """"
+        """
             Repeatedly generates random states.
             Tries to find to most optimal house coordinates in each random state.
-        """"
+        """
         # create a random state
 
         # move a random house in this state
