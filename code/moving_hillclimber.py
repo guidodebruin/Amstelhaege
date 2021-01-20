@@ -71,8 +71,7 @@ class Moving_Hillclimber:
 
         if random_direction == "up":
             # The y-coordinate goes up by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 1]
-            
+            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 1]    
 
         elif random_direction == "down":
             # The y-coordinate goes down by 1
