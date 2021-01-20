@@ -1,22 +1,22 @@
 structure,corner_1,corner_2,corner_3,corner_4,type
-singlehouse_1,"18, 154","[18, 146]","[26, 154]","[26, 146]",SINGLEHOUSE
-singlehouse_2,"154, 103","[154, 95]","[162, 103]","[162, 95]",SINGLEHOUSE
-singlehouse_3,"7, 158","[7, 150]","[15, 158]","[15, 150]",SINGLEHOUSE
-singlehouse_4,"86, 174","[86, 166]","[94, 174]","[94, 166]",SINGLEHOUSE
-singlehouse_5,"26, 76","[26, 68]","[34, 76]","[34, 68]",SINGLEHOUSE
-singlehouse_6,"37, 150","[37, 142]","[45, 150]","[45, 142]",SINGLEHOUSE
-singlehouse_7,"140, 95","[140, 87]","[148, 95]","[148, 87]",SINGLEHOUSE
-singlehouse_8,"55, 45","[55, 37]","[63, 45]","[63, 37]",SINGLEHOUSE
-singlehouse_9,"130, 68","[130, 60]","[138, 68]","[138, 60]",SINGLEHOUSE
-singlehouse_10,"32, 65","[32, 57]","[40, 65]","[40, 57]",SINGLEHOUSE
-singlehouse_11,"150, 153","[150, 145]","[158, 153]","[158, 145]",SINGLEHOUSE
-singlehouse_12,"60, 104","[60, 96]","[68, 104]","[68, 96]",SINGLEHOUSE
-bungalow_1,"[61, 78]","[61, 71]","[72, 78]","[72, 71]",BUNGALOW
-bungalow_2,"[18, 98]","[18, 91]","[29, 98]","[29, 91]",BUNGALOW
-bungalow_3,"[31, 44]","[31, 37]","[42, 44]","[42, 37]",BUNGALOW
-bungalow_4,"[75, 40]","[75, 33]","[86, 40]","[86, 33]",BUNGALOW
-bungalow_5,"[115, 140]","[115, 133]","[126, 140]","[126, 133]",BUNGALOW
-maison_1,"[117, 44]","[117, 34]","[129, 44]","[129, 34]",MAISON
-maison_2,"[133, 133]","[133, 123]","[145, 133]","[145, 123]",MAISON
-maison_3,"[125, 158]","[125, 148]","[137, 158]","[137, 148]",MAISON
-networth,9463987
+singlehouse_1,"18, 52","[18, 44]","[26, 52]","[26, 44]",SINGLEHOUSE
+singlehouse_2,"132, 158","[132, 150]","[140, 158]","[140, 150]",SINGLEHOUSE
+singlehouse_3,"56, 61","[56, 53]","[64, 61]","[64, 53]",SINGLEHOUSE
+singlehouse_4,"52, 185","[52, 177]","[60, 185]","[60, 177]",SINGLEHOUSE
+singlehouse_5,"76, 79","[76, 71]","[84, 79]","[84, 71]",SINGLEHOUSE
+singlehouse_6,"17, 185","[17, 177]","[25, 185]","[25, 177]",SINGLEHOUSE
+singlehouse_7,"0, 177","[0, 169]","[8, 177]","[8, 169]",SINGLEHOUSE
+singlehouse_8,"127, 90","[127, 82]","[135, 90]","[135, 82]",SINGLEHOUSE
+singlehouse_9,"10, 85","[10, 77]","[18, 85]","[18, 77]",SINGLEHOUSE
+singlehouse_10,"92, 130","[92, 122]","[100, 130]","[100, 122]",SINGLEHOUSE
+singlehouse_11,"76, 103","[76, 95]","[84, 103]","[84, 95]",SINGLEHOUSE
+singlehouse_12,"31, 64","[31, 56]","[39, 64]","[39, 56]",SINGLEHOUSE
+bungalow_1,"[138, 52]","[138, 45]","[149, 52]","[149, 45]",BUNGALOW
+bungalow_2,"[144, 43]","[144, 36]","[155, 43]","[155, 36]",BUNGALOW
+bungalow_3,"[132, 113]","[132, 106]","[143, 113]","[143, 106]",BUNGALOW
+bungalow_4,"[4, 113]","[4, 106]","[15, 113]","[15, 106]",BUNGALOW
+bungalow_5,"[140, 181]","[140, 174]","[151, 181]","[151, 174]",BUNGALOW
+maison_1,"[95, 152]","[95, 142]","[107, 152]","[107, 142]",MAISON
+maison_2,"[50, 126]","[50, 116]","[62, 126]","[62, 116]",MAISON
+maison_3,"[43, 108]","[43, 98]","[55, 108]","[55, 98]",MAISON
+networth,9773304
