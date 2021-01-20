@@ -67,20 +67,21 @@ total_change = input("How many changes do you want to make? ")
 while not total_change.isdigit():
     total_change = int(input("Insert number of changes: "))
 total_changes = int(total_change)
+
 moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
 moving_hillclimber.move_houses()
     
 # -------------------------------------------------------------------------
 
-# randomly assign the invalid placed houses until a valid state is reached
-area.randomly_assign_houses(all_houses)
+# # randomly assign the invalid placed houses until a valid state is reached
+# area.randomly_assign_houses(all_houses)
 
-# sent house info to graph
-area.load_houses(all_houses)
+# # sent house info to graph
+# area.load_houses(all_houses)
 
-# Calculate final houseprice
-area.houseprices(all_houses)
+# # Calculate final houseprice
+# area.houseprices(all_houses)
 
-# Writing output file
-area.write_output(all_houses)
+# # Writing output file
+# area.write_output(all_houses)
 

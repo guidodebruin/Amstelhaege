@@ -13,20 +13,40 @@ class Moving_Hillclimber:
     def move_houses(self):
         current_changes = 0
         best_value = 0
-        while current_changes < self.changes:
+
+        # randomly assign the invalid placed houses until a valid state is reached
+        self.area.randomly_assign_houses(self.houses)
+
+        # calculate final houseprice
+        self.area.houseprices(self.houses)
+
+        print("hoi")
+
+        for current_changes in range(self.changes):
+
+            print("test")
 
             given_direction = self.random_direction()
-            self.assign_random_direction(given_direction)
+            
+            # Get a random house from all houses
+            moving_house = self.random_house(self.houses)
+
+            self.assign_random_direction(given_direction, moving_house)
 
             # Obtain the total prices of all households
             total_price = self.area.get_networth(self.houses)
 
             if best_value < total_price:
-                current_changes += 1
                 best_value = total_price
                 best_state = copy.deepcopy(self.houses)
             else:
-                self.area.undo_housemove(given_direction)
+                self.undo_housemove(given_direction, moving_house)
+
+            current_changes += 1
+
+        # final outcome
+        self.area.load_houses(best_state)
+        self.area.write_output(best_state)
                 
 
     def random_house(self, houses):
@@ -69,60 +89,47 @@ class Moving_Hillclimber:
         return random_house_coordinates
 
 
-    def assign_random_direction(self, random_direction):
+    def assign_random_direction(self, random_direction, moving_house):
         """
             Assigns a new valid place for a house in a certain direction.
         """
         # Get a random house from all houses
-        moving_house = self.random_house(self.houses)
+        # moving_house = self.random_house(self.houses)
 
         # Change the coordinates of the randomly selected house
         moving_house.corner_lowerleft = self.return_new_coordinates(random_direction, moving_house)
 
         # Check if the newly assigned coordinates are valid, if not assign new coordinates
         while self.area.invalid(moving_house, self.houses) or self.area.overlap(moving_house, self.houses):
-            # random_direction = self.random_direction(moving_house)
             moving_house.corner_lowerleft = self.return_new_coordinates(random_direction, moving_house)
 
         return moving_house
-
-
-    # def compare_price(self, all_houses, old_price):
-
-    #     """
-    #      Returns random a random direction
-    #     """
-    #     new_price = get_networth(all_houses)
-    #     if new_price > old_price:
-    #         return True
-        
-    #     return False
      
-    def undo_housemove(self, random_direction):
+    def undo_housemove(self, random_direction, random_house):
 
         """
          Cancels the adjustment
         """
         if random_direction == "up":
             # The y-coordinate goes down by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0], house.corner_lowerleft[1] - 1]
+            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] - 1]
 
         elif random_direction == "down":
             # The y-coordinate goes up by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0], house.corner_lowerleft[1] + 1]
+            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 1]
 
         elif random_direction == "left":
             # The x-coordinate goes up by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0] + 1, house.corner_lowerleft[1]]
+            random_house_coordinates = [random_house.corner_lowerleft[0] + 1, random_house.corner_lowerleft[1]]
 
         elif random_direction == "right":
             # The x-coordinate goes down by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0] - 1, house.corner_lowerleft[1]]
+            random_house_coordinates = [random_house.corner_lowerleft[0] - 1, random_house.corner_lowerleft[1]]
 
         # Change the coordinates of the randomly selected house
-        moving_house.corner_lowerleft = random_house_coordinates
+        random_house.corner_lowerleft = random_house_coordinates
 
-        return moving_house
+        return random_house
         
 
 
