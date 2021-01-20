@@ -50,40 +50,26 @@ for maison in range(int(total_maisons)):
 
 # Just comment out the below lines when random state hillclimber is not needed 
 # when using this algorithm comment out everything below the -----
-loop = input("How many random states do you want to generate: ")
+# loop = input("How many random states do you want to generate: ")
 
-while not loop.isdigit():
-   loop = input("Insert number of runs: ")
-loops = int(loop)
-randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
-randomstate_hillclimber.looper()
+# while not loop.isdigit():
+#    loop = input("Insert number of runs: ")
+# loops = int(loop)
+# randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
+# randomstate_hillclimber.looper()
 # -------------------------------------------------------------------
 
 # ---------------------- Moving Hillclimber -------------------------
 
 # Just comment out the below lines when the moving hillclimber is not needed 
 # When using this algorithm comment out the random state hillclimber and everything below the -----
-total_changes = input("How many changes do you want to make? ")
-while not total_changes.isdigit():
-    total_changes = int(input("Insert number of changes: "))
-
+total_change = input("How many changes do you want to make? ")
+while not total_change.isdigit():
+    total_change = int(input("Insert number of changes: "))
+total_changes = int(total_change)
 moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
 moving_hillclimber.move_houses()
-
-
-current_changes = 0
-while current_changes < total_changes:
-
-    random_direction = random_direction()
-    area.assign_random_direction(all_houses, random_direction)
-
-    # Obtain the total prices of all households
-    total_price = area.get_networth(all_houses)
-
-    if area.compare_price(all_houses, total_price):
-        current_change += 1
-    else:
-        area.undo_housemove(random_direction)
+    
 # -------------------------------------------------------------------------
 
 # randomly assign the invalid placed houses until a valid state is reached
