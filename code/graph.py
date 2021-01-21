@@ -243,10 +243,18 @@ class Graph():
         for house in houses:
             house.corner_lowerleft = [0,0]
 
+
+    def price_reset(self, houses):
+        """
+            Resets every house price to its initial price
+        """
+        for house in houses:
+
             if isinstance(house, Maison):
                 house.price = 610000
             elif isinstance(house, Bungalow):
                 house.price = 399000
             elif isinstance(house, Singlehouse):
                 house.price = 285000
+
             

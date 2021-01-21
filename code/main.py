@@ -47,9 +47,9 @@ for maison in range(int(total_maisons)):
     all_houses.append(maison)
 
 
-# ---------------------- Random State Hillclimber --------------------
+# ---------------------- Random --------------------
 
-# Just comment out the below lines when random state hillclimber is not needed 
+# Just comment out the below lines when Random algorithm is not needed 
 # when using this algorithm comment out everything below the -----
 
 # loop = input("How many random states do you want to generate: ")
@@ -85,15 +85,12 @@ moving_hillclimber.move_houses()
 # Just comment out the below lines when simulated annealing is not needed 
 # when using this algorithm comment out everything below the -----
 
-# loop = input("How many random states do you want to generate: ")
 # changes = input("how many changes per random state do you want to make: ")
-# while not loop.isdigit() or not changes.isdigit:
-#    loop = input("Insert number of runs: ")
+# while not changes.isdigit():
 #    changes = input("Insert number of changes: ")
 
-# loops = int(loop)
 # changes = int(changes)
-# simulated_annealing = Simulated_Annealing(loops, changes, all_houses, area)
+# simulated_annealing = Simulated_Annealing(changes, all_houses, area)
 # simulated_annealing.simulate()
 
 # -------------------------------------------------------------------
