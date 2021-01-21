@@ -1,5 +1,7 @@
 import random
 import copy
+import math
+import matplotlib.pyplot as plt
 
 from graph import Graph
 
@@ -27,12 +29,15 @@ class Moving_Hillclimber:
         for current_changes in range(self.changes):
 
             plt.clf() 
-            
+
             # Return a random direction
             given_direction = self.random_direction()
             
             # Get a random house from all houses
             moving_house = self.random_house(self.houses)
+
+            # !!!! reset the houses prices to their original price before calculating their new price increase
+            self.area.price_reset(self.houses)
 
             # Assigns a new valid place for a house in a certain direction.
             self.assign_random_direction(given_direction, moving_house)
@@ -147,8 +152,3 @@ class Moving_Hillclimber:
         random_house.corner_lowerleft = random_house_coordinates
 
         return random_house
-        
-
-
-
-    
