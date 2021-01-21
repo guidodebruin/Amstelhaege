@@ -28,7 +28,7 @@ class Moving_Hillclimber:
         
         print(best_value)
 
-        for current_changes in range(self.changes):
+        while current_changes < self.changes:
 
             # Return a random direction
             given_direction = self.random_direction()
@@ -48,21 +48,22 @@ class Moving_Hillclimber:
             # Obtain the total prices of all households
             total_price = self.area.get_networth(self.houses)
 
-
             self.area.load_houses(self.houses)
 
             print (total_price)
 
             if total_price > best_value:
-                #print("goed!")
+                print("goed!")
                 best_value = total_price
                 best_state = copy.deepcopy(self.houses)
+                current_changes += 1
+
             else:
-                #print("verkeerd")
+                print("verkeerd")
                 self.undo_housemove(given_direction, moving_house)
                 self.area.houseprices(self.houses)
 
-            # current_changes += 1
+            
 
         # Final outcome
         self.area.load_houses(best_state)
