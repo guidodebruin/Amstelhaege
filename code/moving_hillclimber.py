@@ -17,7 +17,12 @@ class Moving_Hillclimber:
         self.area.randomly_assign_houses(self.houses)
 
         # calculate final houseprice
+        self.area.houseprices(self.houses) 
+
+        # calculate final houseprice
         best_value = self.area.get_networth(self.houses)
+        
+        print(best_value)
 
         for current_changes in range(self.changes):
 
@@ -27,20 +32,29 @@ class Moving_Hillclimber:
             # Get a random house from all houses
             moving_house = self.random_house(self.houses)
 
-
+            # Assigns a new valid place for a house in a certain direction.
             self.assign_random_direction(given_direction, moving_house)
+
+            # Calculate final houseprice
+            self.area.houseprices(self.houses)
 
             # Obtain the total prices of all households
             total_price = self.area.get_networth(self.houses)
 
-            if best_value < total_price:
+            self.area.load_houses(self.houses)
+
+            print (total_price)
+
+            if total_price > best_value:
+                print("goed!")
                 best_value = total_price
                 best_state = copy.deepcopy(self.houses)
             else:
+                print("verkeerd")
                 self.undo_housemove(given_direction, moving_house)
-                # calculate final house price?
+                self.area.houseprices(self.houses)
 
-            current_changes += 1
+            # current_changes += 1
 
         # Final outcome
         self.area.load_houses(best_state)
@@ -95,8 +109,6 @@ class Moving_Hillclimber:
         """
             Assigns a new valid place for a house in a certain direction.
         """
-        # Get a random house from all houses
-        # moving_house = self.random_house(self.houses)
 
         # Change the coordinates of the randomly selected house
         moving_house.corner_lowerleft = self.return_new_coordinates(random_direction, moving_house)
