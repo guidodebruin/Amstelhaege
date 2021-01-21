@@ -52,13 +52,13 @@ for maison in range(int(total_maisons)):
 # Just comment out the below lines when Random algorithm is not needed 
 # when using this algorithm comment out everything below the -----
 
-loop = input("How many random states do you want to generate: ")
+# loop = input("How many random states do you want to generate: ")
 
-while not loop.isdigit():
-   loop = input("Insert number of runs: ")
-loops = int(loop)
-randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
-randomstate_hillclimber.looper()
+# while not loop.isdigit():
+#    loop = input("Insert number of runs: ")
+# loops = int(loop)
+# randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
+# randomstate_hillclimber.looper()
 
 # -------------------------------------------------------------------
 
@@ -68,13 +68,13 @@ randomstate_hillclimber.looper()
 # Just comment out the below lines when the moving hillclimber is not needed 
 # When using this algorithm comment out the random state hillclimber and everything below the -----
 
-total_change = input("How many changes do you want to make? ")
-while not total_change.isdigit():
-    total_change = int(input("Insert number of changes: "))
-total_changes = int(total_change)
+# total_change = input("How many changes do you want to make? ")
+# while not total_change.isdigit():
+#     total_change = int(input("Insert number of changes: "))
+# total_changes = int(total_change)
 
-moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
-moving_hillclimber.move_houses()
+# moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
+# moving_hillclimber.move_houses()
     
 # -------------------------------------------------------------------------
 
@@ -85,13 +85,13 @@ moving_hillclimber.move_houses()
 # Just comment out the below lines when simulated annealing is not needed 
 # when using this algorithm comment out everything below the -----
 
-# changes = input("how many changes per random state do you want to make: ")
-# while not changes.isdigit():
-#    changes = input("Insert number of changes: ")
+changes = input("how many changes per random state do you want to make: ")
+while not changes.isdigit():
+   changes = input("Insert number of changes: ")
 
-# changes = int(changes)
-# simulated_annealing = Simulated_Annealing(changes, all_houses, area)
-# simulated_annealing.simulate()
+changes = int(changes)
+simulated_annealing = Simulated_Annealing(changes, all_houses, area)
+simulated_annealing.simulate()
 
 # -------------------------------------------------------------------
 

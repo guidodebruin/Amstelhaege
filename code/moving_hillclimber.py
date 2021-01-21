@@ -32,6 +32,9 @@ class Moving_Hillclimber:
             # Get a random house from all houses
             moving_house = self.random_house(self.houses)
 
+            # !!!! reset the houses prices to their original price before calculating their new price increase
+            self.area.price_reset(self.houses)
+
             # Assigns a new valid place for a house in a certain direction.
             self.assign_random_direction(given_direction, moving_house)
 
