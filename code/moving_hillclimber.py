@@ -26,6 +26,8 @@ class Moving_Hillclimber:
 
         for current_changes in range(self.changes):
 
+            plt.clf() 
+            
             # Return a random direction
             given_direction = self.random_direction()
             
@@ -40,6 +42,7 @@ class Moving_Hillclimber:
 
             # Obtain the total prices of all households
             total_price = self.area.get_networth(self.houses)
+
 
             self.area.load_houses(self.houses)
 
