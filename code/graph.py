@@ -186,8 +186,6 @@ class Graph():
     def all_houses_set(self):
         pass
 
-    def undo_housemove(self):
-        pass
 
     def delete_house(self):
         pass

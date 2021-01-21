@@ -20,16 +20,14 @@ class Moving_Hillclimber:
         # calculate final houseprice
         self.area.houseprices(self.houses)
 
-        print("hoi")
-
         for current_changes in range(self.changes):
 
-            print("test")
-
+            # Return a random direction
             given_direction = self.random_direction()
             
             # Get a random house from all houses
             moving_house = self.random_house(self.houses)
+
 
             self.assign_random_direction(given_direction, moving_house)
 
@@ -44,9 +42,11 @@ class Moving_Hillclimber:
 
             current_changes += 1
 
-        # final outcome
+        # Final outcome
         self.area.load_houses(best_state)
         self.area.write_output(best_state)
+
+        print(best_value)
                 
 
     def random_house(self, houses):
@@ -68,6 +68,9 @@ class Moving_Hillclimber:
         return random_direction
 
     def return_new_coordinates(self, random_direction, random_house):
+        """
+         Returns the new coordinates for the picked direction
+        """
 
         if random_direction == "up":
             # The y-coordinate goes up by 1
