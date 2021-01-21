@@ -132,8 +132,3 @@ class Moving_Hillclimber:
         random_house.corner_lowerleft = random_house_coordinates
 
         return random_house
-        
-
-
-
-    

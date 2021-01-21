@@ -210,17 +210,17 @@ class Graph():
                     housetype = "SINGLEHOUSE"
                     singlehouse_counter += 1
                     structure = "singlehouse_" + str(singlehouse_counter)
-                    writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
+                    writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str, house.return_upperright(house))), ', '.join(map(str, house.return_lowerright(house))), housetype])
                 elif isinstance(house, Bungalow):
                     housetype = "BUNGALOW"
                     bungalow_counter += 1
                     structure = "bungalow_" + str(bungalow_counter) 
-                    writer.writerow([structure, house.return_upperleft(house), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
+                    writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str, house.return_upperright(house))), ', '.join(map(str, house.return_lowerright(house))), housetype])
                 elif isinstance(house, Maison):
                     housetype = "MAISON"
                     maison_counter += 1
                     structure = "maison_" + str(maison_counter)
-                    writer.writerow([structure, house.return_upperleft(house), house.corner_lowerleft, house.return_upperright(house), house.return_lowerright(house), housetype])
+                    writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str, house.return_upperright(house))), ', '.join(map(str, house.return_lowerright(house))), housetype])
 
             writer.writerow(["networth", self.get_networth(all_houses)])
     

@@ -52,13 +52,13 @@ for maison in range(int(total_maisons)):
 # Just comment out the below lines when Random algorithm is not needed 
 # when using this algorithm comment out everything below the -----
 
-# loop = input("How many random states do you want to generate: ")
+loop = input("How many random states do you want to generate: ")
 
-# while not loop.isdigit():
-#    loop = input("Insert number of runs: ")
-# loops = int(loop)
-# randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
-# randomstate_hillclimber.looper()
+while not loop.isdigit():
+   loop = input("Insert number of runs: ")
+loops = int(loop)
+randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
+randomstate_hillclimber.looper()
 
 # -------------------------------------------------------------------
 

@@ -1,46 +1,22 @@
 structure,corner_1,corner_2,corner_3,corner_4,type
-<<<<<<< HEAD
-singlehouse_1,"65, 154","[65, 146]","[73, 154]","[73, 146]",SINGLEHOUSE
-singlehouse_2,"153, 106","[153, 98]","[161, 106]","[161, 98]",SINGLEHOUSE
-singlehouse_3,"-8, 119","[-8, 111]","[0, 119]","[0, 111]",SINGLEHOUSE
-singlehouse_4,"137, -12","[137, -20]","[145, -12]","[145, -20]",SINGLEHOUSE
-singlehouse_5,"13, 85","[13, 77]","[21, 85]","[21, 77]",SINGLEHOUSE
-singlehouse_6,"134, -2","[134, -10]","[142, -2]","[142, -10]",SINGLEHOUSE
-singlehouse_7,"44, 95","[44, 87]","[52, 95]","[52, 87]",SINGLEHOUSE
-singlehouse_8,"53, -2","[53, -10]","[61, -2]","[61, -10]",SINGLEHOUSE
-singlehouse_9,"130, 88","[130, 80]","[138, 88]","[138, 80]",SINGLEHOUSE
-singlehouse_10,"98, 115","[98, 107]","[106, 115]","[106, 107]",SINGLEHOUSE
-singlehouse_11,"142, 142","[142, 134]","[150, 142]","[150, 134]",SINGLEHOUSE
-singlehouse_12,"48, 183","[48, 175]","[56, 183]","[56, 175]",SINGLEHOUSE
-bungalow_1,"[8, 140]","[8, 133]","[19, 140]","[19, 133]",BUNGALOW
-bungalow_2,"[61, 97]","[61, 90]","[72, 97]","[72, 90]",BUNGALOW
-bungalow_3,"[138, 185]","[138, 178]","[149, 185]","[149, 178]",BUNGALOW
-bungalow_4,"[44, 72]","[44, 65]","[55, 72]","[55, 65]",BUNGALOW
-bungalow_5,"[120, 158]","[120, 151]","[131, 158]","[131, 151]",BUNGALOW
-maison_1,"[104, 101]","[104, 91]","[116, 101]","[116, 91]",MAISON
-maison_2,"[73, 118]","[73, 108]","[85, 118]","[85, 108]",MAISON
-maison_3,"[92, 59]","[92, 49]","[104, 59]","[104, 49]",MAISON
-networth,10986310
-=======
-singlehouse_1,"5, 105","[5, 97]","[13, 105]","[13, 97]",SINGLEHOUSE
-singlehouse_2,"112, 96","[112, 88]","[120, 96]","[120, 88]",SINGLEHOUSE
-singlehouse_3,"42, 133","[42, 125]","[50, 133]","[50, 125]",SINGLEHOUSE
-singlehouse_4,"55, 188","[55, 180]","[63, 188]","[63, 180]",SINGLEHOUSE
-singlehouse_5,"131, 168","[131, 160]","[139, 168]","[139, 160]",SINGLEHOUSE
-singlehouse_6,"129, 117","[129, 109]","[137, 117]","[137, 109]",SINGLEHOUSE
-singlehouse_7,"96, 118","[96, 110]","[104, 118]","[104, 110]",SINGLEHOUSE
-singlehouse_8,"76, 182","[76, 174]","[84, 182]","[84, 174]",SINGLEHOUSE
-singlehouse_9,"96, 41","[96, 33]","[104, 41]","[104, 33]",SINGLEHOUSE
-singlehouse_10,"153, 56","[153, 48]","[161, 56]","[161, 48]",SINGLEHOUSE
-singlehouse_11,"23, 47","[23, 39]","[31, 47]","[31, 39]",SINGLEHOUSE
-singlehouse_12,"140, 133","[140, 125]","[148, 133]","[148, 125]",SINGLEHOUSE
-bungalow_1,"[41, 88]","[41, 81]","[52, 88]","[52, 81]",BUNGALOW
-bungalow_2,"[149, 68]","[149, 61]","[160, 68]","[160, 61]",BUNGALOW
-bungalow_3,"[142, 81]","[142, 74]","[153, 81]","[153, 74]",BUNGALOW
-bungalow_4,"[8, 65]","[8, 58]","[19, 65]","[19, 58]",BUNGALOW
-bungalow_5,"[123, 125]","[123, 118]","[134, 125]","[134, 118]",BUNGALOW
-maison_1,"[12, 138]","[12, 128]","[24, 138]","[24, 128]",MAISON
-maison_2,"[22, 181]","[22, 171]","[34, 181]","[34, 171]",MAISON
-maison_3,"[85, 61]","[85, 51]","[97, 61]","[97, 51]",MAISON
-networth,10191655
->>>>>>> 20282bb9d7f69a9c2c35290dbf5c94fc85bc3643
+singlehouse_1,"78, 80","78, 72","86, 80","86, 72",SINGLEHOUSE
+singlehouse_2,"50, 63","50, 55","58, 63","58, 55",SINGLEHOUSE
+singlehouse_3,"51, 179","51, 171","59, 179","59, 171",SINGLEHOUSE
+singlehouse_4,"142, 177","142, 169","150, 177","150, 169",SINGLEHOUSE
+singlehouse_5,"0, 90","0, 82","8, 90","8, 82",SINGLEHOUSE
+singlehouse_6,"120, 121","120, 113","128, 121","128, 113",SINGLEHOUSE
+singlehouse_7,"21, 124","21, 116","29, 124","29, 116",SINGLEHOUSE
+singlehouse_8,"37, 69","37, 61","45, 69","45, 61",SINGLEHOUSE
+singlehouse_9,"76, 121","76, 113","84, 121","84, 113",SINGLEHOUSE
+singlehouse_10,"6, 141","6, 133","14, 141","14, 133",SINGLEHOUSE
+singlehouse_11,"129, 124","129, 116","137, 124","137, 116",SINGLEHOUSE
+singlehouse_12,"142, 99","142, 91","150, 99","150, 91",SINGLEHOUSE
+bungalow_1,"118, 148","118, 141","129, 148","129, 141",BUNGALOW
+bungalow_2,"140, 109","140, 102","151, 109","151, 102",BUNGALOW
+bungalow_3,"22, 95","22, 88","33, 95","33, 88",BUNGALOW
+bungalow_4,"75, 184","75, 177","86, 184","86, 177",BUNGALOW
+bungalow_5,"2, 157","2, 150","13, 157","13, 150",BUNGALOW
+maison_1,"90, 130","90, 120","102, 130","102, 120",MAISON
+maison_2,"88, 154","88, 144","100, 154","100, 144",MAISON
+maison_3,"90, 65","90, 55","102, 65","102, 55",MAISON
+networth,9065274
