@@ -85,13 +85,13 @@ for maison in range(int(total_maisons)):
 # Just comment out the below lines when simulated annealing is not needed 
 # when using this algorithm comment out everything below the -----
 
-changes = input("how many changes per random state do you want to make: ")
-while not changes.isdigit():
-   changes = input("Insert number of changes: ")
+# changes = input("how many changes per random state do you want to make: ")
+# while not changes.isdigit():
+#    changes = input("Insert number of changes: ")
 
-changes = int(changes)
-simulated_annealing = Simulated_Annealing(changes, all_houses, area)
-simulated_annealing.simulate()
+# changes = int(changes)
+# simulated_annealing = Simulated_Annealing(changes, all_houses, area)
+# simulated_annealing.simulate()
 
 # -------------------------------------------------------------------
 

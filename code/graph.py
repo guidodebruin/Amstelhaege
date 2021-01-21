@@ -207,7 +207,7 @@ class Graph():
             for house in all_houses:
 
                 if isinstance(house, Singlehouse):
-                    housetype = "SINGLEHOUSE"
+                    housetype = "EENGEZINSWONING"
                     singlehouse_counter += 1
                     structure = "singlehouse_" + str(singlehouse_counter)
                     writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str, house.return_upperright(house))), ', '.join(map(str, house.return_lowerright(house))), housetype])
