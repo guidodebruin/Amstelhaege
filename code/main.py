@@ -68,13 +68,13 @@ for maison in range(int(total_maisons)):
 # Just comment out the below lines when the moving hillclimber is not needed 
 # When using this algorithm comment out the random state hillclimber and everything below the -----
 
-total_change = input("How many changes do you want to make? ")
-while not total_change.isdigit():
-    total_change = int(input("Insert number of changes: "))
-total_changes = int(total_change)
+# total_change = input("How many changes do you want to make? ")
+# while not total_change.isdigit():
+#     total_change = int(input("Insert number of changes: "))
+# total_changes = int(total_change)
 
-moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
-moving_hillclimber.move_houses()
+# moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
+# moving_hillclimber.move_houses()
     
 # -------------------------------------------------------------------------
 
@@ -82,7 +82,7 @@ moving_hillclimber.move_houses()
 
 # ---------------------- Simulated Annealing --------------------
 
-# Just comment out the below lines when random state hillclimber is not needed 
+# Just comment out the below lines when simulated annealing is not needed 
 # when using this algorithm comment out everything below the -----
 
 # loop = input("How many random states do you want to generate: ")
@@ -94,19 +94,19 @@ moving_hillclimber.move_houses()
 # loops = int(loop)
 # changes = int(changes)
 # simulated_annealing = Simulated_Annealing(loops, changes, all_houses, area)
+# simulated_annealing.simulate()
 
 # -------------------------------------------------------------------
 
 
-# # randomly assign the invalid placed houses until a valid state is reached
-# area.randomly_assign_houses(all_houses)
+# randomly assign the invalid placed houses until a valid state is reached
+area.randomly_assign_houses(all_houses)
 
-# # sent house info to graph
-# area.load_houses(all_houses)
+# sent house info to graph
+area.load_houses(all_houses)
 
-# # Calculate final houseprice
-# area.houseprices(all_houses)
+# Calculate final houseprice
+area.houseprices(all_houses)
 
-# # Writing output file
-# area.write_output(all_houses)
-
+# Writing output file
+area.write_output(all_houses)

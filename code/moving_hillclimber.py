@@ -12,13 +12,12 @@ class Moving_Hillclimber:
 
     def move_houses(self):
         current_changes = 0
-        best_value = 0
 
         # randomly assign the invalid placed houses until a valid state is reached
         self.area.randomly_assign_houses(self.houses)
 
         # calculate final houseprice
-        self.area.houseprices(self.houses)
+        best_value = self.area.get_networth(self.houses)
 
         for current_changes in range(self.changes):
 
@@ -39,6 +38,7 @@ class Moving_Hillclimber:
                 best_state = copy.deepcopy(self.houses)
             else:
                 self.undo_housemove(given_direction, moving_house)
+                # calculate final house price?
 
             current_changes += 1
 
