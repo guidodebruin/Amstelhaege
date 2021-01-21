@@ -71,9 +71,9 @@ class Simulated_Annealing(Moving_Hillclimber):
             # print(solution_totalprice)
             y_axes.append(solution_totalprice)
 
-            plt.subplot(131)
-            plt.plot(y_axes)
-            plt.savefig('../plots/simulated_annealing.png')
+            # plt.subplot(131)
+            # plt.plot(y_axes)
+            # plt.savefig('../plots/simulated_annealing.png')
         
             self.area.load_houses(solution)
 
