@@ -3,7 +3,8 @@ import copy
 import math
 import matplotlib.pyplot as plt
 
-from graph import Graph
+from code.classes.graph import Graph
+
 
 class Moving_Hillclimber:
 
@@ -14,7 +15,9 @@ class Moving_Hillclimber:
 
 
     def move_houses(self):
+        
         current_changes = 0
+        best_state = copy.deepcopy(self.houses)
 
         # randomly assign the invalid placed houses until a valid state is reached
         self.area.randomly_assign_houses(self.houses)
@@ -27,9 +30,7 @@ class Moving_Hillclimber:
         
         print(best_value)
 
-        for current_changes in range(self.changes):
-
-            plt.clf() 
+        while current_changes < self.changes:
 
             # Return a random direction
             given_direction = self.random_direction()
@@ -40,7 +41,7 @@ class Moving_Hillclimber:
             # Assigns a new valid place for a house in a certain direction.
             self.assign_random_direction(given_direction, moving_house)
 
-            # !!!! reset the houses prices to their original price before calculating their new price increase
+            # reset the houses prices to their original price before calculating their new price increase
             self.area.price_reset(self.houses)
 
             # Calculate final houseprice
@@ -48,7 +49,6 @@ class Moving_Hillclimber:
 
             # Obtain the total prices of all households
             total_price = self.area.get_networth(self.houses)
-
 
             self.area.load_houses(self.houses)
 
@@ -58,11 +58,14 @@ class Moving_Hillclimber:
                 print("goed!")
                 best_value = total_price
                 best_state = copy.deepcopy(self.houses)
+                current_changes += 1
+
             else:
                 print("verkeerd")
                 moving_house.corner_lowerleft = self.undo_housemove(given_direction, moving_house)
 
             # current_changes += 1?
+
 
         # Final outcome
         self.area.load_houses(best_state)
@@ -98,19 +101,19 @@ class Moving_Hillclimber:
 
         if random_direction == "up":
             # The y-coordinate goes up by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 1]    
+            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 4]    
 
         elif random_direction == "down":
             # The y-coordinate goes down by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] - 1]
+            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] - 4]
 
         elif random_direction == "left":
             # The x-coordinate goes down by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0] - 1, random_house.corner_lowerleft[1]]
+            random_house_coordinates = [random_house.corner_lowerleft[0] - 4, random_house.corner_lowerleft[1]]
 
         elif random_direction == "right": 
             # The x-coordinate goes up by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0] + 1, random_house.corner_lowerleft[1]]
+            random_house_coordinates = [random_house.corner_lowerleft[0] + 4, random_house.corner_lowerleft[1]]
 
         return random_house_coordinates
 
@@ -138,21 +141,18 @@ class Moving_Hillclimber:
         """
         if random_direction == "up":
             # The y-coordinate goes down by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] - 1]
+            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] - 4]
 
         elif random_direction == "down":
             # The y-coordinate goes up by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 1]
+            random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 4]
 
         elif random_direction == "left":
             # The x-coordinate goes up by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0] + 1, random_house.corner_lowerleft[1]]
+            random_house_coordinates = [random_house.corner_lowerleft[0] + 4, random_house.corner_lowerleft[1]]
 
         elif random_direction == "right":
             # The x-coordinate goes down by 1
-            random_house_coordinates = [random_house.corner_lowerleft[0] - 1, random_house.corner_lowerleft[1]]
-
-        # Change the coordinates of the randomly selected house
-        # random_house.corner_lowerleft = random_house_coordinates
+            random_house_coordinates = [random_house.corner_lowerleft[0] - 4, random_house.corner_lowerleft[1]]
 
         return random_house_coordinates

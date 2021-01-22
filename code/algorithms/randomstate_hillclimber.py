@@ -1,7 +1,7 @@
 import copy
 import matplotlib.pyplot as plt
 
-from graph import Graph
+from code.classes.graph import Graph
 
 class Randomstate_Hillclimber:
 
