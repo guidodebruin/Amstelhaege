@@ -22,7 +22,7 @@ class Simulated_Annealing(Moving_Hillclimber):
         """
 
         # Simulated Annealing Parameters
-        temp = 1
+        temp = 30
         final_temp = 0.1    
         alpha = 0.01
 
@@ -34,9 +34,9 @@ class Simulated_Annealing(Moving_Hillclimber):
 
         while temp > final_temp:
 
-            # move a random house in this state
             for change in range(self.changes):
                     
+                # make n changes to the positions of random houses
                 given_direction = self.random_direction()
                 moving_house = self.random_house(self.houses)
                 self.assign_random_direction(given_direction, moving_house)
@@ -69,12 +69,12 @@ class Simulated_Annealing(Moving_Hillclimber):
             # reset the house prices
             self.area.price_reset(self.houses)
             # print(solution_totalprice)
-            y_axes.append(solution_totalprice)
+            # y_axes.append(solution_totalprice)
 
             # plt.subplot(131)
             # plt.plot(y_axes)
             # plt.savefig('../plots/simulated_annealing.png')
         
-            self.area.load_houses(solution)
+        self.area.load_houses(solution)
 
         self.area.write_output(solution)

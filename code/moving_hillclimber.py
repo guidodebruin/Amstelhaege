@@ -12,6 +12,7 @@ class Moving_Hillclimber:
         self.houses = houses
         self.area = area
 
+
     def move_houses(self):
         current_changes = 0
 
@@ -36,11 +37,11 @@ class Moving_Hillclimber:
             # Get a random house from all houses
             moving_house = self.random_house(self.houses)
 
-            # !!!! reset the houses prices to their original price before calculating their new price increase
-            self.area.price_reset(self.houses)
-
             # Assigns a new valid place for a house in a certain direction.
             self.assign_random_direction(given_direction, moving_house)
+
+            # !!!! reset the houses prices to their original price before calculating their new price increase
+            self.area.price_reset(self.houses)
 
             # Calculate final houseprice
             self.area.houseprices(self.houses)
@@ -59,10 +60,9 @@ class Moving_Hillclimber:
                 best_state = copy.deepcopy(self.houses)
             else:
                 print("verkeerd")
-                self.undo_housemove(given_direction, moving_house)
-                self.area.houseprices(self.houses)
+                moving_house.corner_lowerleft = self.undo_housemove(given_direction, moving_house)
 
-            # current_changes += 1
+            # current_changes += 1?
 
         # Final outcome
         self.area.load_houses(best_state)
@@ -79,6 +79,7 @@ class Moving_Hillclimber:
         
         return random_house
       
+
     def random_direction(self):
         """
          Returns random coordinates for a random direction
@@ -88,6 +89,7 @@ class Moving_Hillclimber:
         random_direction = random.choice(direction)
 
         return random_direction
+
 
     def return_new_coordinates(self, random_direction, random_house):
         """
@@ -122,11 +124,13 @@ class Moving_Hillclimber:
         moving_house.corner_lowerleft = self.return_new_coordinates(random_direction, moving_house)
 
         # Check if the newly assigned coordinates are valid, if not assign new coordinates
-        while self.area.invalid(moving_house, self.houses) or self.area.overlap(moving_house, self.houses):
-            moving_house.corner_lowerleft = self.return_new_coordinates(random_direction, moving_house)
+        if self.area.invalid(moving_house, self.houses) or self.area.overlap(moving_house, self.houses):
+            # return house to original position
+            moving_house.corner_lowerleft = self.undo_housemove(random_direction, moving_house)
 
         return moving_house
      
+
     def undo_housemove(self, random_direction, random_house):
 
         """
@@ -149,6 +153,6 @@ class Moving_Hillclimber:
             random_house_coordinates = [random_house.corner_lowerleft[0] - 1, random_house.corner_lowerleft[1]]
 
         # Change the coordinates of the randomly selected house
-        random_house.corner_lowerleft = random_house_coordinates
+        # random_house.corner_lowerleft = random_house_coordinates
 
-        return random_house
+        return random_house_coordinates

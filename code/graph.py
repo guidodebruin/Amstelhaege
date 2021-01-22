@@ -96,7 +96,11 @@ class Graph():
             water_boxes.append(water_box)
 
         # check for overlap between edges graph and houses and save in list
-        if housebox1.overlaps(graph_box):
+        # if graph_box.overlaps(housebox1):
+        #     return True
+
+        # check if overlap with border of the map
+        if self.check_borders(house):
             return True
 
         # check for intersection between water areas and houses and save in list
@@ -256,5 +260,17 @@ class Graph():
                 house.price = 399000
             elif isinstance(house, Singlehouse):
                 house.price = 285000
+
+
+    def check_borders(self, house):
+        """
+            Returns true if house placement is on top of a border of the graph
+        """
+        house_corners = [house.corner_lowerleft, house.return_upperleft(house), house.return_upperright(house), house.return_lowerright(house)]
+        for corners in house_corners:
+            for corner in corners:
+                if corner < 0 or corner > 180 or corner > 160:
+                    return True
+        return False 
 
             
