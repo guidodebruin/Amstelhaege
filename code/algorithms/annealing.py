@@ -3,8 +3,8 @@ import copy
 import math
 import matplotlib.pyplot as plt
 
-from graph import Graph
-from moving_hillclimber import Moving_Hillclimber
+from code.classes.graph import Graph
+from code.algorithms.moving_hillclimber import Moving_Hillclimber
 
 
 class Simulated_Annealing(Moving_Hillclimber):

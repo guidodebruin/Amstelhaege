@@ -2,12 +2,14 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-
-from singlehouse import Singlehouse
-from bungalow import Bungalow
-from maison import Maison
-from House import House
 from shapely.geometry import box, Point
+
+from code.classes.singlehouse import Singlehouse
+from code.classes.bungalow import Bungalow
+from code.classes.maison import Maison
+
+
+
 
 
 class Graph():
@@ -20,7 +22,7 @@ class Graph():
         self.depth = 160
 
         # Load the water data
-        self.load_water(f"../Areas/{area}.csv")
+        self.load_water(f"Areas/{area}.csv")
 
         # Create area graph
         self.load_graph()
@@ -64,7 +66,7 @@ class Graph():
             ax.add_patch(rect)
 
         # Save the graph
-        plt.savefig('../plots/init_graph.png')
+        plt.savefig('plots/init_graph.png')
         
 
     def load_houses(self, houses):
@@ -79,7 +81,7 @@ class Graph():
             ax.add_patch(rect)
 
         # Save the graph
-        plt.savefig('../plots/init_graph.png')
+        plt.savefig('plots/init_graph.png')
 
 
     def overlap(self, house, houses):

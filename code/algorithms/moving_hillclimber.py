@@ -3,7 +3,8 @@ import copy
 import math
 import matplotlib.pyplot as plt
 
-from graph import Graph
+from code.classes.graph import Graph
+
 
 class Moving_Hillclimber:
 

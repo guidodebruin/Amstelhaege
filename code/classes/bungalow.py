@@ -1,4 +1,4 @@
-from House import House
+from code.classes.House import House
 
 class Bungalow(House):
     
