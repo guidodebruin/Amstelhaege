@@ -15,20 +15,20 @@ class Moving_Hillclimber:
 
 
     def move_houses(self):
-        
         current_changes = 0
-        best_state = copy.deepcopy(self.houses)
 
         # randomly assign the invalid placed houses until a valid state is reached
         self.area.randomly_assign_houses(self.houses)
+
+        best_state = {}
+        for house in self.houses:
+            best_state[house.id] = house.corner_lowerleft
 
         # calculate final houseprice
         self.area.houseprices(self.houses) 
 
         # calculate final houseprice
         best_value = self.area.get_networth(self.houses)
-        
-        print(best_value)
 
         while current_changes < self.changes:
 
@@ -50,28 +50,32 @@ class Moving_Hillclimber:
             # Obtain the total prices of all households
             total_price = self.area.get_networth(self.houses)
 
-            self.area.load_houses(self.houses)
-
-            print (total_price)
-
             if total_price > best_value:
-                print("goed!")
                 best_value = total_price
-                best_state = copy.deepcopy(self.houses)
+                solution = {}
+                for house in self.houses:
+                    solution[house.id] = house.corner_lowerleft
                 current_changes += 1
-
             else:
-                print("verkeerd")
                 moving_house.corner_lowerleft = self.undo_housemove(given_direction, moving_house)
 
-            # current_changes += 1?
+        # reset the houses prices to their original price before calculating their new price increase
+        self.area.price_reset(self.houses)
 
+        # final outcome
+        for key in best_state:
+            for house in self.houses:
+                if key == house.id:
+                    house.corner_lowerleft = best_state[key]
 
-        # Final outcome
-        self.area.load_houses(best_state)
-        self.area.write_output(best_state)
+        # calculate final houseprice
+        self.area.houseprices(self.houses)
 
-        print(best_value)
+        # get final houseprice
+        final_networth = self.area.get_networth(self.houses)
+
+        self.area.load_houses(self.houses)
+        self.area.write_output(self.houses)
                 
 
     def random_house(self, houses):
