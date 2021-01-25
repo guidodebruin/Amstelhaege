@@ -29,21 +29,29 @@ De gemeente heeft ons daarom een opdracht gegeven om de wijk te bouwen. Om de wi
 ## Gebruik 
 - python3 main.py **area_no.** **variant**
 - Keuze uit: (area_1, area_2, area_3) (20, 40, 60)
+- Algoritme keuze: 1, 2 , 3
 #### Voorbeeld
-```python3 main.py area_1 40```
+```
+>>>python3 main.py area_1 40
+Choose the algorithm with which you want to perform the calculation
+Algorithmes available: Randomstate = 1, Hill Climber = 2, Simulated Annealing = 3
+>>> Please choose your algorithm by entering the corresponding number: 2 
+```
 
 ## Algoritmes
 
-### Random
+### Randomstate
 Bij het Random-algoritme worden huizen willekeurig op de kaart geplaatst met de voorwaarde dat de huizen niet overlappen met het water en/of met elkaar. Verder moeten de huizen binnen de grenzen van het kaart blijven, dus een huis mag niet de grens voor een gedeelte raken. 
+Bij de random state hillclimber wordt het algoritme een X aantal keer gelooped aan de hand van de ‘input’ functie. Tijdens het loopen worden er diverse random states gegenereerd(vandaar de naam) en berekent het algoritme steeds de totale waarde van het kaart. Als de nieuwe state een hogere waarde heeft dan de huidige state wordt de nieuwe state opgeslagen. Uiteindelijk blijft de state met de hoogste waarde over.
 
-### Hillclimber
-We hebben twee varianten gemaakt van het Hill Climber algoritme genaamd “random state hill climber” en “moving hill climber”.  Bij de random state hillclimber wordt het algoritme een X aantal keer gelooped aan de hand van de ‘input’ functie. Tijdens het loopen worden er diverse random states gegenereerd(vandaar de naam) en berekent het algoritme steeds de totale waarde van het kaart. Als de nieuwe state een hogere waarde heeft dan de huidige state wordt de nieuwe state opgeslagen met een deepcopy. Uiteindelijk blijft de state met de hoogste waarde over.
-
-De moving hillclimber lijkt een beetje op de stochastische hill climber variant. Hierbij plaatst het algoritme eerst willekeurig de huizen op de kaart. Vervolgens wordt er een willekeurig huis geselecteerd en verschuift het algoritme het huis in een willekeurige richting. Wanneer deze verplaatsing heeft geleid tot een verhoging van de totale prijs van de huizen, blijft deze verandering in stand. Wanneer dit niet het geval is, wordt het huis teruggeplaatst. Door dit proces telkens te herhalen, wordt er op deze manier getracht de hoogste prijs te behalen voor de huizen.
+### Hill Climber
+De hillclimber lijkt een beetje op de stochastische hill climber variant. Hierbij plaatst het algoritme eerst willekeurig de huizen op de kaart. Vervolgens wordt er een willekeurig huis geselecteerd en verschuift het algoritme het huis in een willekeurige richting. Wanneer deze verplaatsing heeft geleid tot een verhoging van de totale prijs van de huizen, blijft deze verandering in stand. Wanneer dit niet het geval is, wordt het huis teruggeplaatst. Door dit proces telkens te herhalen, wordt er op deze manier getracht de hoogste prijs te behalen voor de huizen.
 
 
-### xx
+### Simulated Annealing
+De algoritme is significant anders dan de vorige algoritme Hill Climber. Simulated Annealing is een effectieve methode voor optimalisatie en is geïnspireerd door het proces van gloeien(annealing) in metaalbewerking. Bij SA wordt er een temperatuur variabele gebruikt om het verwarmingsproces te simuleren. De temperatuur wordt in de eerste instantie hoog ingesteld en vervolgens wordt het langzaam gekoeld terwijl de algoritme wordt uitgevoerd.
+Het afkoelen geeft de algoritme de mogelijkheid om uit lokale optimum te springen. Naarmate de temperatuur daalt, wordt de kans groter dat slechtere oplossingen worden geaccepteerd, waardoor de algoritme zich geleidelijk kan concentreren op een deel van het zoekgebied waarin een bijna optimale oplossing gevonden kan worden.
+
 
 ## Team AH
 - Allan Duah
