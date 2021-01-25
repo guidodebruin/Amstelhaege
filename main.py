@@ -26,26 +26,8 @@ else:
 # Make the graph
 area = Graph(area)   
 
-# Determine the total number of houses for every variation
-total_houses = int(sys.argv[2])
-total_singlehouses = 0.6 * int(total_houses)
-total_bungalows = 0.25 * int(total_houses)
-total_maisons = 0.15 * int(total_houses)
-
-all_houses = []
-
-# Make the house objects and add to list
-for singlehouse in range(int(total_singlehouses)):
-    singlehouse = Singlehouse()
-    all_houses.append(singlehouse)
-
-for bungalow in range(int(total_bungalows)):
-    bungalow = Bungalow()
-    all_houses.append(bungalow)
-
-for maison in range(int(total_maisons)):
-    maison = Maison()
-    all_houses.append(maison)
+# create house objects
+all_houses = area.save_houses(int(sys.argv[2]))
 
 print("Choose the algorithm with which you want to perform the calculation")
 print("Algorithmes available: Random = 1, Hill Climber = 2, Simulated Annealing = 3")
@@ -84,8 +66,3 @@ elif chosen_algorithm == "3":
     
     simulated_annealing = Simulated_Annealing(changes, all_houses, area)
     simulated_annealing.simulate()
-
-
-
-
-

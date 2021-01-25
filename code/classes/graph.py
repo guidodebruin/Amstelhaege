@@ -9,9 +9,6 @@ from code.classes.bungalow import Bungalow
 from code.classes.maison import Maison
 
 
-
-
-
 class Graph():
     def __init__(self, area):
         """
@@ -67,7 +64,34 @@ class Graph():
 
         # Save the graph
         plt.savefig('plots/init_graph.png')
-        
+
+
+    def save_houses(self, number_of_houses):
+        """
+            Creates the house objects based on the amount of houses.
+            Return a list of all created houses
+        """
+        total_singlehouses = 0.6 * number_of_houses
+        total_bungalows = 0.25 * number_of_houses
+        total_maisons = 0.15 * number_of_houses
+
+        all_houses = []
+
+        # Make the house objects and add to list
+        for singlehouse in range(int(total_singlehouses)):
+            singlehouse = Singlehouse()
+            all_houses.append(singlehouse)
+
+        for bungalow in range(int(total_bungalows)):
+            bungalow = Bungalow()
+            all_houses.append(bungalow)
+
+        for maison in range(int(total_maisons)):
+            maison = Maison()
+            all_houses.append(maison)
+
+        return all_houses
+
 
     def load_houses(self, houses):
         """

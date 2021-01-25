@@ -1,6 +1,8 @@
 import copy
 import matplotlib.pyplot as plt
 
+import pickle
+
 from code.classes.graph import Graph
 
 class Random:
@@ -18,8 +20,6 @@ class Random:
         best_value = 0
         best_state = []
 
-        y_axes = []
-
         for loop in range(self.loops):
             # randomly assign the invalid placed houses until a valid state is reached
             self.area.randomly_assign_houses(self.houses)
@@ -33,16 +33,13 @@ class Random:
             if best_value < final_networth:
                 best_value = final_networth
                 best_state = copy.deepcopy(self.houses)
+                # pickle.dump( best_state, open( "save.p", "wb" ) )
 
             # reset the graph
             self.area.area_reset(self.houses)
             self.area.price_reset(self.houses)
 
-            # y_axes.append(best_value)
-            # plt.subplot(131)
-            # plt.plot(y_axes)
-            # plt.savefig('../plots/simulated_annealing.png')
-
         # final outcome
+        # best_state = pickle.load( open( "save.p", "rb" ) )
         self.area.load_houses(best_state)
         self.area.write_output(best_state)
