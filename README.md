@@ -20,14 +20,13 @@ De gemeente heeft ons daarom een opdracht gegeven om de wijk te bouwen. Om de wi
 
 ## Installatie
 ```
-- pip3 install check-requirements-txt
 - python3 -m pip install -U pip
 - python3 -m pip install -U matplotlib
 - pip3 install shapely
 ```
 
 ## Gebruik 
-- python3 main.py **area_no.** **variant**
+- python3 main.py < area_no > < variant >
 - Hier kiest de gebruiker welke area hij/zij wilt gebruiken. Keuze uit: (area_1, area_2, area_3) (20, 40, 60)
 - Hier kiest de gebruiker welke algoritme hij/zij wilt gebruiken. Keuze: 1, 2 , 3
 #### Voorbeeld
