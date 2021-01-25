@@ -1,22 +1,22 @@
 structure,corner_1,corner_2,corner_3,corner_4,type
-singlehouse_1,"136, 116","136, 108","144, 116","144, 108",EENGEZINSWONING
-singlehouse_2,"98, 148","98, 140","106, 148","106, 140",EENGEZINSWONING
-singlehouse_3,"88, 128","88, 120","96, 128","96, 120",EENGEZINSWONING
-singlehouse_4,"148, 140","148, 132","156, 140","156, 132",EENGEZINSWONING
-singlehouse_5,"56, 46","56, 38","64, 46","64, 38",EENGEZINSWONING
-singlehouse_6,"72, 141","72, 133","80, 141","80, 133",EENGEZINSWONING
-singlehouse_7,"39, 46","39, 38","47, 46","47, 38",EENGEZINSWONING
-singlehouse_8,"46, 133","46, 125","54, 133","54, 125",EENGEZINSWONING
-singlehouse_9,"10, 128","10, 120","18, 128","18, 120",EENGEZINSWONING
-singlehouse_10,"88, 103","88, 95","96, 103","96, 95",EENGEZINSWONING
-singlehouse_11,"42, 87","42, 79","50, 87","50, 79",EENGEZINSWONING
-singlehouse_12,"40, 116","40, 108","48, 116","48, 108",EENGEZINSWONING
-bungalow_1,"114, 50","114, 43","125, 50","125, 43",BUNGALOW
-bungalow_2,"113, 138","113, 131","124, 138","124, 131",BUNGALOW
-bungalow_3,"22, 158","22, 151","33, 158","33, 151",BUNGALOW
-bungalow_4,"70, 80","70, 73","81, 80","81, 73",BUNGALOW
-bungalow_5,"55, 144","55, 137","66, 144","66, 137",BUNGALOW
-maison_1,"33, 64","33, 54","45, 64","45, 54",MAISON
-maison_2,"136, 89","136, 79","148, 89","148, 79",MAISON
-maison_3,"15, 100","15, 90","27, 100","27, 90",MAISON
-networth,10182101
+singlehouse_1,"68, 141","68, 133","76, 141","76, 133",EENGEZINSWONING
+singlehouse_2,"79, 49","79, 41","87, 49","87, 41",EENGEZINSWONING
+singlehouse_3,"66, 82","66, 74","74, 82","74, 74",EENGEZINSWONING
+singlehouse_4,"8, 63","8, 55","16, 63","16, 55",EENGEZINSWONING
+singlehouse_5,"140, 115","140, 107","148, 115","148, 107",EENGEZINSWONING
+singlehouse_6,"87, 116","87, 108","95, 116","95, 108",EENGEZINSWONING
+singlehouse_7,"66, 101","66, 93","74, 101","74, 93",EENGEZINSWONING
+singlehouse_8,"99, 58","99, 50","107, 58","107, 50",EENGEZINSWONING
+singlehouse_9,"125, 144","125, 136","133, 144","133, 136",EENGEZINSWONING
+singlehouse_10,"52, 86","52, 78","60, 86","60, 78",EENGEZINSWONING
+singlehouse_11,"97, 148","97, 140","105, 148","105, 140",EENGEZINSWONING
+singlehouse_12,"30, 127","30, 119","38, 127","38, 119",EENGEZINSWONING
+bungalow_1,"120, 125","120, 118","131, 125","131, 118",BUNGALOW
+bungalow_2,"100, 158","100, 151","111, 158","111, 151",BUNGALOW
+bungalow_3,"2, 147","2, 140","13, 147","13, 140",BUNGALOW
+bungalow_4,"142, 159","142, 152","153, 159","153, 152",BUNGALOW
+bungalow_5,"49, 119","49, 112","60, 119","60, 112",BUNGALOW
+maison_1,"104, 79","104, 69","116, 79","116, 69",MAISON
+maison_2,"40, 49","40, 39","52, 49","52, 39",MAISON
+maison_3,"27, 107","27, 97","39, 107","39, 97",MAISON
+networth,9987190

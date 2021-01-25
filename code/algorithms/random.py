@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 from code.classes.graph import Graph
 
-class Randomstate_Hillclimber:
+class Random:
 
     def __init__(self, loops, houses, area):
         self.loops = loops

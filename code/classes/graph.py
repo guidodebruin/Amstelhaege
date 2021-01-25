@@ -97,10 +97,6 @@ class Graph():
             water_box = box(data[1][0], data[1][1], data[2][0], data[2][1])
             water_boxes.append(water_box)
 
-        # check for overlap between edges graph and houses and save in list
-        # if graph_box.overlaps(housebox1):
-        #     return True
-
         # check if overlap with border of the map
         if self.check_borders(house):
             return True

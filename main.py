@@ -1,33 +1,13 @@
 import sys
 
-# from code.classes.House import House
 from code.classes.singlehouse import Singlehouse
 from code.classes.bungalow import Bungalow
 from code.classes.maison import Maison
 from code.classes.graph import Graph
 
-from code.algorithms.randomstate_hillclimber import Randomstate_Hillclimber
+from code.algorithms.random import Random
 from code.algorithms.moving_hillclimber import Moving_Hillclimber
 from code.algorithms.annealing import Simulated_Annealing
-
-
-
-#application/app2/some_folder/some_file.py
-
-# sys.path.append('amstelhaege/code/classes/singlehouse.py/')
-# sys.path.append('amstelhaege/code/classes/graph.py/')
-
-
-# from code.classes.singlehouse import Singlehouse
-# from code.classes.bungalow import Bungalow
-# from code.classes.maison import Maison
-# from code.classes.graph import Graph
-# from code.algorithms.annealing import Simulated_Annealing
-# from code.algorithms import moving_hillclimber
-# from code.algorithms import randomstate_hillclimber
-# from moving_hillclimber import Moving_Hillclimber
-# from randomstate_hillclimber import Randomstate_Hillclimber
-# from annealing import Simulated_Annealing
 
 
 # Request user for area number and number of houses
@@ -68,11 +48,11 @@ for maison in range(int(total_maisons)):
     all_houses.append(maison)
 
 print("Choose the algorithm with which you want to perform the calculation")
-print("Algorithmes available: Randomstate = 1, Hill Climber = 2, Simulated Annealing = 3")
+print("Algorithmes available: Random = 1, Hill Climber = 2, Simulated Annealing = 3")
 chosen_algorithm = input("Please choose your algorithm by entering the corresponding number: ")
 
 while chosen_algorithm not in ["1", "2", "3"]:
-    print("Algorithmes available: Randomstate = 1, Hill Climber = 2, Simulated Annealing = 3")
+    print("Algorithmes available: Random = 1, Hill Climber = 2, Simulated Annealing = 3")
     chosen_algorithm = input("Please choose your algorithm by entering the corresponding number: ")
 
 # The user has chosen the random algorithm
@@ -82,8 +62,8 @@ if chosen_algorithm == "1":
     while not loop.isdigit():
        loop = input("Insert number of runs: ")
     loops = int(loop)
-    randomstate_hillclimber = Randomstate_Hillclimber(loops, all_houses, area)
-    randomstate_hillclimber.looper()
+    random = Random(loops, all_houses, area)
+    random.looper()
 
 # The user has chosen the moving hill climber
 elif chosen_algorithm == "2":
