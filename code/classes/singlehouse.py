@@ -8,5 +8,5 @@ class Singlehouse(House):
       self.id = id(self)
       self.freespace = 2
       self.price = 285000
-      self.percentage = 0.03
+      self.percentage = 3
       self.corner_lowerleft = [0,0]

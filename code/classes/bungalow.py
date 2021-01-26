@@ -8,6 +8,6 @@ class Bungalow(House):
         self.id = id(self) 
         self.freespace = 3
         self.price = 399000
-        self.percentage = 0.04
+        self.percentage = 4
         self.corner_lowerleft = [0,0]   
     

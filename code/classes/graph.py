@@ -1,8 +1,9 @@
 import csv
+import math
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
-from shapely.geometry import box, Point
+from shapely.geometry import box
 
 from code.classes.singlehouse import Singlehouse
 from code.classes.bungalow import Bungalow
@@ -78,17 +79,17 @@ class Graph():
         all_houses = []
 
         # Make the house objects and add to list
-        for singlehouse in range(int(total_singlehouses)):
-            singlehouse = Singlehouse()
-            all_houses.append(singlehouse)
+        for maison in range(int(total_maisons)):
+            maison = Maison()
+            all_houses.append(maison)
 
         for bungalow in range(int(total_bungalows)):
             bungalow = Bungalow()
             all_houses.append(bungalow)
 
-        for maison in range(int(total_maisons)):
-            maison = Maison()
-            all_houses.append(maison)
+        for singlehouse in range(int(total_singlehouses)):
+            singlehouse = Singlehouse()
+            all_houses.append(singlehouse)
 
         return all_houses
 
@@ -145,7 +146,6 @@ class Graph():
             The output list returns a house and its freespace
         """
         output = []
-
         # save all the corners of the house
         house_pointlist = [house.corner_lowerleft, house.return_upperleft(house), house.return_upperright(house), house.return_lowerright(house)]
 
@@ -155,18 +155,49 @@ class Graph():
                 neigh_pointlist = [neigh_house.corner_lowerleft, neigh_house.return_upperleft(neigh_house), neigh_house.return_upperright(neigh_house), neigh_house.return_lowerright(neigh_house)]
             
                 # compare the points of given house and its neighbours to find shortest distance
-                for housepoint in house_pointlist:
-                    for neighpoint in neigh_pointlist:
-                        distance = Point(housepoint[0],housepoint[1]).distance(Point(neighpoint[0],neighpoint[1]))
-                        if output == []:
-                            output.append(neigh_house)
-                            output.append(distance) 
-                        elif distance < output[1]:
-                            output = []
-                            output.append(neigh_house)
-                            output.append(distance)
-
+                distance = self.rect_distance(house_pointlist[0][0],house_pointlist[0][1], house_pointlist[2][0], house_pointlist[2][1], neigh_pointlist[0][0],neigh_pointlist[0][1], neigh_pointlist[2][0], neigh_pointlist[2][1])
+                if output == []:
+                    output.append(neigh_house)
+                    output.append(distance) 
+                elif distance < output[1]:
+                    output = []
+                    output.append(neigh_house)
+                    output.append(distance)
+                            
         return output
+
+
+    def distance_calculator(self, x1, y1, x2, y2):
+        """
+            Calculates the distance between points.
+        """
+        dist = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
+        return dist
+
+
+    def rect_distance(self,x1, y1, x1b, y1b, x2, y2, x2b, y2b):
+        left = x2b < x1
+        right = x1b < x2
+        bottom = y2b < y1
+        top = y1b < y2
+        if top and left:
+            return self.distance_calculator(x1, y1b, x2b, y2)
+        elif left and bottom:
+            return self.distance_calculator(x1, y1,x2b, y2b)
+        elif bottom and right:
+            return self.distance_calculator(x1b, y1, x2, y2b)
+        elif right and top:
+            return self.distance_calculator(x1b, y1b, x2, y2)
+        elif left:
+            return x1 - x2b
+        elif right:
+            return x2 - x1b
+        elif bottom:
+            return y1 - y2b
+        elif top:
+            return y2 - y1b
+        else:             # rectangles intersect
+            return 0
 
 
     def invalid(self, house, houses):
@@ -174,16 +205,18 @@ class Graph():
             Checks if the freespace between houses is the same or larger than the minimum freespace required.
             Returns True if the freespace is invalid. 
         """
-        nearest_neighbour = self.closest_house(house, houses)
+        house_pointlist = [house.corner_lowerleft, house.return_upperleft(house), house.return_upperright(house), house.return_lowerright(house)]
 
-        # Return houses with an invalid freespace distance
-        if isinstance(house, Maison) and nearest_neighbour[1] < house.freespace:
-            return True
-        elif isinstance(house, Bungalow) and nearest_neighbour[1] < house.freespace:
-            return True
-        elif isinstance(house, Singlehouse) and  nearest_neighbour[1] < house.freespace:
-            return True
-    
+        for neigh_house in houses:
+            if neigh_house.id is not house.id:
+                # save all the corners of a neighbouring house
+                neigh_pointlist = [neigh_house.corner_lowerleft, neigh_house.return_upperleft(neigh_house), neigh_house.return_upperright(neigh_house), neigh_house.return_lowerright(neigh_house)]
+                # compare the points of given house and its neighbours to find shortest distance
+                distance = self.rect_distance(house_pointlist[0][0],house_pointlist[0][1], house_pointlist[2][0], house_pointlist[2][1], neigh_pointlist[0][0],neigh_pointlist[0][1], neigh_pointlist[2][0], neigh_pointlist[2][1])
+                if distance > house.freespace and distance > neigh_house.freespace:
+                    continue
+                else:
+                    return True
         return False
 
 
@@ -205,7 +238,7 @@ class Graph():
         for house in houses:
             freespace = self.closest_house(house, houses)[1]
             extra_freespace = freespace - house.freespace
-            price_increase = extra_freespace * house.percentage + 1
+            price_increase = ((extra_freespace * house.percentage)/100) + 1
             house.price = round(house.price * price_increase)
 
 
@@ -219,34 +252,35 @@ class Graph():
             singlehouse_counter = 0
             bungalow_counter = 0
             maison_counter = 0
+
             for water in self.water:
                 structure = water[0]
                 corner_1 = water[1]
-                corner_2 = [water[1][0] + water[2][0], water[1][1]]
+                corner_2 = [water[1][0] + water[2][0],water[1][1]]
                 corner_3 = water[2]
                 corner_4 = [water[1][0], water[1][0] + water[2][1]]
                 watertype = water[3]
-                writer.writerow([structure, ', '.join(map(str, corner_1)), ', '.join(map(str, corner_2)), ', '.join(map(str, corner_3)), ', '.join(map(str, corner_4)), watertype])
+                writer.writerow([structure, ','.join(map(str, corner_1)), ','.join(map(str, corner_2)), ','.join(map(str, corner_3)), ','.join(map(str, corner_4)), watertype])
 
             for house in all_houses:
                 if isinstance(house, Singlehouse):
                     housetype = "EENGEZINSWONING"
                     singlehouse_counter += 1
                     structure = "singlehouse_" + str(singlehouse_counter)
-                    writer.writerow([structure, ', '.join(map(str, house.return_lowerright(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.return_upperright(house))) , housetype])
+                    writer.writerow([structure, ','.join(map(str, house.return_lowerright(house))), ','.join(map(str, house.corner_lowerleft)), ','.join(map(str,house.return_upperleft(house))), ','.join(map(str, house.return_upperright(house))) , housetype])
                 elif isinstance(house, Bungalow):
                     housetype = "BUNGALOW"
                     bungalow_counter += 1
                     structure = "bungalow_" + str(bungalow_counter) 
-                    writer.writerow([structure, ', '.join(map(str, house.return_lowerright(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.return_upperright(house))) , housetype])
+                    writer.writerow([structure, ','.join(map(str, house.return_lowerright(house))), ','.join(map(str, house.corner_lowerleft)), ','.join(map(str,house.return_upperleft(house))), ','.join(map(str, house.return_upperright(house))) , housetype])
                 elif isinstance(house, Maison):
                     housetype = "MAISON"
                     maison_counter += 1
                     structure = "maison_" + str(maison_counter)
-                    writer.writerow([structure, ', '.join(map(str, house.return_lowerright(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.return_upperright(house))) , housetype])
+                    writer.writerow([structure, ','.join(map(str, house.return_lowerright(house))), ','.join(map(str, house.corner_lowerleft)), ','.join(map(str,house.return_upperleft(house))), ','.join(map(str, house.return_upperright(house))) , housetype])
 
             writer.writerow(["networth", self.get_networth(all_houses)])
-    
+
 
     def get_networth(self, all_houses):
         """
