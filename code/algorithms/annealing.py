@@ -22,83 +22,63 @@ class Simulated_Annealing(Moving_Hillclimber):
         """
 
         # Simulated Annealing Parameters
-        temp = 1
+        temp = 30
         final_temp = 0.1    
-        alpha = 0.99
+        alpha = 0.97
 
-        # save the final prices to plot
         y_axes = []
 
         # create a random state
         current_state = self.area.randomly_assign_houses(self.houses)
+        solution = copy.deepcopy(self.houses)
 
-        # temporary best state
-        solution = {}
-        for house in self.houses:
-            solution[house.id] = house.corner_lowerleft
-
-        # calculate the total price of the current solution
+        self.area.houseprices(self.houses)
         solution_totalprice = self.area.get_networth(self.houses)
+        print(solution_totalprice)
 
         while temp > final_temp:
 
             for change in range(self.changes):
+                    
                 # make n changes to the positions of random houses
                 given_direction = self.random_direction()
                 moving_house = self.random_house(self.houses)
                 self.assign_random_direction(given_direction, moving_house)
 
             # calculate the new final house prices
+            self.area.price_reset(self.houses)
             self.area.houseprices(self.houses)
             new_totalprice = self.area.get_networth(self.houses)
+                
+            # calculate the total price of the current solution
+            self.area.price_reset(solution)
+            self.area.houseprices(solution)
+            solution_totalprice = self.area.get_networth(solution)
 
             # calculate the cost difference
             cost_diff = new_totalprice - solution_totalprice
 
-            # keep new state if better than current solution
+            # if better -> keep this state
             if solution_totalprice < new_totalprice:
                 solution_totalprice = new_totalprice
-                solution = {}
-                for house in self.houses:
-                    solution[house.id] = house.corner_lowerleft
+                solution = copy.deepcopy(self.houses)
+            # if worse -> check if this state can be accepted
             elif random.uniform(0, 1) < math.exp(cost_diff / temp):
-                print("gelukt")
                 solution_totalprice = new_totalprice
-                solution = {}
-                for house in self.houses:
-                    solution[house.id] = house.corner_lowerleft  
-            # state cannot be accepted
+                solution = copy.deepcopy(self.houses)
+            # if state cannot be accepted
             else:
-                new_totalprice = solution_totalprice
-                for key in solution:
-                    for house in self.houses:
-                        if key == house.id:
-                            house.corner_lowerleft = solution[key]
+                self.houses = solution
 
             # change the temp
             temp *= alpha
 
-            # reset the house prices
-            self.area.price_reset(self.houses)
-
-            # plot the total price of the solutions
+            # print(solution_totalprice)
             y_axes.append(solution_totalprice)
             plt.subplot(131)
             plt.plot(y_axes)
             plt.savefig('plots/simulated_annealing.png')
-
-        # final outcome
-        for key in solution:
-            for house in self.houses:
-                if key == house.id:
-                    house.corner_lowerleft = solution[key]
-
-        # calculate final houseprice
-        self.area.houseprices(self.houses)
-
-        # get final houseprice
-        final_networth = self.area.get_networth(self.houses)
         
-        self.area.load_houses(self.houses)
-        self.area.write_output(self.houses)
+        self.area.load_houses(solution)
         print(solution_totalprice)
+        self.area.write_output(solution)
