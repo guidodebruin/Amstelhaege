@@ -22,7 +22,7 @@ class Simulated_Annealing(Moving_Hillclimber):
         """
 
         # Simulated Annealing Parameters
-        temp = 30
+        temp = 100000
         final_temp = 0.1    
         alpha = 0.97
 
