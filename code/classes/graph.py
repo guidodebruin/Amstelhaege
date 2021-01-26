@@ -38,7 +38,7 @@ class Graph():
                 self.water.append([])
                 for elem in row:
                     if elem[0].isnumeric():
-                        coords = list(map(float,elem.split(','))) 
+                        coords = list(map(int,elem.split(','))) 
                         self.water[counter].append(coords)
                     else:
                         self.water[counter].append(elem)
@@ -209,17 +209,6 @@ class Graph():
             house.price = round(house.price * price_increase)
 
 
-    def all_houses_set(self):
-        pass
-
-
-    def delete_house(self):
-        pass
-
-    def swap_house(self):
-        pass
-
-
     def write_output(self, all_houses):
         """
             Writes the final output in a csv file.
@@ -230,23 +219,31 @@ class Graph():
             singlehouse_counter = 0
             bungalow_counter = 0
             maison_counter = 0
-            for house in all_houses:
+            for water in self.water:
+                structure = water[0]
+                corner_1 = water[1]
+                corner_2 = [water[1][0] + water[2][0], water[1][1]]
+                corner_3 = water[2]
+                corner_4 = [water[1][0], water[1][0] + water[2][1]]
+                watertype = water[3]
+                writer.writerow([structure, ', '.join(map(str, corner_1)), ', '.join(map(str, corner_2)), ', '.join(map(str, corner_3)), ', '.join(map(str, corner_4)), watertype])
 
+            for house in all_houses:
                 if isinstance(house, Singlehouse):
                     housetype = "EENGEZINSWONING"
                     singlehouse_counter += 1
                     structure = "singlehouse_" + str(singlehouse_counter)
-                    writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str, house.return_upperright(house))), ', '.join(map(str, house.return_lowerright(house))), housetype])
+                    writer.writerow([structure, ', '.join(map(str, house.return_lowerright(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.return_upperright(house))) , housetype])
                 elif isinstance(house, Bungalow):
                     housetype = "BUNGALOW"
                     bungalow_counter += 1
                     structure = "bungalow_" + str(bungalow_counter) 
-                    writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str, house.return_upperright(house))), ', '.join(map(str, house.return_lowerright(house))), housetype])
+                    writer.writerow([structure, ', '.join(map(str, house.return_lowerright(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.return_upperright(house))) , housetype])
                 elif isinstance(house, Maison):
                     housetype = "MAISON"
                     maison_counter += 1
                     structure = "maison_" + str(maison_counter)
-                    writer.writerow([structure, ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str, house.return_upperright(house))), ', '.join(map(str, house.return_lowerright(house))), housetype])
+                    writer.writerow([structure, ', '.join(map(str, house.return_lowerright(house))), ', '.join(map(str, house.corner_lowerleft)), ', '.join(map(str,house.return_upperleft(house))), ', '.join(map(str, house.return_upperright(house))) , housetype])
 
             writer.writerow(["networth", self.get_networth(all_houses)])
     
@@ -294,5 +291,3 @@ class Graph():
                 if corner < 0 or corner > 180 or corner > 160:
                     return True
         return False 
-
-            
