@@ -20,9 +20,8 @@ De gemeente heeft ons daarom een opdracht gegeven om de wijk te bouwen. Om de wi
 
 ## Installatie
 ```
-- python3 -m pip install -U pip
-- python3 -m pip install -U matplotlib
-- pip3 install shapely
+pip3 install -r requirements.txt
+
 ```
 
 ## Gebruik 
