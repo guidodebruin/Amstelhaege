@@ -10,7 +10,6 @@
 
 import copy
 import matplotlib.pyplot as plt
-# import pickle
 
 from code.classes.graph import Graph
 
@@ -61,7 +60,12 @@ class Random:
 
         # get final houseprice
         final_networth = self.area.get_networth(self.houses)
-        print(final_networth)
 
+
+    
+    def complete_random(self, ):
+
+        
         self.area.load_houses(self.houses)
+
         self.area.write_output(self.houses)

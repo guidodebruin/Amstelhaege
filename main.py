@@ -20,7 +20,7 @@ from code.algorithms.moving_hillclimber import Moving_Hillclimber
 from code.algorithms.annealing import Simulated_Annealing
 
 
-# Request user for area number and number of houses
+# request user for area number and number of houses
 if len(sys.argv) < 3:
     print("Choose a specific area_number and number of houses")
     sys.exit(1)
@@ -33,7 +33,7 @@ elif sys.argv[2] not in ["20", "40", "60"]:
 else:
     area = sys.argv[1]
 
-# Make the graph
+# make the graph
 area = Graph(area)   
 
 # create house objects
@@ -47,7 +47,7 @@ while chosen_algorithm not in ["1", "2", "3"]:
     print("Algorithmes available: Random = 1, Hill Climber = 2, Simulated Annealing = 3")
     chosen_algorithm = input("Please choose your algorithm by entering the corresponding number: ")
 
-# The user has chosen the random algorithm
+# the user has chosen the random algorithm
 if chosen_algorithm == "1":
     loop = input("How many random states do you want to generate: ")
  
@@ -56,15 +56,23 @@ if chosen_algorithm == "1":
     loops = int(loop)
     random = Random(loops, all_houses, area)
     random.looper()
+    random.complete_random()
 
-# The user has chosen the moving hill climber
+# the user has chosen the moving hill climber
 elif chosen_algorithm == "2":
+    loop = input("How many random states do you want to generate: ")
+
+    while not loop.isdigit():
+       loop = input("Insert number of runs: ")
+    loops = int(loop)
+
+    random = Random(loops, all_houses, area)
     total_change = input("How many changes do you want to make? ")
     while not total_change.isdigit():
         total_change = input("Insert number of changes: ")
     total_changes = int(total_change)
 
-    moving_hillclimber = Moving_Hillclimber(total_changes, all_houses, area)
+    moving_hillclimber = Moving_Hillclimber(total_changes, random.houses, area)
     moving_hillclimber.move_houses()
 
 # The user has chosen the simulated annealing

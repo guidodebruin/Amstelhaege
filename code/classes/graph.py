@@ -29,10 +29,10 @@ class Graph():
         self.width = 180
         self.depth = 160
 
-        # Load the water data
+        # load the water data
         self.load_water(f"Areas/{area}.csv")
 
-        # Create area graph
+        # create area graph
         self.load_graph()
 
 
@@ -40,7 +40,7 @@ class Graph():
         """
             Loads the water that belongs to a specific neighborhood
         """
-        # Read the file that contains the water data
+        # read the file that contains the water data
         with open(filename, "r") as csv_file:
             next(csv_file)
             reader = csv.reader(csv_file)
@@ -63,17 +63,17 @@ class Graph():
         plt.ylabel("depth")
         plt.axis([0, self.width, 0, self.depth])
         
-        # Display the neighborhood as green
+        # display the neighborhood as green
         ax = plt.gca()
         ax.set_facecolor("green")
         
         for data in self.water:
-            # Create a Rectangle patch in which water is displayed as blue
+            # create a Rectangle patch in which water is displayed as blue
             rect = patches.Rectangle((data[1][0], data[1][1]),(data[2][0]-data[1][0]),(data[2][1]-data[1][1]),facecolor='b')
-            # Add the patch to the Axes
+            # add the patch to the Axes
             ax.add_patch(rect)
 
-        # Save the graph
+        # save the graph
         plt.savefig('plots/init_graph.png')
 
 
@@ -88,7 +88,7 @@ class Graph():
 
         all_houses = []
 
-        # Make the house objects and add to list
+        # make the house objects and add to list
         for maison in range(int(total_maisons)):
             maison = Maison()
             all_houses.append(maison)
@@ -112,10 +112,10 @@ class Graph():
 
         for house in houses:
             rect = patches.Rectangle((house.corner_lowerleft[0], house.corner_lowerleft[1]),house.width, house.length,facecolor='r')
-            # Add the patch to the Axes
+            # add the patch to the Axes
             ax.add_patch(rect)
 
-        # Save the graph
+        # save the graph
         plt.savefig('plots/init_graph.png')
 
 
