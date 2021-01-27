@@ -26,48 +26,55 @@ class Moving_Hillclimber:
 
     def move_houses(self):
         """
-            Moves house to a different place and then calculates the new finalprice of the map.
+        Moves houses in a random direction and then calculates the new final price of the map.
         """ 
         current_changes = 0
+
+        # randomly assign the invalid placed houses until a valid state is reached
+        # self.area.randomly_assign_houses(self.houses)
 
         best_state = {}
         for house in self.houses:
             best_state[house.id] = house.corner_lowerleft
-
-        # calculate total value per house
-        self.area.houseprices(self.houses) 
+ 
         # calculate total value of the graph
         best_value = self.area.get_networth(self.houses)
+
 
         while current_changes < self.changes:
 
             # find house with the least freespace
-            # moving_house = self.return_smallest_freespace(self.houses)
+            moving_house = self.return_smallest_freespace()
+
 
             # return a random direction and a random house
             given_direction = self.random_direction()
-            moving_house = self.random_house(self.houses)
+            
+            # get a random house from all houses
+            #moving_house = self.random_house(self.houses)
 
             # assign this house to the given direction
             self.assign_random_direction(given_direction, moving_house)
 
-            # reset the houses prices to their original price before calculating their new price increase
+            # reset the house prices to their original price before calculating their new price increase
             self.area.price_reset(self.houses)
 
             # calculate final houseprices and total graph value
             self.area.houseprices(self.houses)
+
             total_price = self.area.get_networth(self.houses)
+
+            # print(total_price)
 
             if total_price > best_value:
                 best_value = total_price
                 solution = {}
+                current_changes += 1
                 for house in self.houses:
                     solution[house.id] = house.corner_lowerleft
             else:
                 moving_house.corner_lowerleft = self.undo_housemove(given_direction, moving_house)
-
-                current_changes += 1
-                print(current_changes)
+  
         # reset the houses prices to their original price before calculating their new price increase
         self.area.price_reset(self.houses)
 
@@ -89,7 +96,7 @@ class Moving_Hillclimber:
 
     def random_house(self, houses):
         """
-        Randomly returns a house object
+        Randomly returns a house object.
         """
         random_house = random.choice(houses)
         return random_house
@@ -97,7 +104,7 @@ class Moving_Hillclimber:
 
     def random_direction(self):
         """
-         Returns random coordinates for a random direction
+         Returns random coordinates for a random direction.
         """
         direction = ["up", "down", "left", "right"]
 
@@ -108,7 +115,7 @@ class Moving_Hillclimber:
 
     def return_new_coordinates(self, random_direction, random_house):
         """
-         Returns the new coordinates for the picked direction
+         Returns the new coordinates for the picked direction.
         """
         if random_direction == "up":
             # the y-coordinate goes up by 1
@@ -131,7 +138,7 @@ class Moving_Hillclimber:
 
     def assign_random_direction(self, random_direction, moving_house):
         """
-            Assigns a new valid place for a house in a certain direction.
+         Assigns a new valid place for a house in a certain direction.
         """
         # change the coordinates of the randomly selected house
         moving_house.corner_lowerleft = self.return_new_coordinates(random_direction, moving_house)
@@ -146,7 +153,7 @@ class Moving_Hillclimber:
 
     def undo_housemove(self, random_direction, random_house):
         """
-         Cancels the adjustment
+         Cancels the adjustment.
         """
         if random_direction == "up":
             # the y-coordinate goes down by 1
@@ -169,11 +176,14 @@ class Moving_Hillclimber:
     def return_smallest_freespace(self):
 
         """
-         Returns the house object with the smallest freespace
+         Returns the house object with the smallest freespace.
         """
 
+        smallest_freespace = 180
         for house in self.houses:
             freespace = self.area.closest_house(house, self.houses)[1]
-        
+            if freespace < smallest_freespace:
+                smallest_freespace = freespace
+                house_smallest_freespace = house
 
-            
+        return house_smallest_freespace
