@@ -60,6 +60,10 @@ class Random:
 
         # get final houseprice
         final_networth = self.area.get_networth(self.houses)
+<<<<<<< HEAD
+=======
+        print("Final worth of the state: ", final_networth)
+>>>>>>> 216466d291fb859046540597052035b4be5e5dfd
 
 
     
