@@ -1,22 +1,19 @@
-######################################################################
-# - moving_hillcimber.py
-# - Contains the hill climber algorithm
-# 
-# - Programeer theorie 2021
-# 
-# - Manuka Khan, Guido de Bruin, Allan Duah
-#
-######################################################################
-
 import random
 import copy
 import math
-import matplotlib.pyplot as plt
 
 from code.classes.graph import Graph
+from code.algorithms.random import Random
 
-
-class Moving_Hillclimber:
+class Moving_Hillclimber(Random):
+    """
+        The Moving Hillclimber works by first getting a best random state
+        from the Random algorithm.
+        To optimize this random state, for X changes, the house with the 
+        lowest freespace will be moved. 
+        If this leads to a higher value, the state is saved.
+        If not, the house will be placed back to where it came from.
+    """
 
     def __init__(self, changes, best_randomstate, area):
         self.changes = changes
@@ -26,69 +23,41 @@ class Moving_Hillclimber:
 
     def move_houses(self):
         """
-        Moves houses in a random direction and then calculates the new final price of the map.
+            Moves houses in a direction and then calculates the new final price of the map.
         """ 
-        current_changes = 0
-
-        # randomly assign the invalid placed houses until a valid state is reached
-        # self.area.randomly_assign_houses(self.houses)
-
+    
         best_state = {}
         for house in self.houses:
             best_state[house.id] = house.corner_lowerleft
  
-        # calculate total value of the graph
         best_value = self.area.get_networth(self.houses)
-
+        current_changes = 0
 
         while current_changes < self.changes:
-
-            # find house with the least freespace
+            # find house with the least freespace and move to random direction
             moving_house = self.return_smallest_freespace()
-
-            # return a random direction and a random house
             given_direction = self.random_direction()
-            
-            # get a random house from all houses
-            # moving_house = random.choice(self.houses)
-
-            # assign this house to the given direction
             self.assign_random_direction(given_direction, moving_house)
-
-            # reset the house prices to their original price before calculating their new price increase
             self.area.price_reset(self.houses)
 
             # calculate final houseprices and total graph value
             self.area.houseprices(self.houses)
-
             total_price = self.area.get_networth(self.houses)
 
             if total_price > best_value:
                 best_value = total_price
                 solution = {}
-                current_changes += 1
                 for house in self.houses:
                     solution[house.id] = house.corner_lowerleft
             else:
                 moving_house.corner_lowerleft = self.undo_housemove(given_direction, moving_house)
+
+            current_changes += 1
   
-        # reset the houses prices to their original price before calculating their new price increase
         self.area.price_reset(self.houses)
 
-        # final outcome
-        for key in best_state:
-            for house in self.houses:
-                if key == house.id:
-                    house.corner_lowerleft = best_state[key]
-
-        # calculate final houseprice
-        self.area.houseprices(self.houses)
-
-        # get final houseprice
-        final_networth = self.area.get_networth(self.houses)
-
-        self.area.load_houses(self.houses)
-        self.area.write_output(self.houses)
+        self.final_outcome(best_state)
+        self.load_and_write_output(self.houses, "hillclimber")
       
 
     def random_direction(self):
@@ -107,15 +76,12 @@ class Moving_Hillclimber:
         if random_direction == "up":
             # the y-coordinate goes up by 1
             random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 2]    
-
         elif random_direction == "down":
             # the y-coordinate goes down by 1
             random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] - 2]
-
         elif random_direction == "left":
             # the x-coordinate goes down by 1
             random_house_coordinates = [random_house.corner_lowerleft[0] - 2, random_house.corner_lowerleft[1]]
-
         elif random_direction == "right": 
             # the x-coordinate goes up by 1
             random_house_coordinates = [random_house.corner_lowerleft[0] + 2, random_house.corner_lowerleft[1]]
@@ -145,15 +111,12 @@ class Moving_Hillclimber:
         if random_direction == "up":
             # the y-coordinate goes down by 1
             random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] - 2]
-
         elif random_direction == "down":
             # the y-coordinate goes up by 1
             random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 2]
-
         elif random_direction == "left":
             # the x-coordinate goes up by 1
             random_house_coordinates = [random_house.corner_lowerleft[0] + 2, random_house.corner_lowerleft[1]]
-
         elif random_direction == "right":
             # the x-coordinate goes down by 1
             random_house_coordinates = [random_house.corner_lowerleft[0] - 2, random_house.corner_lowerleft[1]]
@@ -166,7 +129,6 @@ class Moving_Hillclimber:
         """
          Returns the house object with the smallest freespace.
         """
-
         smallest_freespace = 180
         for house in self.houses:
             freespace = self.area.closest_house(house, self.houses)[1]

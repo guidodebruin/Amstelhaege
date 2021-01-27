@@ -1,13 +1,7 @@
-######################################################################
-# - graph.py
-# - Contains helpers functions for the algorithmes
-# 
-# - Programeer theorie 2021
-# 
-# - Manuka Khan, Guido de Bruin, Allan Duah
-#
-######################################################################
-
+"""
+    Contains all information and functions of the Graph.
+    This includes the area, the houses and the water.
+"""
 import csv
 import math
 import numpy as np
@@ -19,10 +13,15 @@ from code.classes.singlehouse import Singlehouse
 from code.classes.bungalow import Bungalow
 from code.classes.maison import Maison
 
-# Distrubution of the houses in the area
+# distrubution of the houses in the area
 PERC_SINGLEHOUSE = 0.6
 PERC_BUNGALOW = 0.25
 PERC_MAISON = 0.15
+
+# initial house prices
+initial_maisonprice = 610000
+initial_bungalowprice = 399000
+initial_singlehouseprice = 285000
 
 class Graph():
     def __init__(self, area):
@@ -308,12 +307,12 @@ class Graph():
         return net_worth 
 
 
-    def write_output(self, all_houses):
+    def write_output(self, all_houses, algorithm_type):
         """
             Writes the final output in a csv file.
             Includes a header, water data and house data.
         """
-        with open('output.csv', 'w') as file:
+        with open(f'results/{algorithm_type}/output.csv', 'w') as file:
             writer = csv.writer(file)
             # adds the header
             writer.writerow(["structure", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
@@ -367,14 +366,11 @@ class Graph():
             For bungalows this price is: 399000.
             For singlehouses this price is: 285000.
         """
-        initial_maison = 610000
-        initial_bungalow = 399000
-        initial_singlehouse = 285000
 
         for house in houses:
             if isinstance(house, Maison):
-                house.price = initial_maison
+                house.price = initial_maisonprice
             elif isinstance(house, Bungalow):
-                house.price = initial_bungalow
+                house.price = initial_bungalowprice
             elif isinstance(house, Singlehouse):
-                house.price = initial_singlehouse 
+                house.price = initial_singlehouseprice 

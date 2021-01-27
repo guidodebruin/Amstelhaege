@@ -1,13 +1,9 @@
-######################################################################
-# - main.py
-# - main.py is used to run the algorithms
-# 
-# - Programeer theorie 2021
-# 
-# - Manuka Khan, Guido de Bruin, Allan Duah
-#
-######################################################################
-
+"""
+    - main.py
+    - main.py is used to run the algorithms
+    - Programeer theorie 2021
+    - Manuka Khan, Guido de Bruin, Allan Duah
+"""
 import sys
 
 from code.classes.singlehouse import Singlehouse
@@ -53,7 +49,8 @@ if chosen_algorithm == "1":
 
     random = Random(int(loop), all_houses, area)
     best_randomstate = random.looper()
-    random.complete_random(best_randomstate)
+    algorithm_type = "random"
+    random.load_and_write_output(best_randomstate, algorithm_type)
 
 
 # the user has chosen the moving hill climber
