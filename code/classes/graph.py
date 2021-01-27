@@ -19,6 +19,7 @@ from code.classes.singlehouse import Singlehouse
 from code.classes.bungalow import Bungalow
 from code.classes.maison import Maison
 
+# Distrubution of the houses in the area
 Perc_Singlehouse = 0.6
 Perc_Bungalow = 0.25
 Perc_Masion = 0.15
