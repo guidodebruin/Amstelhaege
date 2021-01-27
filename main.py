@@ -31,8 +31,7 @@ elif sys.argv[2] not in ["20", "40", "60"]:
     print("Choose between: 20, 40, and 60")
     sys.exit(1)   
 else:
-    # make the graph
-    area = Graph(sys.argv[1])   
+    area = Graph(sys.argv[1])
 
 # create house objects
 all_houses = area.save_houses(int(sys.argv[2]))
@@ -53,9 +52,17 @@ if chosen_algorithm == "1":
 
     random = Random(int(loop), all_houses, area)
     random.looper()
+    random.complete_random()
 
 # the user has chosen the moving hill climber
 elif chosen_algorithm == "2":
+    loop = input("How many random states do you want to generate: ")
+
+    while not loop.isdigit():
+       loop = input("Insert number of runs: ")
+    loops = int(loop)
+
+    random = Random(loops, all_houses, area)
     total_change = input("How many changes do you want to make? ")
     while not total_change.isdigit():
         total_change = input("Insert number of changes: ")

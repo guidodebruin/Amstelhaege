@@ -45,6 +45,7 @@ class Graph():
             Loads the water that belongs to a specific neighborhood.
             Adds the water data to a list that can be used to create the graph.
         """
+        # read the file that contains the water data
         with open(filename, "r") as csv_file:
             next(csv_file)
             reader = csv.reader(csv_file)
@@ -75,7 +76,7 @@ class Graph():
         for data in self.water:
             # create a Rectangle patch in which water is displayed as blue
             rect = patches.Rectangle((data[1][0], data[1][1]),(data[2][0]-data[1][0]),(data[2][1]-data[1][1]),facecolor='b')
-            # add the patch to the axes
+            # add the patch to the Axes
             ax.add_patch(rect)
 
         # save the graph
@@ -125,10 +126,10 @@ class Graph():
         # make rectangle patches for every house
         for house in houses:
             rect = patches.Rectangle((house.corner_lowerleft[0], house.corner_lowerleft[1]),house.width, house.length,facecolor='r')
-            # add the patch to the axes
+            # add the patch to the Axes
             ax.add_patch(rect)
 
-        # aave the graph
+        # save the graph
         plt.savefig('plots/init_graph.png')
 
 
