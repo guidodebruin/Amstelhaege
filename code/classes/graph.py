@@ -23,24 +23,24 @@ from code.classes.maison import Maison
 class Graph():
     def __init__(self, area):
         """
-            Necessities for the visual representation
+            Necessities for the visual representation.
         """
         self.water = []
         self.width = 180
         self.depth = 160
 
-        # Load the water data
+        # load the water data
         self.load_water(f"Areas/{area}.csv")
 
-        # Create area graph
+        # create area graph
         self.load_graph()
 
 
     def load_water(self, filename):
         """
-            Loads the water that belongs to a specific neighborhood
+            Loads the water that belongs to a specific neighborhood.
+            Adds the water data to a list that can be used to create the graph.
         """
-        # Read the file that contains the water data
         with open(filename, "r") as csv_file:
             next(csv_file)
             reader = csv.reader(csv_file)
@@ -57,34 +57,42 @@ class Graph():
 
     def load_graph(self):
         """
-            Creates the map for the specific area
+            Creates the map for the specific area with the given depth and width.
         """
+        # create x and y axes
         plt.xlabel("width")
         plt.ylabel("depth")
         plt.axis([0, self.width, 0, self.depth])
         
-        # Display the neighborhood as green
+        # display the neighborhood as green
         ax = plt.gca()
         ax.set_facecolor("green")
         
         for data in self.water:
-            # Create a Rectangle patch in which water is displayed as blue
+            # create a Rectangle patch in which water is displayed as blue
             rect = patches.Rectangle((data[1][0], data[1][1]),(data[2][0]-data[1][0]),(data[2][1]-data[1][1]),facecolor='b')
-            # Add the patch to the Axes
+            # add the patch to the axes
             ax.add_patch(rect)
 
-        # Save the graph
+        # save the graph
         plt.savefig('plots/init_graph.png')
 
 
     def save_houses(self, number_of_houses):
         """
             Creates the house objects based on the amount of houses.
-            Return a list of all created houses
+            Return a list of all created houses.
         """
-        total_singlehouses = 0.6 * number_of_houses
-        total_bungalows = 0.25 * number_of_houses
-        total_maisons = 0.15 * number_of_houses
+        # singleshouses need to be 60% of the total number of houses
+        singlehouse_percentage = 0.6
+        # bungalows need to be 25% of the total number of houses
+        bungalow_percentage = 0.25
+        # maisons need to be 15% of the total number of houses
+        maison_percentage = 0.15
+
+        total_singlehouses = singlehouse_percentage * number_of_houses
+        total_bungalows = bungalow_percentage * number_of_houses
+        total_maisons = maison_percentage * number_of_houses
 
         all_houses = []
 
