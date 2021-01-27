@@ -186,6 +186,9 @@ class Graph():
 
 
     def rect_distance(self,x1, y1, x1b, y1b, x2, y2, x2b, y2b):
+        """
+            Calculates the distance between rectangles.
+        """
         left = x2b < x1
         right = x1b < x2
         bottom = y2b < y1

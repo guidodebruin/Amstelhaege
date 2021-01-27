@@ -11,7 +11,9 @@
 from code.classes.House import House
 
 class Bungalow(House):
-    
+    """
+            Describes characteristics of a bungalow.
+    """    
     def __init__(self):
         self.length = 7
         self.width = 11
