@@ -38,10 +38,7 @@ class Simulated_Annealing(Moving_Hillclimber):
         y_axes = []
 
         solution = copy.deepcopy(self.houses)
-
-        self.area.houseprices(self.houses)
         solution_totalprice = self.area.get_networth(self.houses)
-        print(solution_totalprice)
 
         while temp > final_temp:
 
@@ -49,7 +46,7 @@ class Simulated_Annealing(Moving_Hillclimber):
                     
                 # make n changes to the positions of random houses
                 given_direction = self.random_direction()
-                moving_house = self.random_house(self.houses)
+                moving_house = random.choice(self.houses)
                 self.assign_random_direction(given_direction, moving_house)
 
             # calculate the new final house prices

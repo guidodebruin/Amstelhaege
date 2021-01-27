@@ -46,12 +46,11 @@ class Moving_Hillclimber:
             # find house with the least freespace
             moving_house = self.return_smallest_freespace()
 
-
             # return a random direction and a random house
             given_direction = self.random_direction()
             
             # get a random house from all houses
-            #moving_house = self.random_house(self.houses)
+            # moving_house = random.choice(self.houses)
 
             # assign this house to the given direction
             self.assign_random_direction(given_direction, moving_house)
@@ -63,8 +62,6 @@ class Moving_Hillclimber:
             self.area.houseprices(self.houses)
 
             total_price = self.area.get_networth(self.houses)
-
-            # print(total_price)
 
             if total_price > best_value:
                 best_value = total_price
@@ -92,14 +89,6 @@ class Moving_Hillclimber:
 
         self.area.load_houses(self.houses)
         self.area.write_output(self.houses)
-                
-
-    def random_house(self, houses):
-        """
-        Randomly returns a house object.
-        """
-        random_house = random.choice(houses)
-        return random_house
       
 
     def random_direction(self):
@@ -108,9 +97,7 @@ class Moving_Hillclimber:
         """
         direction = ["up", "down", "left", "right"]
 
-        random_direction = random.choice(direction)
-
-        return random_direction
+        return random.choice(direction)
 
 
     def return_new_coordinates(self, random_direction, random_house):
@@ -173,6 +160,7 @@ class Moving_Hillclimber:
 
         return random_house_coordinates
 
+
     def return_smallest_freespace(self):
 
         """
@@ -182,8 +170,26 @@ class Moving_Hillclimber:
         smallest_freespace = 180
         for house in self.houses:
             freespace = self.area.closest_house(house, self.houses)[1]
-            if freespace < smallest_freespace:
+            if freespace < smallest_freespace and self.check_moveability(house):
                 smallest_freespace = freespace
                 house_smallest_freespace = house
 
         return house_smallest_freespace
+
+
+    def check_moveability(self, house):
+        """
+            Checks if a house can be moved in at least one direction.
+        """
+        directions = ["up", "down", "left", "right"]
+
+        for direction in directions:
+            house.corner_lowerleft = self.return_new_coordinates(direction,house)
+            # check if a house can be moved
+            if self.area.invalid(house, self.houses) == False and self.area.overlap(house, self.houses) == False:
+                house.corner_lowerleft = self.undo_housemove(direction, house)
+                return True
+            house.corner_lowerleft = self.undo_housemove(direction, house)
+
+        # house cannot be moved
+        return False
