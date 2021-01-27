@@ -28,9 +28,6 @@ class Moving_Hillclimber:
         """ 
         current_changes = 0
 
-        # randomly assign the invalid placed houses until a valid state is reached
-        # self.area.randomly_assign_houses(self.houses)
-
         best_state = {}
         for house in self.houses:
             best_state[house.id] = house.corner_lowerleft
@@ -46,9 +43,6 @@ class Moving_Hillclimber:
 
             # return a random direction and a random house
             given_direction = self.random_direction()
-            
-            # get a random house from all houses
-            # moving_house = random.choice(self.houses)
 
             # assign this house to the given direction
             self.assign_random_direction(given_direction, moving_house)
@@ -168,6 +162,8 @@ class Moving_Hillclimber:
         smallest_freespace = 180
         for house in self.houses:
             freespace = self.area.closest_house(house, self.houses)[1]
+
+            # check if the house has the smallest freespace and if it can be moved
             if freespace < smallest_freespace and self.check_moveability(house):
                 smallest_freespace = freespace
                 house_smallest_freespace = house
