@@ -1,9 +1,16 @@
-from code.classes.House import House
+"""
+    singlehouse.py
+    This is the class for the singlehouse housetype.
 
+    Programmeertheorie 2021
+    Manuka Khan, Guido de Bruin, Allan Duah
+""" 
+
+from code.classes.House import House
 
 class Singlehouse(House):
    """
-            Describes characteristics of a singlehouse.
+      Describes characteristics of a singlehouse.
    """ 
    def __init__(self):
       self.length = 8

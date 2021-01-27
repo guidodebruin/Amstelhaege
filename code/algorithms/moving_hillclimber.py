@@ -1,3 +1,11 @@
+"""
+    moving_hillcimber.py
+    Contains the hill climber algorithm
+
+    Programmeertheorie 2021
+    Manuka Khan, Guido de Bruin, Allan Duah
+""" 
+
 import random
 import copy
 import math
@@ -25,18 +33,21 @@ class Moving_Hillclimber(Random):
         """
             Moves houses in a direction and then calculates the new final price of the map.
         """ 
-    
+
         best_state = {}
         for house in self.houses:
             best_state[house.id] = house.corner_lowerleft
  
         best_value = self.area.get_networth(self.houses)
+
         current_changes = 0
 
         while current_changes < self.changes:
             # find house with the least freespace and move to random direction
             moving_house = self.return_smallest_freespace()
             given_direction = self.random_direction()
+
+            # assign this house to the given direction
             self.assign_random_direction(given_direction, moving_house)
             self.area.price_reset(self.houses)
 
@@ -132,6 +143,8 @@ class Moving_Hillclimber(Random):
         smallest_freespace = 180
         for house in self.houses:
             freespace = self.area.closest_house(house, self.houses)[1]
+
+            # check if the house has the smallest freespace and if it can be moved
             if freespace < smallest_freespace and self.check_moveability(house):
                 smallest_freespace = freespace
                 house_smallest_freespace = house
@@ -147,6 +160,7 @@ class Moving_Hillclimber(Random):
 
         for direction in directions:
             house.corner_lowerleft = self.return_new_coordinates(direction,house)
+
             # check if a house can be moved
             if self.area.invalid(house, self.houses) == False and self.area.overlap(house, self.houses) == False:
                 house.corner_lowerleft = self.undo_housemove(direction, house)

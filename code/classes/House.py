@@ -1,3 +1,11 @@
+"""
+   House.py
+   House class, in which thecoordinates of the corners are returned
+   
+   Programmeer theorie 2021
+   Manuka Khan, Guido de Bruin, Allan Duah
+"""
+
 import random
 
 class House():

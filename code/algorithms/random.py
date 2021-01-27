@@ -1,3 +1,11 @@
+"""
+    random.py
+    Contains the random algorithm
+
+    Programmeertheorie 2021
+    Manuka Khan, Guido de Bruin, Allan Duah
+""" 
+
 import copy
 import matplotlib.pyplot as plt
 

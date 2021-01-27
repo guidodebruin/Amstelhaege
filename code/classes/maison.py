@@ -1,9 +1,17 @@
-from code.classes.House import House
+"""
+    maison.py
+    This is the class for the Maison housetype.
 
+    Programmeertheorie 2021
+    Manuka Khan, Guido de Bruin, Allan Duah
+""" 
+
+
+from code.classes.House import House
 
 class Maison(House):
     """
-            Describes characteristics of a maison.
+        Describes characteristics of a maison.
     """ 
     def __init__(self):
         self.length = 10

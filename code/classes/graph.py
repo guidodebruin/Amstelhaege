@@ -2,6 +2,7 @@
     Contains all information and functions of the Graph.
     This includes the area, the houses and the water.
 """
+
 import csv
 import math
 import numpy as np

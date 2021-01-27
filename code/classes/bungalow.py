@@ -1,8 +1,16 @@
+"""
+    bungalow.py
+    This is the class for the Bungalow housetype.
+
+    Programmeertheorie 2021
+    Manuka Khan, Guido de Bruin, Allan Duah
+""" 
+
 from code.classes.House import House
 
 class Bungalow(House):
     """
-            Describes characteristics of a bungalow.
+        Describes characteristics of a bungalow.
     """    
     def __init__(self):
         self.length = 7
