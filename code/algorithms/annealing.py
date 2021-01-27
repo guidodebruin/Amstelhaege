@@ -1,3 +1,13 @@
+######################################################################
+# - annealing.py
+# - Contains the simulated annealing algorithm
+# 
+# - Programeer theorie 2021
+# 
+# - Manuka Khan, Guido de Bruin, Allan Duah
+#
+######################################################################
+
 import random
 import math
 import copy

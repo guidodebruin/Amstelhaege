@@ -1,3 +1,13 @@
+######################################################################
+# - moving_hillcimber.py
+# - Contains the hill climber algorithm
+# 
+# - Programeer theorie 2021
+# 
+# - Manuka Khan, Guido de Bruin, Allan Duah
+#
+######################################################################
+
 import random
 import copy
 import math
