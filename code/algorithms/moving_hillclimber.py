@@ -36,7 +36,6 @@ class Moving_Hillclimber:
 
         # calculate total value per house
         self.area.houseprices(self.houses) 
-
         # calculate total value of the graph
         best_value = self.area.get_networth(self.houses)
 
@@ -64,10 +63,11 @@ class Moving_Hillclimber:
                 solution = {}
                 for house in self.houses:
                     solution[house.id] = house.corner_lowerleft
-                current_changes += 1
             else:
                 moving_house.corner_lowerleft = self.undo_housemove(given_direction, moving_house)
 
+                current_changes += 1
+                print(current_changes)
         # reset the houses prices to their original price before calculating their new price increase
         self.area.price_reset(self.houses)
 
