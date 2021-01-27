@@ -20,9 +20,9 @@ from code.classes.bungalow import Bungalow
 from code.classes.maison import Maison
 
 # Distrubution of the houses in the area
-Perc_Singlehouse = 0.6
-Perc_Bungalow = 0.25
-Perc_Masion = 0.15
+PERC_SINGLEHOUSE = 0.6
+PERC_BUNGALOW = 0.25
+PERC_MAISON = 0.15
 
 class Graph():
     def __init__(self, area):
@@ -88,16 +88,10 @@ class Graph():
             Creates the house objects based on the amount of houses.
             Return a list of all created houses.
         """
-        # singleshouses need to be 60% of the total number of houses
-        singlehouse_percentage = 0.6
-        # bungalows need to be 25% of the total number of houses
-        bungalow_percentage = 0.25
-        # maisons need to be 15% of the total number of houses
-        maison_percentage = 0.15
 
-        total_singlehouses = singlehouse_percentage * number_of_houses
-        total_bungalows = bungalow_percentage * number_of_houses
-        total_maisons = maison_percentage * number_of_houses
+        total_singlehouses = PERC_SINGLEHOUSE * number_of_houses
+        total_bungalows = PERC_BUNGALOW * number_of_houses
+        total_maisons = PERC_MAISON * number_of_houses
 
         all_houses = []
 
@@ -119,7 +113,7 @@ class Graph():
 
     def load_houses(self, houses):
         """
-            Locate houses on the map
+            Locate houses on the map.
         """
         ax = plt.gca()
 
