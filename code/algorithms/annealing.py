@@ -1,3 +1,13 @@
+######################################################################
+# - annealing.py
+# - Contains the simulated annealing algorithm
+# 
+# - Programeer theorie 2021
+# 
+# - Manuka Khan, Guido de Bruin, Allan Duah
+#
+######################################################################
+
 import random
 import math
 import copy
@@ -20,7 +30,6 @@ class Simulated_Annealing(Moving_Hillclimber):
             Generates a random state.
             Tries to find to most optimal house coordinates in this random state.
         """
-
         # Simulated Annealing Parameters
         temp = 100000
         final_temp = 0.1    

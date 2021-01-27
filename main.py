@@ -1,3 +1,13 @@
+######################################################################
+# - main.py
+# - main.py is used to run the algorithms
+# 
+# - Programeer theorie 2021
+# 
+# - Manuka Khan, Guido de Bruin, Allan Duah
+#
+######################################################################
+
 import sys
 
 from code.classes.singlehouse import Singlehouse

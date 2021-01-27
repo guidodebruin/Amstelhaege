@@ -1,3 +1,13 @@
+######################################################################
+# - moving_hillcimber.py
+# - Contains the hill climber algorithm
+# 
+# - Programeer theorie 2021
+# 
+# - Manuka Khan, Guido de Bruin, Allan Duah
+#
+######################################################################
+
 import random
 import copy
 import math
@@ -15,6 +25,9 @@ class Moving_Hillclimber:
 
 
     def move_houses(self):
+        """
+            Moves house to a different place and then calculates the new finalprice of the map
+        """ 
         current_changes = 0
 
         # randomly assign the invalid placed houses until a valid state is reached
@@ -102,7 +115,6 @@ class Moving_Hillclimber:
         """
          Returns the new coordinates for the picked direction
         """
-
         if random_direction == "up":
             # The y-coordinate goes up by 1
             random_house_coordinates = [random_house.corner_lowerleft[0], random_house.corner_lowerleft[1] + 2]    
@@ -126,7 +138,6 @@ class Moving_Hillclimber:
         """
             Assigns a new valid place for a house in a certain direction.
         """
-
         # Change the coordinates of the randomly selected house
         moving_house.corner_lowerleft = self.return_new_coordinates(random_direction, moving_house)
 
@@ -139,7 +150,6 @@ class Moving_Hillclimber:
      
 
     def undo_housemove(self, random_direction, random_house):
-
         """
          Cancels the adjustment
         """
@@ -160,3 +170,6 @@ class Moving_Hillclimber:
             random_house_coordinates = [random_house.corner_lowerleft[0] - 2, random_house.corner_lowerleft[1]]
 
         return random_house_coordinates
+
+    def return_shortest_freespace(self):
+        pass

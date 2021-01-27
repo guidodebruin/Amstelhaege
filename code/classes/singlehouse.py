@@ -1,7 +1,20 @@
+######################################################################
+# - singlehouse.py
+# - Singlehouse class, describes the characteristics of the housetype
+# 
+# - Programeer theorie 2021
+# 
+# - Manuka Khan, Guido de Bruin, Allan Duah
+#
+######################################################################
+
 from code.classes.House import House
 
 
 class Singlehouse(House):
+   """
+            Describes characteristics of a singlehouse.
+   """ 
    def __init__(self):
       self.length = 8
       self.width = 8

@@ -1,7 +1,16 @@
+######################################################################
+# - random.py
+# - Contains the random algorithm
+# 
+# - Programeer theorie 2021
+# 
+# - Manuka Khan, Guido de Bruin, Allan Duah
+#
+######################################################################
+
 import copy
 import matplotlib.pyplot as plt
-
-import pickle
+# import pickle
 
 from code.classes.graph import Graph
 
