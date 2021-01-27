@@ -60,10 +60,13 @@ class Random:
 
         # get final houseprice
         final_networth = self.area.get_networth(self.houses)
+
+        return(self.houses)
     
-    def complete_random(self, ):
-
-        
-        self.area.load_houses(self.houses)
-
-        self.area.write_output(self.houses)
+    def complete_random(self, houses):
+        """
+            Loads houses into the graph
+            Writes the final output for the best random state.
+        """
+        self.area.load_houses(houses)
+        self.area.write_output(houses)

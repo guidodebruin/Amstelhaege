@@ -19,9 +19,9 @@ from code.algorithms.moving_hillclimber import Moving_Hillclimber
 
 class Simulated_Annealing(Moving_Hillclimber):
 
-    def __init__(self, changes, houses, area):
+    def __init__(self, changes, best_randomstate, area):
         self.changes = changes
-        self.houses = houses
+        self.houses = best_randomstate
         self.area = area
 
 
@@ -33,12 +33,10 @@ class Simulated_Annealing(Moving_Hillclimber):
         # Simulated Annealing Parameters
         temp = 100000
         final_temp = 0.1    
-        alpha = 0.97
+        alpha = 0.99
 
         y_axes = []
 
-        # create a random state
-        current_state = self.area.randomly_assign_houses(self.houses)
         solution = copy.deepcopy(self.houses)
 
         self.area.houseprices(self.houses)
@@ -89,5 +87,4 @@ class Simulated_Annealing(Moving_Hillclimber):
             plt.savefig('plots/simulated_annealing.png')
         
         self.area.load_houses(solution)
-        print(solution_totalprice)
         self.area.write_output(solution)
