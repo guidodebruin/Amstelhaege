@@ -44,6 +44,7 @@ while chosen_algorithm not in ["1", "2", "3"]:
     print("Algorithmes available: Random = 1, Hill Climber = 2, Simulated Annealing = 3")
     chosen_algorithm = input("Please choose your algorithm by entering the corresponding number: ")
 
+
 # the user has chosen the random algorithm
 if chosen_algorithm == "1":
     loop = input("How many random states do you want to generate: ")
@@ -51,30 +52,45 @@ if chosen_algorithm == "1":
        loop = input("Insert number of runs: ")
 
     random = Random(int(loop), all_houses, area)
-    random.looper()
-    random.complete_random()
+    best_randomstate = random.looper()
+    random.complete_random(best_randomstate)
+
 
 # the user has chosen the moving hill climber
 elif chosen_algorithm == "2":
+    # ask for random state number
     loop = input("How many random states do you want to generate: ")
-
     while not loop.isdigit():
        loop = input("Insert number of runs: ")
-    loops = int(loop)
-
-    random = Random(loops, all_houses, area)
     total_change = input("How many changes do you want to make? ")
+    # ask for number of changes to make on the best random state
     while not total_change.isdigit():
         total_change = input("Insert number of changes: ")
 
-    moving_hillclimber = Moving_Hillclimber(int(total_change), all_houses, area)
+    # get a best random state
+    random = Random(int(loop), all_houses, area)
+    best_randomstate = random.looper()
+
+    # move houses in best random state
+    moving_hillclimber = Moving_Hillclimber(int(total_change), best_randomstate, area)
     moving_hillclimber.move_houses()
+
 
 # the user has chosen the simulated annealing
 elif chosen_algorithm == "3":
+    # ask for random state number
+    loop = input("How many random states do you want to generate: ")
+    while not loop.isdigit():
+       loop = input("Insert number of runs: ")
+    # ask for number of changes
     changes = input("how many changes per random state do you want to make: ")
     while not changes.isdigit():
         changes = input("Insert number of changes: ")
+
+    # get a best random state
+    random = Random(int(loop), all_houses, area)
+    best_randomstate = random.looper()
     
-    simulated_annealing = Simulated_Annealing(int(changes), all_houses, area)
+    # use the best random state for the simulated annealing
+    simulated_annealing = Simulated_Annealing(int(changes), best_randomstate, area)
     simulated_annealing.simulate()

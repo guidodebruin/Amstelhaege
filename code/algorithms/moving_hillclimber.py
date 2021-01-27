@@ -18,29 +18,26 @@ from code.classes.graph import Graph
 
 class Moving_Hillclimber:
 
-    def __init__(self, changes, houses, area):
+    def __init__(self, changes, best_randomstate, area):
         self.changes = changes
-        self.houses = houses
+        self.houses = best_randomstate
         self.area = area
 
 
     def move_houses(self):
         """
-            Moves house to a different place and then calculates the new finalprice of the map
+            Moves house to a different place and then calculates the new finalprice of the map.
         """ 
         current_changes = 0
-
-        # randomly assign the invalid placed houses until a valid state is reached
-        self.area.randomly_assign_houses(self.houses)
 
         best_state = {}
         for house in self.houses:
             best_state[house.id] = house.corner_lowerleft
 
-        # calculate final houseprice
+        # calculate total value per house
         self.area.houseprices(self.houses) 
 
-        # calculate final houseprice
+        # calculate total value of the graph
         best_value = self.area.get_networth(self.houses)
 
         while current_changes < self.changes:
@@ -48,22 +45,18 @@ class Moving_Hillclimber:
             # find house with the least freespace
             # moving_house = self.return_smallest_freespace(self.houses)
 
-            # return a random direction
+            # return a random direction and a random house
             given_direction = self.random_direction()
-            
-            # get a random house from all houses
             moving_house = self.random_house(self.houses)
 
-            # assigns a new valid place for a house in a certain direction.
+            # assign this house to the given direction
             self.assign_random_direction(given_direction, moving_house)
 
             # reset the houses prices to their original price before calculating their new price increase
             self.area.price_reset(self.houses)
 
-            # calculate final houseprice
+            # calculate final houseprices and total graph value
             self.area.houseprices(self.houses)
-
-            # obtain the total prices of all households
             total_price = self.area.get_networth(self.houses)
 
             if total_price > best_value:
@@ -99,7 +92,6 @@ class Moving_Hillclimber:
         Randomly returns a house object
         """
         random_house = random.choice(houses)
-        
         return random_house
       
 
