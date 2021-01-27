@@ -19,6 +19,9 @@ from code.classes.singlehouse import Singlehouse
 from code.classes.bungalow import Bungalow
 from code.classes.maison import Maison
 
+Perc_Singlehouse = 0.6
+Perc_Bungalow = 0.25
+Perc_Masion = 0.15
 
 class Graph():
     def __init__(self, area):
@@ -82,9 +85,9 @@ class Graph():
             Creates the house objects based on the amount of houses.
             Return a list of all created houses
         """
-        total_singlehouses = 0.6 * number_of_houses
-        total_bungalows = 0.25 * number_of_houses
-        total_maisons = 0.15 * number_of_houses
+        total_singlehouses = Perc_Singlehouse * number_of_houses
+        total_bungalows = Perc_Bungalow * number_of_houses
+        total_maisons = Perc_Masion * number_of_houses
 
         all_houses = []
 
