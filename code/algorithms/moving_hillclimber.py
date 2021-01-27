@@ -160,3 +160,6 @@ class Moving_Hillclimber:
             random_house_coordinates = [random_house.corner_lowerleft[0] - 2, random_house.corner_lowerleft[1]]
 
         return random_house_coordinates
+
+    def return_shortest_freespace(self):
+        pass
