@@ -1,12 +1,9 @@
-######################################################################
-# - graph.py
-# - Contains helpers functions for the algorithmes
-# 
-# - Programeer theorie 2021
-# 
-# - Manuka Khan, Guido de Bruin, Allan Duah
-#
-######################################################################
+"""
+    graph.py
+    Contains helpers functions for the algorithmes
+    Programmeer theorie 2021
+    Manuka Khan, Guido de Bruin, Allan Duah
+"""
 
 import csv
 import math

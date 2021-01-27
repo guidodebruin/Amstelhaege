@@ -1,12 +1,10 @@
-######################################################################
-# - House.py
-# - House class, returns the coordinates of the corners
-# 
-# - Programeer theorie 2021
-# 
-# - Manuka Khan, Guido de Bruin, Allan Duah
-#
-######################################################################
+"""
+   House.py
+   House class, in which thecoordinates of the corners are returned
+   
+   Programmeer theorie 2021
+   Manuka Khan, Guido de Bruin, Allan Duah
+"""
 
 import random
 

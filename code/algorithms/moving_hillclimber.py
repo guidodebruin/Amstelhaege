@@ -1,12 +1,10 @@
-######################################################################
-# - moving_hillcimber.py
-# - Contains the hill climber algorithm
-# 
-# - Programeer theorie 2021
-# 
-# - Manuka Khan, Guido de Bruin, Allan Duah
-#
-######################################################################
+"""
+    moving_hillcimber.py
+    Contains the hill climber algorithm
+
+    Programmeertheorie 2021
+    Manuka Khan, Guido de Bruin, Allan Duah
+""" 
 
 import random
 import copy
@@ -185,6 +183,7 @@ class Moving_Hillclimber:
 
         for direction in directions:
             house.corner_lowerleft = self.return_new_coordinates(direction,house)
+
             # check if a house can be moved
             if self.area.invalid(house, self.houses) == False and self.area.overlap(house, self.houses) == False:
                 house.corner_lowerleft = self.undo_housemove(direction, house)
