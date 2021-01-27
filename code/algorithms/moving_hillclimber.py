@@ -26,7 +26,6 @@ class Moving_Hillclimber:
 
     def move_houses(self):
         """
-<<<<<<< HEAD
         Moves houses in a random direction and then calculates the new final price of the map.
         """ 
         current_changes = 0
@@ -34,36 +33,25 @@ class Moving_Hillclimber:
         # randomly assign the invalid placed houses until a valid state is reached
         # self.area.randomly_assign_houses(self.houses)
 
-=======
-            Moves house to a different place and then calculates the new finalprice of the map.
-        """ 
-        current_changes = 0
-
->>>>>>> 9535626a0de38050d67efd3c6e55a371e87c241e
         best_state = {}
         for house in self.houses:
             best_state[house.id] = house.corner_lowerleft
 
-        # calculate total value per house
-        self.area.houseprices(self.houses) 
-
         # calculate total value of the graph
         best_value = self.area.get_networth(self.houses)
+
 
         while current_changes < self.changes:
 
             # find house with the least freespace
-            moving_house = self.return_smallest_freespace(self.houses)
+            moving_house = self.return_smallest_freespace()
+
 
             # return a random direction and a random house
             given_direction = self.random_direction()
-<<<<<<< HEAD
             
             # get a random house from all houses
-            # moving_house = self.random_house(self.houses)
-=======
-            moving_house = self.random_house(self.houses)
->>>>>>> 9535626a0de38050d67efd3c6e55a371e87c241e
+            #moving_house = self.random_house(self.houses)
 
             # assign this house to the given direction
             self.assign_random_direction(given_direction, moving_house)
@@ -73,16 +61,21 @@ class Moving_Hillclimber:
 
             # calculate final houseprices and total graph value
             self.area.houseprices(self.houses)
+
             total_price = self.area.get_networth(self.houses)
+
+            # print(total_price)
 
             if total_price > best_value:
                 best_value = total_price
                 solution = {}
+                current_changes += 1
                 for house in self.houses:
                     solution[house.id] = house.corner_lowerleft
-                current_changes += 1
             else:
                 moving_house.corner_lowerleft = self.undo_housemove(given_direction, moving_house)
+            
+        
 
         # reset the houses prices to their original price before calculating their new price increase
         self.area.price_reset(self.houses)
@@ -147,7 +140,7 @@ class Moving_Hillclimber:
 
     def assign_random_direction(self, random_direction, moving_house):
         """
-            Assigns a new valid place for a house in a certain direction.
+         Assigns a new valid place for a house in a certain direction.
         """
         # change the coordinates of the randomly selected house
         moving_house.corner_lowerleft = self.return_new_coordinates(random_direction, moving_house)
