@@ -19,6 +19,10 @@ from code.classes.singlehouse import Singlehouse
 from code.classes.bungalow import Bungalow
 from code.classes.maison import Maison
 
+# Distrubution of the houses in the area
+Perc_Singlehouse = 0.6
+Perc_Bungalow = 0.25
+Perc_Masion = 0.15
 
 class Graph():
     def __init__(self, area):
@@ -96,7 +100,7 @@ class Graph():
 
         all_houses = []
 
-        # Make the house objects and add to list
+        # make the house objects and add to list
         for maison in range(int(total_maisons)):
             maison = Maison()
             all_houses.append(maison)
@@ -118,12 +122,13 @@ class Graph():
         """
         ax = plt.gca()
 
+        # make rectangle patches for every house
         for house in houses:
             rect = patches.Rectangle((house.corner_lowerleft[0], house.corner_lowerleft[1]),house.width, house.length,facecolor='r')
-            # Add the patch to the Axes
+            # add the patch to the axes
             ax.add_patch(rect)
 
-        # Save the graph
+        # aave the graph
         plt.savefig('plots/init_graph.png')
 
 
@@ -132,6 +137,10 @@ class Graph():
             Checks for overlapping houses with each other, water or the edges of the graph.
             Returns True if a house overlaps.
         """
+        # check if overlap with border of the map
+        if self.check_borders(house):
+            return True
+
         # save the points of the structures in boxes to find intersection
         graph_box = box(0,0,self.width, self.depth)
         housebox1 = box(house.corner_lowerleft[0], house.corner_lowerleft[1], (house.return_upperright(house)[0]), (house.return_upperright(house)[1]))
@@ -139,10 +148,6 @@ class Graph():
         for data in self.water:
             water_box = box(data[1][0], data[1][1], data[2][0], data[2][1])
             water_boxes.append(water_box)
-
-        # check if overlap with border of the map
-        if self.check_borders(house):
-            return True
 
         # check for intersection between water areas and houses and save in list
         for water_box in water_boxes:
@@ -158,10 +163,28 @@ class Graph():
         return False
 
 
+    def check_borders(self, house):
+        """
+            Returns true if house placement is on top of a border of the graph.
+            X-axis coordinates cannot be lower than 0 or higher than 180.
+            Y-axis coordinates cannot be lower than 0 or higher than 160.
+        """
+        minimum = 0
+        x_max = 180
+        y_max = 160
+
+        house_corners = [house.corner_lowerleft, house.return_upperleft(house), house.return_upperright(house), house.return_lowerright(house)]
+        for corners in house_corners:
+            if corners[0] < minimum or corners[0] > x_max or corners[1] < minimum or corners[1] > y_max:
+                return True
+
+        return False
+
+
     def closest_house(self, house, houses):
         """
-            Checks which house is most nearby another house
-            The output list returns a house and its freespace
+            Checks which house is most nearby another house.
+            The output list returns a house and its freespace.
         """
         output = []
         # save all the corners of the house
@@ -187,7 +210,7 @@ class Graph():
 
     def distance_calculator(self, x1, y1, x2, y2):
         """
-            Calculates the distance between points.
+            Calculates the distance between points with the Pythagorean theorem.
         """
         dist = math.sqrt((x2 - x1)**2 + (y2 - y1)**2)
         return dist
@@ -195,12 +218,20 @@ class Graph():
 
     def rect_distance(self,x1, y1, x1b, y1b, x2, y2, x2b, y2b):
         """
-            Calculates the distance between rectangles.
+            Calculates the distance between two rectangles.
+            Needs the lower left corners of the rectange: x1 and y1.
+            And needs the upper right corners of the rectange: x1b and y1b.
         """
+        # the second rectangle is left of the first
         left = x2b < x1
+        # the second rectangle is right of the first
         right = x1b < x2
+        # the second rectangle is below the first
         bottom = y2b < y1
+        # the second rectangle is above the first
         top = y1b < y2
+
+        # if two of the conditions are true Pythagorean theorem can be used
         if top and left:
             return self.distance_calculator(x1, y1b, x2b, y2)
         elif left and bottom:
@@ -209,6 +240,7 @@ class Graph():
             return self.distance_calculator(x1b, y1, x2, y2b)
         elif right and top:
             return self.distance_calculator(x1b, y1b, x2, y2)
+        # if one condition is true the distance is a substraction
         elif left:
             return x1 - x2b
         elif right:
@@ -217,7 +249,8 @@ class Graph():
             return y1 - y2b
         elif top:
             return y2 - y1b
-        else:             # rectangles intersect
+        # rectangles intersect
+        else:             
             return 0
 
 
@@ -226,6 +259,7 @@ class Graph():
             Checks if the freespace between houses is the same or larger than the minimum freespace required.
             Returns True if the freespace is invalid. 
         """
+        # save all house corners
         house_pointlist = [house.corner_lowerleft, house.return_upperleft(house), house.return_upperright(house), house.return_lowerright(house)]
 
         for neigh_house in houses:
@@ -235,9 +269,13 @@ class Graph():
                 # compare the points of given house and its neighbours to find shortest distance
                 distance = self.rect_distance(house_pointlist[0][0],house_pointlist[0][1], house_pointlist[2][0], house_pointlist[2][1], neigh_pointlist[0][0],neigh_pointlist[0][1], neigh_pointlist[2][0], neigh_pointlist[2][1])
                 if distance > house.freespace and distance > neigh_house.freespace:
+                    # the distance is valid
                     continue
                 else:
+                    # house or its neighbour do not have a valid freespace
                     return True
+
+        # all houses are valid            
         return False
 
 
@@ -263,16 +301,32 @@ class Graph():
             house.price = house.price * price_increase
 
 
+    def get_networth(self, all_houses):
+        """
+            Returns the total networth of the graph.
+        """
+        self.total_price = []
+
+        for house in all_houses:
+            self.total_price.append(house.price)
+            net_worth = sum(self.total_price)
+        return net_worth 
+
+
     def write_output(self, all_houses):
         """
             Writes the final output in a csv file.
+            Includes a header, water data and house data.
         """
         with open('output.csv', 'w') as file:
             writer = csv.writer(file)
+            # adds the header
             writer.writerow(["structure", "corner_1", "corner_2", "corner_3", "corner_4", "type"])
             singlehouse_counter = 0
             bungalow_counter = 0
             maison_counter = 0
+
+            # adds the water data
             for water in self.water:
                 structure = water[0]
                 corner_1 = water[1]
@@ -282,6 +336,7 @@ class Graph():
                 watertype = water[3]
                 writer.writerow([structure, ','.join(map(str, corner_1)), ','.join(map(str, corner_2)), ','.join(map(str, corner_3)), ','.join(map(str, corner_4)), watertype])
 
+            # adds the house data
             for house in all_houses:
                 if isinstance(house, Singlehouse):
                     housetype = "EENGEZINSWONING"
@@ -299,23 +354,12 @@ class Graph():
                     structure = "maison_" + str(maison_counter)
                     writer.writerow([structure, ','.join(map(str, house.return_lowerright(house))), ','.join(map(str, house.corner_lowerleft)), ','.join(map(str,house.return_upperleft(house))), ','.join(map(str, house.return_upperright(house))) , housetype])
 
-            writer.writerow(["networth", round(self.get_networth(all_houses))])
-
-
-    def get_networth(self, all_houses):
-        """
-            Returns the total networth
-        """
-        self.total_price = []
-        for house in all_houses:
-            self.total_price.append(house.price)
-            net_worth = sum(self.total_price)
-        return net_worth   
+            writer.writerow(["networth", round(self.get_networth(all_houses))])  
 
 
     def area_reset(self, houses):
         """
-            Resets every house to its starting position
+            Resets every house to its starting position.
         """
         for house in houses:
             house.corner_lowerleft = [0,0]
@@ -324,24 +368,18 @@ class Graph():
     def price_reset(self, houses):
         """
             Resets every house price to its initial price
+            For maisons this price is: 610000.
+            For bungalows this price is: 399000.
+            For singlehouses this price is: 285000.
         """
+        initial_maison = 610000
+        initial_bungalow = 399000
+        initial_singlehouse = 285000
+
         for house in houses:
-
             if isinstance(house, Maison):
-                house.price = 610000
+                house.price = initial_maison
             elif isinstance(house, Bungalow):
-                house.price = 399000
+                house.price = initial_bungalow
             elif isinstance(house, Singlehouse):
-                house.price = 285000
-
-
-    def check_borders(self, house):
-        """
-            Returns true if house placement is on top of a border of the graph
-        """
-        house_corners = [house.corner_lowerleft, house.return_upperleft(house), house.return_upperright(house), house.return_lowerright(house)]
-        for corners in house_corners:
-            for corner in corners:
-                if corner < 0 or corner > 180 or corner > 160:
-                    return True
-        return False 
+                house.price = initial_singlehouse 
