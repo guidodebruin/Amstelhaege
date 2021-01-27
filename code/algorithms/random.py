@@ -52,7 +52,7 @@ class Random:
 
         # get final houseprice
         final_networth = self.area.get_networth(self.houses)
-        print(final_networth)
+        # print(final_networth)
 
         self.area.load_houses(self.houses)
         self.area.write_output(self.houses)

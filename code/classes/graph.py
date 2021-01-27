@@ -239,7 +239,7 @@ class Graph():
             freespace = self.closest_house(house, houses)[1]
             extra_freespace = freespace - house.freespace
             price_increase = ((extra_freespace * house.percentage)/100) + 1
-            house.price = round(house.price * price_increase)
+            house.price = house.price * price_increase
 
 
     def write_output(self, all_houses):
@@ -252,7 +252,6 @@ class Graph():
             singlehouse_counter = 0
             bungalow_counter = 0
             maison_counter = 0
-
             for water in self.water:
                 structure = water[0]
                 corner_1 = water[1]
@@ -279,7 +278,7 @@ class Graph():
                     structure = "maison_" + str(maison_counter)
                     writer.writerow([structure, ','.join(map(str, house.return_lowerright(house))), ','.join(map(str, house.corner_lowerleft)), ','.join(map(str,house.return_upperleft(house))), ','.join(map(str, house.return_upperright(house))) , housetype])
 
-            writer.writerow(["networth", self.get_networth(all_houses)])
+            writer.writerow(["networth", round(self.get_networth(all_houses))])
 
 
     def get_networth(self, all_houses):
