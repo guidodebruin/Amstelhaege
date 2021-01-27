@@ -8,10 +8,9 @@
 
 from code.classes.House import House
 
-
 class Maison(House):
     """
-            Describes characteristics of a maison.
+        Describes characteristics of a maison.
     """ 
     def __init__(self):
         self.length = 10
